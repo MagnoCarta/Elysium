@@ -35,7 +35,6 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         organizarConstraintsEDetalhes()
         
         
@@ -67,7 +66,7 @@ class ViewController: NSViewController {
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
             //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
-        
+            print("oi")
             
             //if Continuar {
             
@@ -148,7 +147,7 @@ class ViewController: NSViewController {
         
     //Após o jogo ser iniciado , que tal termos também o jogo reconstruído nesta função?
         func reorganizarConstraintsEDetalhes(/*parametros = Dados da GameData*/) {
-            
+        
             
         }
     

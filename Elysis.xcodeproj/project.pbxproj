@@ -10,16 +10,14 @@
 		0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D60248F216400AE06CA /* AppDelegate.swift */; };
 		0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D62248F216400AE06CA /* ViewController.swift */; };
 		0F7C4D65248F216900AE06CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D64248F216900AE06CA /* Assets.xcassets */; };
-		0F7C4D68248F216900AE06CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D66248F216900AE06CA /* Main.storyboard */; };
+		0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D66248F216900AE06CA /* Cover.storyboard */; };
 		0F7C4D74248F216900AE06CA /* ElysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D73248F216900AE06CA /* ElysisTests.swift */; };
 		0F7C4D7F248F216900AE06CA /* ElysisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */; };
-		0F7C4D91248F2A5C00AE06CA /* Continuar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D90248F2A5C00AE06CA /* Continuar.swift */; };
-		0F7C4D93248F2A7000AE06CA /* NovoJogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D92248F2A7000AE06CA /* NovoJogo.swift */; };
-		0F7C4D95248F2A7D00AE06CA /* Opcoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D94248F2A7D00AE06CA /* Opcoes.swift */; };
-		0F7C4D97248F2A9800AE06CA /* Confirmar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D96248F2A9800AE06CA /* Confirmar.swift */; };
 		0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D98248F2AEF00AE06CA /* Sprites.swift */; };
 		0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */; };
 		0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9C248F2B8400AE06CA /* GameData.swift */; };
+		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
+		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +42,7 @@
 		0F7C4D60248F216400AE06CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F7C4D62248F216400AE06CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F7C4D64248F216900AE06CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0F7C4D67248F216900AE06CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0F7C4D67248F216900AE06CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Cover.storyboard; sourceTree = "<group>"; };
 		0F7C4D69248F216900AE06CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7C4D6A248F216900AE06CA /* Elysis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Elysis.entitlements; sourceTree = "<group>"; };
 		0F7C4D6F248F216900AE06CA /* ElysisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElysisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,13 +51,11 @@
 		0F7C4D7A248F216900AE06CA /* ElysisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElysisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElysisUITests.swift; sourceTree = "<group>"; };
 		0F7C4D80248F216900AE06CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F7C4D90248F2A5C00AE06CA /* Continuar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Continuar.swift; sourceTree = "<group>"; };
-		0F7C4D92248F2A7000AE06CA /* NovoJogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovoJogo.swift; sourceTree = "<group>"; };
-		0F7C4D94248F2A7D00AE06CA /* Opcoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opcoes.swift; sourceTree = "<group>"; };
-		0F7C4D96248F2A9800AE06CA /* Confirmar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confirmar.swift; sourceTree = "<group>"; };
 		0F7C4D98248F2AEF00AE06CA /* Sprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprites.swift; sourceTree = "<group>"; };
 		0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTrack.swift; sourceTree = "<group>"; };
 		0F7C4D9C248F2B8400AE06CA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		0F7C4DA0248FD54F00AE06CA /* Page.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page.storyboard; sourceTree = "<group>"; };
+		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +139,6 @@
 				0F7C4D9C248F2B8400AE06CA /* GameData.swift */,
 				0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */,
 				0F7C4D98248F2AEF00AE06CA /* Sprites.swift */,
-				0F7C4D96248F2A9800AE06CA /* Confirmar.swift */,
-				0F7C4D8F248F2A4200AE06CA /* BotoesMenu */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,8 +146,10 @@
 		0F7C4D8D248F281D00AE06CA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0F7C4D66248F216900AE06CA /* Main.storyboard */,
+				0F7C4D66248F216900AE06CA /* Cover.storyboard */,
 				0F7C4D64248F216900AE06CA /* Assets.xcassets */,
+				0F7C4DA0248FD54F00AE06CA /* Page.storyboard */,
+				0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,16 +161,6 @@
 				0F7C4D60248F216400AE06CA /* AppDelegate.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		0F7C4D8F248F2A4200AE06CA /* BotoesMenu */ = {
-			isa = PBXGroup;
-			children = (
-				0F7C4D90248F2A5C00AE06CA /* Continuar.swift */,
-				0F7C4D92248F2A7000AE06CA /* NovoJogo.swift */,
-				0F7C4D94248F2A7D00AE06CA /* Opcoes.swift */,
-			);
-			path = BotoesMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F7C4D65248F216900AE06CA /* Assets.xcassets in Resources */,
-				0F7C4D68248F216900AE06CA /* Main.storyboard in Resources */,
+				0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */,
+				0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */,
+				0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,13 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F7C4D95248F2A7D00AE06CA /* Opcoes.swift in Sources */,
 				0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */,
-				0F7C4D97248F2A9800AE06CA /* Confirmar.swift in Sources */,
 				0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */,
-				0F7C4D91248F2A5C00AE06CA /* Continuar.swift in Sources */,
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
-				0F7C4D93248F2A7000AE06CA /* NovoJogo.swift in Sources */,
 				0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
 			);
@@ -351,12 +335,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0F7C4D66248F216900AE06CA /* Main.storyboard */ = {
+		0F7C4D66248F216900AE06CA /* Cover.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0F7C4D67248F216900AE06CA /* Base */,
 			);
-			name = Main.storyboard;
+			name = Cover.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

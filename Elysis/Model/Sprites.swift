@@ -12,3 +12,6 @@ import Foundation
 // LEMBRANDO QUE ISSO CASO FAÇAMOS POR MEIO DO CODIGO , TAMBEM PDOEMOS FAZER POR STORYBOARD SE FOR VONTADE DE VOCES !!! AINDA USAMOS IB NESSA, APENAS COMPONETIZAMOS ELA
 
 // teremos enums que facilitarão a nossa organização das imagens e Animações aqui :)
+
+
+
