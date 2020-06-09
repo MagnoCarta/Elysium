@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GameChallenge.xcodeproj">
+      location = "self:Elysis.xcodeproj">
    </FileRef>
 </Workspace>
