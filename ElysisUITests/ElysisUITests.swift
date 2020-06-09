@@ -1,14 +1,14 @@
 //
-//  GameChallengeUITests.swift
-//  GameChallengeUITests
+//  ElysisUITests.swift
+//  ElysisUITests
 //
-//  Created by Rodrigo Matos Aguiar on 02/06/20.
-//  Copyright © 2020 Placeholder. All rights reserved.
+//  Created by Gilberto Magno on 08/06/20.
+//  Copyright © 2020 Gilberto Magno. All rights reserved.
 //
 
 import XCTest
 
-class GameChallengeUITests: XCTestCase {
+class ElysisUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
