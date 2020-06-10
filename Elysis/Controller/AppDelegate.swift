@@ -14,7 +14,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let defaults = UserDefaults.standard
+        defaults.register(defaults:
+            [
+                "bgmVolume": 1,
+                "sfxVolume": 1
+            ])
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

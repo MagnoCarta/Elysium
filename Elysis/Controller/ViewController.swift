@@ -11,8 +11,14 @@
 import Cocoa
 
 class ViewController: NSViewController {
-// VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
+
+    //MARK: Actions
     
+    @IBAction func OptionsButtonPress(_ sender: Any) {
+        self.view.window?.contentViewController = OptionsViewController()
+    }
+    
+    // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
     
     
@@ -34,7 +40,6 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         organizarConstraintsEDetalhes()
         
         

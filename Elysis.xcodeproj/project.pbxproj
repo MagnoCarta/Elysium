@@ -18,6 +18,8 @@
 		0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9C248F2B8400AE06CA /* GameData.swift */; };
 		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
+		57E40A582490D11D00FDB2D4 /* Void Theme V1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57E40A572490D11D00FDB2D4 /* Void Theme V1.mp3 */; };
+		57E40A5A2490D5D800FDB2D4 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A592490D5D800FDB2D4 /* OptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		0F7C4D9C248F2B8400AE06CA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		0F7C4DA0248FD54F00AE06CA /* Page.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page.storyboard; sourceTree = "<group>"; };
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		57E40A572490D11D00FDB2D4 /* Void Theme V1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Void Theme V1.mp3"; sourceTree = "<group>"; };
+		57E40A592490D5D800FDB2D4 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				0F7C4D8E248F282300AE06CA /* Controller */,
 				0F7C4D8D248F281D00AE06CA /* View */,
 				0F7C4D8C248F281500AE06CA /* Model */,
+				57E40A562490D09A00FDB2D4 /* Sounds */,
 			);
 			path = Elysis;
 			sourceTree = "<group>";
@@ -159,8 +164,17 @@
 			children = (
 				0F7C4D62248F216400AE06CA /* ViewController.swift */,
 				0F7C4D60248F216400AE06CA /* AppDelegate.swift */,
+				57E40A592490D5D800FDB2D4 /* OptionsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		57E40A562490D09A00FDB2D4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				57E40A572490D11D00FDB2D4 /* Void Theme V1.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +285,7 @@
 				0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */,
 				0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */,
 				0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */,
+				57E40A582490D11D00FDB2D4 /* Void Theme V1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +313,7 @@
 				0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */,
 				0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */,
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
+				57E40A5A2490D5D800FDB2D4 /* OptionsViewController.swift in Sources */,
 				0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
 			);
