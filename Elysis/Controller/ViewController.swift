@@ -34,7 +34,7 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let database = Database.shared
+        let gameState = GameState.shared
         organizarConstraintsEDetalhes()
         
         
