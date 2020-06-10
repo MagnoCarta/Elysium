@@ -18,6 +18,8 @@
 		0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9C248F2B8400AE06CA /* GameData.swift */; };
 		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
+		57E40A5C249115CE00FDB2D4 /* SaveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5B249115CE00FDB2D4 /* SaveState.swift */; };
+		57E40A5E24911DAA00FDB2D4 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		0F7C4D9C248F2B8400AE06CA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		0F7C4DA0248FD54F00AE06CA /* Page.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page.storyboard; sourceTree = "<group>"; };
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		57E40A5B249115CE00FDB2D4 /* SaveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveState.swift; sourceTree = "<group>"; };
+		57E40A5D24911DAA00FDB2D4 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 				0F7C4D9C248F2B8400AE06CA /* GameData.swift */,
 				0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */,
 				0F7C4D98248F2AEF00AE06CA /* Sprites.swift */,
+				57E40A5B249115CE00FDB2D4 /* SaveState.swift */,
+				57E40A5D24911DAA00FDB2D4 /* Database.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,9 +302,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */,
+				57E40A5C249115CE00FDB2D4 /* SaveState.swift in Sources */,
 				0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */,
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
 				0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */,
+				57E40A5E24911DAA00FDB2D4 /* Database.swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

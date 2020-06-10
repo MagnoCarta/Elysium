@@ -34,7 +34,7 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let database = Database.shared
         organizarConstraintsEDetalhes()
         
         
@@ -51,11 +51,6 @@ class ViewController: NSViewController {
     override func viewDidAppear() {
         view.window?.makeFirstResponder(self)
     }
-    
-    
-    
-    
-    
     
 //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
     override func keyDown(with event: NSEvent) {
