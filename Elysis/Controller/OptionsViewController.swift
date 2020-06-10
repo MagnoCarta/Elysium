@@ -11,7 +11,7 @@ import Cocoa
 class OptionsViewController: NSViewController {
     
     override func loadView() {
-        self.view = NSView(frame: NSRect(x: 0, y: 0, width: 480, height: 270))
+        self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
     }
 
     override func viewDidLoad() {

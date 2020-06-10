@@ -20,8 +20,7 @@ class ViewController: NSViewController {
     
     // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
-    
-    
+    let optionsButton = NSButton(frame: NSRect(x: 200, y: 200, width: 100, height: 50))
     
     
     
@@ -36,13 +35,15 @@ class ViewController: NSViewController {
     
     
     
-    
+    override func loadView() {
+        self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         organizarConstraintsEDetalhes()
-        
-        
+        view.addSubview(optionsButton)
+        optionsButton.action = #selector(didTapButtonOptions(_:))
         // Do any additional setup after loading the view.
     }
     
@@ -91,7 +92,7 @@ class ViewController: NSViewController {
             
             //if Novo Jogo {
             
-            didTapButtonOpcoes(NSButton())
+            didTapButtonOptions(NSButton())
             
             //}
             
@@ -193,10 +194,9 @@ class ViewController: NSViewController {
     
     
     
-    @objc  func didTapButtonOpcoes(_ Button: AnyObject){
-        
+    @objc  func didTapButtonOptions(_ Button: AnyObject){
         //MODEL FULLSCREEN
-        
+        self.view.window?.contentViewController = OptionsViewController()
     }
     
     
