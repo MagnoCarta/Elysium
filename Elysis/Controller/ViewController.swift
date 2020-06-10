@@ -15,7 +15,7 @@ class ViewController: NSViewController {
     
     
     
-    
+    let botao = NSButton(frame: NSRect(x: 200, y: 200, width: 100, height: 100))
     
     
     
@@ -29,28 +29,25 @@ class ViewController: NSViewController {
 //-----------------------------------------------------------------------------
     
     
-    
+    override func loadView() {
+        self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         organizarConstraintsEDetalhes()
-        
+        view.addSubview(botao)
+        botao.action = #selector(didTapButtonOpcoes(_:))
         
         // Do any additional setup after loading the view.
     }
     
     
     
-    
-    
-    
-    
 // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
-    override func viewDidAppear() {
-        view.window?.makeFirstResponder(self)
-    }
+
     
     
     
@@ -192,6 +189,7 @@ class ViewController: NSViewController {
         
         //MODEL FULLSCREEN
         
+        self.view.window!.contentViewController = SettingsViewController()
     }
     
     
@@ -224,7 +222,10 @@ class ViewController: NSViewController {
 
 
     
-    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        self.view.window?.close()
+        //Pass data to new view
+    }
     
     
     
