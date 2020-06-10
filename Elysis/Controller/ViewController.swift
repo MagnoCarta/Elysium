@@ -14,9 +14,7 @@ class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
     
-    
-    
-    
+    var respostaApi = ApiController()
     
     
     
@@ -66,8 +64,8 @@ class ViewController: NSViewController {
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
             //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
+            respostaApi.Submit("texto que eu quero")
             print("oi")
-            
             //if Continuar {
             
             didTapButtonContinuar(NSButton())
