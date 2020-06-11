@@ -39,7 +39,7 @@ class ViewController: NSViewController {
 //        self.livrinho.setFrameOrigin(NSPoint(x: 50, y: 50))
 //        self.livrinho.contentTintColor = .red
         organizarConstraintsEDetalhes()
-        respostaApi.Submit("Happy")
+        
       
         
         // Do any additional setup after loading the view.
@@ -71,6 +71,7 @@ class ViewController: NSViewController {
         if event.keyCode == 36 {
             //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
            // respostaApi.Submit("texto que eu quero")
+            respostaApi.Submit("Happy")
             print("oi")
             //if Continuar {
             

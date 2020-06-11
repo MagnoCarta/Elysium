@@ -11,6 +11,8 @@ import Foundation
 class ApiController{
     
     func Submit(_ text: String){
+        
+        
         let urlApi = URL(string: "https://sentim-api.herokuapp.com/api/v1/")
         guard let requestUrl = urlApi else { fatalError() }
         
@@ -22,6 +24,8 @@ class ApiController{
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         //Parametros que serão enviados no corpo da solicitação HTTP
+
+
         let body: [String: Any] = ["text": "\(text)"]
         
         //Cria o json que sera enviado
@@ -30,22 +34,23 @@ class ApiController{
         //Body da solicitacao http
         request.httpBody = jsonData
         
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) {
+            data, response, error in
             
-            print("Error", error)
-            print("Response", response)
+            print("Error", error ?? "nil")
+            print("Response", response ?? "nil")
            
             if let data = data {
-                do{
+                do {
                     let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
                     print(apiResponse.result.type)
-                }catch{
+                } catch{
                     print(NSDebugDescriptionErrorKey)
                 }
                  
             }
 
-        })
+        }
         
         task.resume()
         

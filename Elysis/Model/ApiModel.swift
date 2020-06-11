@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Result: Codable{
+struct ResultApi: Codable{
     let polarity: Double
     let type: String
 }
-struct ApiResponse:Codable{
-    let result:Result
+struct ApiResponse: Codable{
+    let result: ResultApi
     //var type: String
 }
