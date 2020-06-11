@@ -32,13 +32,13 @@ class ApiController{
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             
-//            print("Error", error)
-//            print("Response", response)
+            print("Error", error)
+            print("Response", response)
            
             if let data = data {
                 do{
                     let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
-                    print(apiResponse.type)
+                    print(apiResponse.result.type)
                 }catch{
                     print(NSDebugDescriptionErrorKey)
                 }
