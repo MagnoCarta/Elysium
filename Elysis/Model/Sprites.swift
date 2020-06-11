@@ -6,7 +6,9 @@
 //  Copyright © 2020 Gilberto Magno. All rights reserved.
 //
 
-import Foundation
+import Cocoa
+
+//let livrinho = NSImageView(image: NSImage(named: "Livrinho")!)
 
 
 // LEMBRANDO QUE ISSO CASO FAÇAMOS POR MEIO DO CODIGO , TAMBEM PDOEMOS FAZER POR STORYBOARD SE FOR VONTADE DE VOCES !!! AINDA USAMOS IB NESSA, APENAS COMPONETIZAMOS ELA
