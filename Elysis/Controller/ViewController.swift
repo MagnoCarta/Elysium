@@ -13,34 +13,20 @@ import Cocoa
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
-    
-    
     let botao = NSButton(frame: NSRect(x: 200, y: 200, width: 100, height: 100))
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    var respostaApi = ApiController()
     
 //-----------------------------------------------------------------------------
     
-    
     override func loadView() {
-        self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
+        self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         organizarConstraintsEDetalhes()
         view.addSubview(botao)
         botao.action = #selector(didTapButtonOpcoes(_:))
-        
         // Do any additional setup after loading the view.
     }
     
@@ -48,11 +34,6 @@ class ViewController: NSViewController {
     
 // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
 
-    
-    
-    
-    
-    
     
 //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
     override func keyDown(with event: NSEvent) {
@@ -62,9 +43,10 @@ class ViewController: NSViewController {
         
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
+            respostaApi.Submit("Happy")
             //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
+
             print("oi")
-            
             //if Continuar {
             
             didTapButtonContinuar(NSButton())
