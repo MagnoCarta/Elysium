@@ -18,11 +18,6 @@ class ViewController: NSViewController {
     
     
     
-   // let livrinho = NSImageView(image: NSImage(named: "Livrinho")!)
-    
-    
-    //let a = NSButton(frame: NSRect(x: 50, y: 50, width: 100, height: 100))
-    
     
 //-----------------------------------------------------------------------------
     
@@ -69,9 +64,9 @@ class ViewController: NSViewController {
         
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-            //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
-           // respostaApi.Submit("texto que eu quero")
             respostaApi.Submit("Happy")
+            //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
+
             print("oi")
             //if Continuar {
             

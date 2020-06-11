@@ -54,20 +54,6 @@ class ApiController{
         
         task.resume()
         
-        
-         /*do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any]
-
-            let resultado = json!["result"]! as? Dictionary<String, Any>
-                print(resultado!["type"]!)
-                print(type(of:resultado!["type"]!))
-         } catch {
-                print("Something went wrong")
-        }
-        */
     }
-    
-
-   // RunLoop.main.run(until: .distantFuture)
 }
 

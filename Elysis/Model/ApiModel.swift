@@ -14,5 +14,4 @@ struct ResultApi: Codable{
 }
 struct ApiResponse: Codable{
     let result: ResultApi
-    //var type: String
 }
