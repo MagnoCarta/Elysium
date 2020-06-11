@@ -20,6 +20,7 @@ class GameState {
         if !FileManager.default.fileExists(atPath: gameStateURL.path) {
             save([])
         }
+        //print(documentURL)
     }
     
     func save(_ interactions: [Interaction]) {
@@ -42,4 +43,12 @@ class GameState {
         }
         return interactions
     }
+    
+    /*
+     let gameState = GameState.shared
+     let interaction = Interaction(playerAnswer: "I am sad", answerPolarity: Polarity.negative)
+     var interactions = gameState.load()
+     interactions.append(interaction)
+     gameState.save(interactions)
+     */
 }

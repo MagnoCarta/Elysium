@@ -34,9 +34,7 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let gameState = GameState.shared
         organizarConstraintsEDetalhes()
-        
         
         // Do any additional setup after loading the view.
     }

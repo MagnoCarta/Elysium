@@ -8,7 +8,15 @@
 
 import Foundation
 
+// The possible results from the Sentim API
+enum Polarity: String, Codable {
+    case positive
+    case neutral
+    case negative
+}
+
+// The struct that will represent each interaction the player does.
 struct Interaction: Codable {
     let playerAnswer: String
-    let answerPolarity: Float
+    let answerPolarity: Polarity
 }
