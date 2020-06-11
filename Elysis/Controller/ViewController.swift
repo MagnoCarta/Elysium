@@ -28,15 +28,8 @@ class ViewController: NSViewController {
     
     
     override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.addSubview(self.livrinho)
-//        view.addSubview(self.a)
-//        self.livrinho.setFrameOrigin(NSPoint(x: 50, y: 50))
-//        self.livrinho.contentTintColor = .red
+        super.viewDidLoad()
         organizarConstraintsEDetalhes()
-        
-      
-        
         // Do any additional setup after loading the view.
     }
     
@@ -50,11 +43,6 @@ class ViewController: NSViewController {
     override func viewDidAppear() {
         view.window?.makeFirstResponder(self)
     }
-    
-    
-    
-    
-    
     
 //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
     override func keyDown(with event: NSEvent) {

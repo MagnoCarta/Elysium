@@ -20,6 +20,8 @@
 		0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9C248F2B8400AE06CA /* GameData.swift */; };
 		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
+		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
+		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		0F7C4D9C248F2B8400AE06CA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		0F7C4DA0248FD54F00AE06CA /* Page.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page.storyboard; sourceTree = "<group>"; };
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				0F7C4D9C248F2B8400AE06CA /* GameData.swift */,
 				0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */,
 				0F7C4D98248F2AEF00AE06CA /* Sprites.swift */,
+				57E40A5D24911DAA00FDB2D4 /* GameState.swift */,
+				5723265D24916D8B00AE4280 /* Interaction.swift */,
 				0B0394CC24916CBD005F0D68 /* ApiModel.swift */,
 			);
 			path = Model;
@@ -306,7 +312,9 @@
 				0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */,
 				0B0394CB2491661F005F0D68 /* ApiController.swift in Sources */,
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
+				5723265E24916D8B00AE4280 /* Interaction.swift in Sources */,
 				0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */,
+				57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
