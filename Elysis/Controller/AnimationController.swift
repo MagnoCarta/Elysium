@@ -35,17 +35,15 @@ class AnimationController: NSViewController {
     }
     
     override func viewDidAppear() {
-        self.view.window?.makeFirstResponder(self)// agora ela vai responder à sua view controller
-        self.view.window?.makeKey() // aceita keyboard/teclado
+        self.view.window?.makeFirstResponder(self)// Faz a window responder à view atual
+        self.view.window?.makeKey() // Reconhece o keyboard
     }
     
     override func keyDown(with event: NSEvent) {
         print(event.keyCode)
-        if event.keyCode == 123 {
-            print("esquerda")
+        if event.keyCode == 123 { //Seta esquerda
             setAngle(degrees: 1)
-        } else if event.keyCode == 124 {
-            print("direita")
+        } else if event.keyCode == 124 { //Seta direita
             setAngle(degrees: -1)
         }
     }
@@ -53,7 +51,7 @@ class AnimationController: NSViewController {
     func setAngle(degrees: CGFloat){
         let radians = CGFloat(Double.pi) * degrees / 180.0
         var transform = CATransform3DIdentity
-        transform.m34 = 1 / -250
+        transform.m34 = 1 / -250 //Indica a profundidade da animação
         transform = CATransform3DRotate(transform, radians, 0, 1, 0)
         transformLayer.transform = transform
     }
