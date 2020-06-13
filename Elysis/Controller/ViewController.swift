@@ -22,21 +22,13 @@ class ViewController: NSViewController {
 //-----------------------------------------------------------------------------
     
     
-   /* override func loadView() {
+    override func loadView() {
         self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
-    }*/
+    }
     
     
     override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.addSubview(self.livrinho)
-//        view.addSubview(self.a)
-//        self.livrinho.setFrameOrigin(NSPoint(x: 50, y: 50))
-//        self.livrinho.contentTintColor = .red
-        organizarConstraintsEDetalhes()
-        
-      
-        
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
@@ -49,6 +41,7 @@ class ViewController: NSViewController {
 // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
     override func viewDidAppear() {
         view.window?.makeFirstResponder(self)
+        view.window?.makeKey()
     }
     
     
@@ -64,153 +57,23 @@ class ViewController: NSViewController {
         
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-            respostaApi.Submit("Happy")
-            //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
-
+            self.view.window?.contentViewController = AnimationController()
             print("oi")
-            //if Continuar {
-            
-            didTapButtonContinuar(NSButton())
-            
-            //}
-            
-            
-            //if Novo Jogo {
-            
-            didTapButtonNovoJogo(NSButton())
-            
-            
-            //}
-            
-            
-            
-            //if Novo Jogo {
-            
-            didTapButtonOpcoes(NSButton())
-            
-            //}
-            
-        //} Else Estiver na tela do jogo
-            
-            // if Tela de Jogo normal {
-            
-            //Passa o texto
-            
-       // } else BarradeTexto {
-            
-            didTapButtonConfirmar(NSButton())
-            
-      //  }
-            
-            
-            
+      
         }
-        
-        
-        
-        
-        
-        //Se a tecla Down/Baixo for clicada
-        if event.keyCode == 125 {
-            
-            
-            // X%3 , cada vez que clicar aumenta X em 1, assim mudando qual botao está em cima, comecando do 0 , que é o Continuar, 1 Novo jogo, 2 Opcoes :D
-            
-            
-        }
-        
-        
-        
-        //Se a tecla Up/Cima for clicada
-        if event.keyCode == 126 {
-            
-             // X%3 , cada vez que clicar Diminui X em 1, assim mudando qual botao está em cima, comecando do 0 , que é o Continuar, 1 Novo jogo, 2 Opcoes :D
-            
-            
-        }
-        
-        
-        
-        
-    }
-//------------------------------------------------------------------------------------
-    
-    
-    
-    
-    //Deixo esta função em aberto para criação de todas as constraints e coisas necessárias antes do jogo iniciar
-        func organizarConstraintsEDetalhes() {
-            
-            
-            
-        }
-        
-    //Após o jogo ser iniciado , que tal termos também o jogo reconstruído nesta função?
-        func reorganizarConstraintsEDetalhes(/*parametros = Dados da GameData*/) {
-        
-            
-        }
-    
-    
-    
-    
-    
-    
-    
-// Funções dos Botoes do jogo, Continuar, NovoJogo, Opcoes, Confirmar e outros que podem existir---------------------------------------------------------------------
-   @objc  func didTapButtonContinuar(_ Button: AnyObject){
-        
-    
-    // MODEL FULLSCREEN CONTINUAR OU DIRETO PRO JOGO
-    
-        reorganizarConstraintsEDetalhes()
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonNovoJogo(_ Button: AnyObject){
-        //DIRETO PRO JOGO
-        reorganizarConstraintsEDetalhes()
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonOpcoes(_ Button: AnyObject){
-        
-        //MODEL FULLSCREEN
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonConfirmar(_ Button: AnyObject){
-           
-           // MAGIA DAS OPCOES E CAMINHOS AQUI
-           
-       }
-//------------------------------------------------------------------------------------
-    
-    
-    
 
+    }
+        
+        
+        
+        
+    
+//------------------------------------------------------------------------------------
+    
+    
+    
+    
+    
     
     
     
