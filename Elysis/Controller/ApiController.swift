@@ -10,7 +10,7 @@ import Foundation
 
 class ApiController{
     
-    func Submit(_ text: String){
+    func Submit(_ text: String, completion: @escaping (ApiResponse) -> Void) {
         
         
         let urlApi = URL(string: "https://sentim-api.herokuapp.com/api/v1/")
@@ -43,7 +43,8 @@ class ApiController{
             if let data = data {
                 do {
                     let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
-                    print(apiResponse.result.type)
+                    //print(apiResponse.result.type)
+                    completion(apiResponse)
                 } catch{
                     print(NSDebugDescriptionErrorKey)
                 }
@@ -54,6 +55,21 @@ class ApiController{
         
         task.resume()
         
+    }
+    
+    func SubmitSave(_ playerAnswer: String, completion: @escaping (Interaction?) -> Void) {
+        Submit(playerAnswer) { apiResponse in
+            guard let polarity = Polarity(rawValue: apiResponse.result.type) else {
+                completion(nil)
+                return
+            }
+            let interaction = Interaction(playerAnswer: playerAnswer, answerPolarity: polarity)
+            let gameState = GameState()
+            var interactions = gameState.load()
+            interactions.append(interaction)
+            gameState.save(interactions)
+            completion(interaction)
+        }
     }
 }
 
