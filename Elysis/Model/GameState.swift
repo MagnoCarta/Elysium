@@ -18,7 +18,7 @@ class GameState {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         if let url = urls.first {
             var fileURL = url.appendingPathComponent(filename)
-            fileURL = url.appendingPathExtension("json")
+            fileURL = fileURL.appendingPathExtension("json")
             self.gameStateURL = fileURL
             if !FileManager.default.fileExists(atPath: fileURL.path) {
                 save([])
