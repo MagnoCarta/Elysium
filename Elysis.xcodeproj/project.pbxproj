@@ -13,7 +13,6 @@
 		0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D62248F216400AE06CA /* ViewController.swift */; };
 		0F7C4D65248F216900AE06CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D64248F216900AE06CA /* Assets.xcassets */; };
 		0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D66248F216900AE06CA /* Cover.storyboard */; };
-		0F7C4D74248F216900AE06CA /* ElysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D73248F216900AE06CA /* ElysisTests.swift */; };
 		0F7C4D7F248F216900AE06CA /* ElysisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */; };
 		0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D98248F2AEF00AE06CA /* Sprites.swift */; };
 		0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */; };
@@ -22,7 +21,8 @@
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
 		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
-		776B8E112495D1F2008B183A /* GameStateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776B8E102495D1F2008B183A /* GameStateTest.swift */; };
+		77106DDC2497FA57004A1A0A /* GameStationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77106DDB2497FA57004A1A0A /* GameStationTests.swift */; };
+		77106DDE2498173C004A1A0A /* ApiControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77106DDD2498173C004A1A0A /* ApiControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,6 @@
 		0F7C4D69248F216900AE06CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7C4D6A248F216900AE06CA /* Elysis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Elysis.entitlements; sourceTree = "<group>"; };
 		0F7C4D6F248F216900AE06CA /* ElysisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElysisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F7C4D73248F216900AE06CA /* ElysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElysisTests.swift; sourceTree = "<group>"; };
 		0F7C4D75248F216900AE06CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7C4D7A248F216900AE06CA /* ElysisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElysisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElysisUITests.swift; sourceTree = "<group>"; };
@@ -65,7 +64,8 @@
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
-		776B8E102495D1F2008B183A /* GameStateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateTest.swift; sourceTree = "<group>"; };
+		77106DDB2497FA57004A1A0A /* GameStationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStationTests.swift; sourceTree = "<group>"; };
+		77106DDD2498173C004A1A0A /* ApiControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +128,9 @@
 		0F7C4D72248F216900AE06CA /* ElysisTests */ = {
 			isa = PBXGroup;
 			children = (
-				0F7C4D73248F216900AE06CA /* ElysisTests.swift */,
 				0F7C4D75248F216900AE06CA /* Info.plist */,
-				776B8E102495D1F2008B183A /* GameStateTest.swift */,
+				77106DDB2497FA57004A1A0A /* GameStationTests.swift */,
+				77106DDD2498173C004A1A0A /* ApiControllerTests.swift */,
 			);
 			path = ElysisTests;
 			sourceTree = "<group>";
@@ -249,6 +249,7 @@
 					};
 					0F7C4D6E248F216900AE06CA = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 						TestTargetID = 0F7C4D5C248F216400AE06CA;
 					};
 					0F7C4D79248F216900AE06CA = {
@@ -326,8 +327,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F7C4D74248F216900AE06CA /* ElysisTests.swift in Sources */,
-				776B8E112495D1F2008B183A /* GameStateTest.swift in Sources */,
+				77106DDE2498173C004A1A0A /* ApiControllerTests.swift in Sources */,
+				77106DDC2497FA57004A1A0A /* GameStationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +521,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ElysisTests/Info.plist;
@@ -531,6 +533,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = MagnoCarta.ElysisTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Elysis.app/Contents/MacOS/Elysis";
 			};
@@ -541,6 +544,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ElysisTests/Info.plist;

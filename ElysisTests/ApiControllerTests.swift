@@ -1,0 +1,47 @@
+//
+//  ApiControllerTests.swift
+//  ElysisTests
+//
+//  Created by Ronaldo Gomes on 15/06/20.
+//  Copyright © 2020 Gilberto Magno. All rights reserved.
+//
+
+import XCTest
+@testable import Elysis
+
+class ApiControllerTests: XCTestCase {
+
+    func test_apiController_submitSave_interactions() {
+        
+        //Given
+        let sut = ApiController()
+        var playerAnswer: String?
+        var answerPolarity: Polarity?
+        
+        //When
+        sut.SubmitSave("I am happy") { response in
+            answerPolarity = response?.answerPolarity
+            playerAnswer = response?.playerAnswer
+            
+            //Then
+            XCTAssertEqual(answerPolarity, Polarity(rawValue: "positive"))
+            XCTAssertEqual(playerAnswer, "I am Happy")
+        }
+    }
+    
+    func test_apiController_submit_apiResponse() {
+        
+        //Given
+        let sut = ApiController()
+        var resultApiType: String?
+        
+        //When
+        sut.Submit("I am sad") { apiResponse in
+            
+            resultApiType = apiResponse.result.type
+            
+            //Then
+            XCTAssertEqual(resultApiType, "negative")
+        }
+    }
+}
