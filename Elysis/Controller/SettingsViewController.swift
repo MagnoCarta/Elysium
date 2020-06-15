@@ -12,7 +12,7 @@ class SettingsViewController: NSViewController {
 
     var backButton: NSButton = {
         let backbutton = NSButton()
-        backbutton.title = "Back"
+        backbutton.title = "Done"
         return backbutton
     }()
     
@@ -21,6 +21,8 @@ class SettingsViewController: NSViewController {
         options.string = "Options"
         options.font = NSFont(name: "AppleSystemUIFont", size: 30)
         options.alignment = .center
+        options.isEditable = false
+        options.backgroundColor = .clear
         return options
     }()
     
@@ -51,10 +53,10 @@ class SettingsViewController: NSViewController {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.backButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100),
-            self.backButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -100),
+            self.backButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
             self.backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 100),
-            self.backButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -1100)
+            self.backButton.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
+            self.backButton.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
         ])
     }
     
@@ -63,10 +65,10 @@ class SettingsViewController: NSViewController {
         optionsTitle.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.optionsTitle.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100),
             self.optionsTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: ((100*self.view.frame.height)/self.view.frame.height)),
-            self.optionsTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 200),
-            self.optionsTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -100)
+            self.optionsTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            self.optionsTitle.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
+            self.optionsTitle.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
         ])
     }
 }
