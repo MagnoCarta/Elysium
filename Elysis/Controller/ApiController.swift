@@ -57,9 +57,13 @@ class ApiController{
         
     }
     
-    func SubmitSave(_ playerAnswer: String, completion: @escaping (Interaction) -> Void) {
+    func SubmitSave(_ playerAnswer: String, completion: @escaping (Interaction?) -> Void) {
         Submit(playerAnswer) { apiResponse in
-            let interaction = Interaction(playerAnswer: playerAnswer, answerPolarity: Polarity(rawValue: apiResponse.result.type)!)
+            guard let polarity = Polarity(rawValue: apiResponse.result.type) else {
+                completion(nil)
+                return
+            }
+            let interaction = Interaction(playerAnswer: playerAnswer, answerPolarity: polarity)
             let gameState = GameState()
             var interactions = gameState.load()
             interactions.append(interaction)

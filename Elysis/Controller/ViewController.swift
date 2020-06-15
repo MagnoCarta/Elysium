@@ -53,7 +53,9 @@ class ViewController: NSViewController {
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
             respostaApi.SubmitSave("I am crazy") { interaction in
-                print(interaction)
+                if let interaction = interaction {
+                    print(interaction)
+                }
             }
             //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
 
