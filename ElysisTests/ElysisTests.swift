@@ -34,6 +34,13 @@ class ElysisTests: XCTestCase {
     func testGameStateClass() {
         
     }
+    
+    /*func testApiModel() {
+        let api = ApiController()
+        api.Submit("Happy")
+        
+
+    }*/
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
