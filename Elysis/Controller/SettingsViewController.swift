@@ -37,7 +37,7 @@ class SettingsViewController: NSViewController {
         slider.minValue = 0
         slider.maxValue = 1
         // Initial Value
-        slider.doubleValue = slider.maxValue
+        slider.doubleValue = UserDefaults.standard.double(forKey: "bgmVolume")
         slider.alignment = .center
         slider.action = #selector(didChangeSlider(_:))
         return slider
@@ -58,7 +58,7 @@ class SettingsViewController: NSViewController {
         slider.minValue = 0
         slider.maxValue = 1
         // Initial Value
-        slider.doubleValue = slider.maxValue
+        slider.doubleValue = UserDefaults.standard.double(forKey: "sfxVolume")
         slider.alignment = .center
         slider.action = #selector(didChangeSlider(_:))
         return slider
@@ -79,9 +79,10 @@ class SettingsViewController: NSViewController {
         slider.minValue = 16
         slider.maxValue = 48
         // Initial Value
-        slider.doubleValue = (slider.maxValue + slider.minValue) / 2
+        slider.doubleValue = Double(UserDefaults.standard.integer(forKey: "textSize"))
         slider.alignment = .center
-        slider.action = #selector(didChangeSlider(_:))
+        slider.numberOfTickMarks = 9
+        slider.action = #selector(didChangeIntSlider(_:))
         return slider
     }()
     
@@ -97,10 +98,10 @@ class SettingsViewController: NSViewController {
     
     var textSpeedSlider: NSSlider = {
         let slider = NSSlider()
-        slider.minValue = 0.1
-        slider.maxValue = 1
+        slider.minValue = 5
+        slider.maxValue = 100
         // Initial Value
-        slider.doubleValue = (slider.maxValue + slider.minValue) / 2
+        slider.doubleValue = UserDefaults.standard.double(forKey: "textSpeed")
         slider.alignment = .center
         slider.action = #selector(didChangeSlider(_:))
         return slider
@@ -136,11 +137,21 @@ class SettingsViewController: NSViewController {
     //MARK: Actions
     
     @objc func didTapDoneButton() {
+        let defaults = UserDefaults.standard
+        defaults.set(bgmVolumeSlider.doubleValue, forKey: "bgmVolume")
+        defaults.set(sfxVolumeSlider.doubleValue, forKey: "sfxVolume")
+        defaults.set(textSizeSlider.doubleValue, forKey: "textSize")
+        defaults.set(textSpeedSlider.doubleValue, forKey: "textSpeed")
         self.view.window!.contentViewController = ViewController()
     }
     
     @objc func didChangeSlider(_ slider: NSSlider) {
 //        print(slider.doubleValue)
+    }
+    
+    @objc func didChangeIntSlider(_ slider: NSSlider) {
+//        print(slider.doubleValue)
+        slider.doubleValue = round(slider.doubleValue)
     }
     
     //MARK: Setup
