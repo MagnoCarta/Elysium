@@ -22,6 +22,11 @@
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
 		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
+		770D101D2499069B0068C5EA /* HistoriaInicial.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101C2499069B0068C5EA /* HistoriaInicial.json */; };
+		770D101F249907FE0068C5EA /* Parte1.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101E249907FE0068C5EA /* Parte1.json */; };
+		778B150324994E9300DC2B8D /* Positive.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150224994E9300DC2B8D /* Positive.json */; };
+		778B150524994F3E00DC2B8D /* Negative.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150424994F3E00DC2B8D /* Negative.json */; };
+		778B150724994F4C00DC2B8D /* Neutral.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150624994F4C00DC2B8D /* Neutral.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		770D101C2499069B0068C5EA /* HistoriaInicial.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HistoriaInicial.json; sourceTree = "<group>"; };
+		770D101E249907FE0068C5EA /* Parte1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Parte1.json; sourceTree = "<group>"; };
+		778B150224994E9300DC2B8D /* Positive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Positive.json; sourceTree = "<group>"; };
+		778B150424994F3E00DC2B8D /* Negative.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Negative.json; sourceTree = "<group>"; };
+		778B150624994F4C00DC2B8D /* Neutral.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Neutral.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +154,7 @@
 		0F7C4D8C248F281500AE06CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				770D101B2499064F0068C5EA /* HistoryData */,
 				0F7C4D9C248F2B8400AE06CA /* GameData.swift */,
 				0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */,
 				0F7C4D98248F2AEF00AE06CA /* Sprites.swift */,
@@ -173,6 +184,18 @@
 				0B0394CA2491661F005F0D68 /* ApiController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		770D101B2499064F0068C5EA /* HistoryData */ = {
+			isa = PBXGroup;
+			children = (
+				770D101C2499069B0068C5EA /* HistoriaInicial.json */,
+				770D101E249907FE0068C5EA /* Parte1.json */,
+				778B150224994E9300DC2B8D /* Positive.json */,
+				778B150424994F3E00DC2B8D /* Negative.json */,
+				778B150624994F4C00DC2B8D /* Neutral.json */,
+			);
+			path = HistoryData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,10 +302,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				778B150524994F3E00DC2B8D /* Negative.json in Resources */,
 				0F7C4D65248F216900AE06CA /* Assets.xcassets in Resources */,
+				778B150724994F4C00DC2B8D /* Neutral.json in Resources */,
+				770D101F249907FE0068C5EA /* Parte1.json in Resources */,
+				770D101D2499069B0068C5EA /* HistoriaInicial.json in Resources */,
 				0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */,
 				0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */,
 				0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */,
+				778B150324994E9300DC2B8D /* Positive.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
