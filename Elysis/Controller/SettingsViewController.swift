@@ -9,66 +9,159 @@
 import Cocoa
 
 class SettingsViewController: NSViewController {
-
-    var backButton: NSButton = {
-        let backbutton = NSButton()
-        backbutton.title = "Done"
-        return backbutton
-    }()
     
     var optionsTitle: NSText = {
-        let options = NSText()
-        options.string = "Options"
-        options.font = NSFont(name: "AppleSystemUIFont", size: 30)
-        options.alignment = .center
-        options.isEditable = false
-        options.backgroundColor = .clear
-        return options
+        let title = NSText()
+        title.string = "Options"
+        title.font = NSFont(name: "AppleSystemUIFont", size: 30)
+        title.alignment = .center
+        title.isEditable = false
+        title.backgroundColor = .clear
+        return title
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-//        backButton.setFrameOrigin(NSPoint(x: self.view.frame.minX + 150, y: self.view.frame.maxY - 150))
-        setupButton()
-        setupOptionsTitle()
-        backButton.action = #selector(didTapBackButton(_:))
-        
-    }
+    var bgmVolumeLabel: NSText = {
+        let label = NSText()
+        label.string = "Background Music Volume"
+        label.font = NSFont(name: "AppleSystemUIFont", size: 18)
+        label.alignment = .center
+        label.isEditable = false
+        label.backgroundColor = .clear
+        return label
+    }()
+    
+    var bgmVolumeSlider: NSSlider = {
+        let slider = NSSlider()
+        slider.minValue = 0.1
+        slider.maxValue = 1
+        slider.alignment = .center
+        return slider
+    }()
+    
+    var sfxVolumeLabel: NSText = {
+        let label = NSText()
+        label.string = "Special Effects Volume"
+        label.font = NSFont(name: "AppleSystemUIFont", size: 18)
+        label.alignment = .center
+        label.isEditable = false
+        label.backgroundColor = .clear
+        return label
+    }()
+    
+    var sfxVolumeSlider: NSSlider = {
+        let slider = NSSlider()
+        slider.minValue = 0.1
+        slider.maxValue = 1
+        slider.alignment = .center
+        return slider
+    }()
+    
+    var textSizeLabel: NSText = {
+        let label = NSText()
+        label.string = "Text Size"
+        label.font = NSFont(name: "AppleSystemUIFont", size: 18)
+        label.alignment = .center
+        label.isEditable = false
+        label.backgroundColor = .clear
+        return label
+    }()
+    
+    var textSizeSlider: NSSlider = {
+        let slider = NSSlider()
+        slider.minValue = 0.1
+        slider.maxValue = 1
+        slider.alignment = .center
+        return slider
+    }()
+    
+    var textSpeedLabel: NSText = {
+        let label = NSText()
+        label.string = "Text Speed"
+        label.font = NSFont(name: "AppleSystemUIFont", size: 18)
+        label.alignment = .center
+        label.isEditable = false
+        label.backgroundColor = .clear
+        return label
+    }()
+    
+    var textSpeedSlider: NSSlider = {
+        let slider = NSSlider()
+        slider.minValue = 0.1
+        slider.maxValue = 1
+        slider.alignment = .center
+        return slider
+    }()
+
+    var doneButton: NSButton = {
+        let button = NSButton()
+        button.title = "Done"
+        return button
+    }()
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
     }
     
-    @objc  func didTapBackButton(_ Button: AnyObject){
-        
-        //MODEL FULLSCREEN
-        
-        self.view.window!.contentViewController = ViewController()
-    }
-    
-    func setupButton() {
-        self.view.addSubview(backButton)
-        
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            self.backButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
-            self.backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 100),
-            self.backButton.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
-            self.backButton.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
-        ])
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupOptionsTitle()
+        setup(label: bgmVolumeLabel, relativeTo: optionsTitle, additionalMargin: 50)
+        setup(control: bgmVolumeSlider, for: bgmVolumeLabel)
+        setup(label: sfxVolumeLabel, relativeTo: bgmVolumeLabel)
+        setup(control: sfxVolumeSlider, for: sfxVolumeLabel)
+        setup(label: textSizeLabel, relativeTo: sfxVolumeLabel)
+        setup(control: textSizeSlider, for: textSizeLabel)
+        setup(label: textSpeedLabel, relativeTo: textSizeLabel)
+        setup(control: textSpeedSlider, for: textSpeedLabel)
+        setup(doneButton: doneButton, relativeTo: textSpeedLabel)
     }
     
     func setupOptionsTitle() {
         self.view.addSubview(optionsTitle)
         optionsTitle.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             self.optionsTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: ((100*self.view.frame.height)/self.view.frame.height)),
             self.optionsTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             self.optionsTitle.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
             self.optionsTitle.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
         ])
+    }
+    
+    func setup(label: NSText, relativeTo referenceLabel: NSText, additionalMargin: CGFloat = 0) {
+        self.view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: referenceLabel.bottomAnchor, constant: 30 + additionalMargin),
+            label.trailingAnchor.constraint(equalTo: optionsTitle.leadingAnchor, constant: 100),
+            label.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
+            label.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
+        ])
+    }
+    
+    func setup(control: NSControl, for label: NSText) {
+        self.view.addSubview(control)
+        control.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            control.topAnchor.constraint(equalTo: label.topAnchor),
+            control.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 100),
+            control.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
+            control.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
+        ])
+    }
+    
+    func setup(doneButton: NSButton, relativeTo label: NSText) {
+        self.view.addSubview(doneButton)
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.doneButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 50),
+            self.doneButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            self.doneButton.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
+            self.doneButton.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
+        ])
+        doneButton.action = #selector(didTapDoneButton(_:))
+    }
+    
+    @objc  func didTapDoneButton(_ Button: AnyObject){
+        self.view.window!.contentViewController = ViewController()
     }
 }
