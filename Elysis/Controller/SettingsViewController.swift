@@ -10,6 +10,8 @@ import Cocoa
 
 class SettingsViewController: NSViewController {
     
+    //MARK: Views and Controls Initialization
+    
     var optionsTitle: NSText = {
         let title = NSText()
         title.string = "Options"
@@ -32,9 +34,12 @@ class SettingsViewController: NSViewController {
     
     var bgmVolumeSlider: NSSlider = {
         let slider = NSSlider()
-        slider.minValue = 0.1
+        slider.minValue = 0
         slider.maxValue = 1
+        // Initial Value
+        slider.doubleValue = slider.maxValue
         slider.alignment = .center
+        slider.action = #selector(didChangeSlider(_:))
         return slider
     }()
     
@@ -50,9 +55,12 @@ class SettingsViewController: NSViewController {
     
     var sfxVolumeSlider: NSSlider = {
         let slider = NSSlider()
-        slider.minValue = 0.1
+        slider.minValue = 0
         slider.maxValue = 1
+        // Initial Value
+        slider.doubleValue = slider.maxValue
         slider.alignment = .center
+        slider.action = #selector(didChangeSlider(_:))
         return slider
     }()
     
@@ -68,9 +76,12 @@ class SettingsViewController: NSViewController {
     
     var textSizeSlider: NSSlider = {
         let slider = NSSlider()
-        slider.minValue = 0.1
-        slider.maxValue = 1
+        slider.minValue = 16
+        slider.maxValue = 48
+        // Initial Value
+        slider.doubleValue = (slider.maxValue + slider.minValue) / 2
         slider.alignment = .center
+        slider.action = #selector(didChangeSlider(_:))
         return slider
     }()
     
@@ -88,15 +99,21 @@ class SettingsViewController: NSViewController {
         let slider = NSSlider()
         slider.minValue = 0.1
         slider.maxValue = 1
+        // Initial Value
+        slider.doubleValue = (slider.maxValue + slider.minValue) / 2
         slider.alignment = .center
+        slider.action = #selector(didChangeSlider(_:))
         return slider
     }()
 
     var doneButton: NSButton = {
         let button = NSButton()
         button.title = "Done"
+        button.action = #selector(didTapDoneButton)
         return button
     }()
+    
+    //MARK: View Controller Methods
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -115,6 +132,18 @@ class SettingsViewController: NSViewController {
         setup(control: textSpeedSlider, for: textSpeedLabel)
         setup(doneButton: doneButton, relativeTo: textSpeedLabel)
     }
+    
+    //MARK: Actions
+    
+    @objc func didTapDoneButton() {
+        self.view.window!.contentViewController = ViewController()
+    }
+    
+    @objc func didChangeSlider(_ slider: NSSlider) {
+//        print(slider.doubleValue)
+    }
+    
+    //MARK: Setup
     
     func setupOptionsTitle() {
         self.view.addSubview(optionsTitle)
@@ -158,10 +187,5 @@ class SettingsViewController: NSViewController {
             self.doneButton.heightAnchor.constraint(equalToConstant: view.frame.height * 0.05),
             self.doneButton.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
         ])
-        doneButton.action = #selector(didTapDoneButton(_:))
-    }
-    
-    @objc  func didTapDoneButton(_ Button: AnyObject){
-        self.view.window!.contentViewController = ViewController()
     }
 }
