@@ -23,30 +23,32 @@ extension PageViewController {
         
         
         
-        self.PaginaPrincipal.addSubview(self.paginasDireitas[0].imagemAtual)
-        self.paginasDireitas[0].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
-        let paginaDireitaBottomConstraint = self.paginasDireitas[0].imagemAtual.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -25)
+        self.PaginaPrincipal.addSubview(self.paginas[0].imagemAtual)
+        self.paginas[0].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
+        let paginaDireitaBottomConstraint = self.paginas[0].imagemAtual.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -10)
         paginaDireitaBottomConstraint.isActive = true
-        let paginaDireitaHeightConstraint = self.paginasDireitas[0].imagemAtual.heightAnchor.constraint(equalToConstant: 548)
+        let paginaDireitaHeightConstraint = self.paginas[0].imagemAtual.heightAnchor.constraint(equalToConstant: 600)
         paginaDireitaHeightConstraint.isActive = true
-        let paginaDireitaxConstraint = self.paginasDireitas[0].imagemAtual.centerXAnchor.constraint(equalTo: self.PaginaPrincipal.centerXAnchor, constant: 218)
+        let paginaDireitaxConstraint = self.paginas[0].imagemAtual.centerXAnchor.constraint(equalTo: self.PaginaPrincipal.centerXAnchor, constant: 0)
         paginaDireitaxConstraint.isActive = true
         self.view.addSubview(dobradissa)
         self.view.addSubview(dobradissaEsquerda)
         dobradissa.translatesAutoresizingMaskIntoConstraints = false
-        dobradissa.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -25).isActive = true
-        self.heightConstraint = dobradissa.heightAnchor.constraint(equalToConstant: 30)
+        dobradissa.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -16).isActive = true
+        self.heightConstraint = dobradissa.heightAnchor.constraint(equalToConstant: 65)
         self.heightConstraint.isActive = true
-        self.xConstraint = dobradissa.centerXAnchor.constraint(equalTo: self.PaginaPrincipal.centerXAnchor, constant: 431)
+        self.xConstraint = dobradissa.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: 414)
         self.xConstraint.isActive = true
         dobradissa.imageScaling = .scaleProportionallyDown
         dobradissaEsquerda.translatesAutoresizingMaskIntoConstraints = false
-        dobradissaEsquerda.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -26).isActive = true
-        self.heightConstraint1 = dobradissaEsquerda.heightAnchor.constraint(equalToConstant: 30)
+        dobradissaEsquerda.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -16).isActive = true
+        self.heightConstraint1 = dobradissaEsquerda.heightAnchor.constraint(equalToConstant: 65)
         self.heightConstraint1.isActive = true
-        self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.PaginaPrincipal.centerXAnchor, constant: -438)
+        self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -414)
         self.xConstraint1.isActive = true
         dobradissaEsquerda.imageScaling = .scaleProportionallyDown
+        
+        
     }
     
     func reorganizarConstraints(numeroDaPagina: Int,dobradissa: PontaDaPaginaAnimada,dobradissaEsquerda: PontaDaPaginaAnimada,lado: Bool) {
@@ -58,9 +60,7 @@ extension PageViewController {
             
             
         }else{
-            for textos in paginasDireitas[numeroDaPagina].texto.arrayDeTextoNormal {
-                textos.removeFromSuperview()
-            }
+            
             
             
         }

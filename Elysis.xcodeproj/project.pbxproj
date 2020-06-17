@@ -22,12 +22,9 @@
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
 		0F7C4DAD24940AC300AE06CA /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DAC24940AC300AE06CA /* PageViewController.swift */; };
 		0F7C4DAF2496EADF00AE06CA /* PontaDaPaginaAnimada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */; };
-		0F7C4DB1249731F500AE06CA /* PaginaDireita.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DB0249731F500AE06CA /* PaginaDireita.swift */; };
-		0F7C4DB32497320100AE06CA /* PaginaEsquerda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DB22497320100AE06CA /* PaginaEsquerda.swift */; };
 		0F7C4DB52497B55B00AE06CA /* TextoNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */; };
 		0F7C4DB8249823C500AE06CA /* ConstraintsPageViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DB7249823C500AE06CA /* ConstraintsPageViewController .swift */; };
-		0F7C4DBA24990C2200AE06CA /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DB924990C2200AE06CA /* PageController.swift */; };
-		0F7C4DBC24999B9700AE06CA /* FlipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DBB24999B9700AE06CA /* FlipController.swift */; };
+		0F7C4DC02499AD9400AE06CA /* Pagina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DBF2499AD9400AE06CA /* Pagina.swift */; };
 		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
 /* End PBXBuildFile section */
@@ -72,12 +69,9 @@
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		0F7C4DAC24940AC300AE06CA /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PontaDaPaginaAnimada.swift; sourceTree = "<group>"; };
-		0F7C4DB0249731F500AE06CA /* PaginaDireita.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginaDireita.swift; sourceTree = "<group>"; };
-		0F7C4DB22497320100AE06CA /* PaginaEsquerda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginaEsquerda.swift; sourceTree = "<group>"; };
 		0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextoNormal.swift; sourceTree = "<group>"; };
 		0F7C4DB7249823C500AE06CA /* ConstraintsPageViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintsPageViewController .swift"; sourceTree = "<group>"; };
-		0F7C4DB924990C2200AE06CA /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
-		0F7C4DBB24999B9700AE06CA /* FlipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipController.swift; sourceTree = "<group>"; };
+		0F7C4DBF2499AD9400AE06CA /* Pagina.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina.swift; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,8 +184,6 @@
 				0B0394CA2491661F005F0D68 /* ApiController.swift */,
 				0F7C4DAC24940AC300AE06CA /* PageViewController.swift */,
 				0F7C4DB7249823C500AE06CA /* ConstraintsPageViewController .swift */,
-				0F7C4DB924990C2200AE06CA /* PageController.swift */,
-				0F7C4DBB24999B9700AE06CA /* FlipController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,9 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */,
-				0F7C4DB0249731F500AE06CA /* PaginaDireita.swift */,
-				0F7C4DB22497320100AE06CA /* PaginaEsquerda.swift */,
 				0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */,
+				0F7C4DBF2499AD9400AE06CA /* Pagina.swift */,
 			);
 			path = TelaDaPagina;
 			sourceTree = "<group>";
@@ -339,18 +330,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F7C4DBA24990C2200AE06CA /* PageController.swift in Sources */,
 				0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */,
 				0F7C4DAD24940AC300AE06CA /* PageViewController.swift in Sources */,
 				0B0394CD24916CBD005F0D68 /* ApiModel.swift in Sources */,
 				0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */,
 				0F7C4DAF2496EADF00AE06CA /* PontaDaPaginaAnimada.swift in Sources */,
 				0B0394CB2491661F005F0D68 /* ApiController.swift in Sources */,
+				0F7C4DC02499AD9400AE06CA /* Pagina.swift in Sources */,
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
 				5723265E24916D8B00AE4280 /* Interaction.swift in Sources */,
-				0F7C4DBC24999B9700AE06CA /* FlipController.swift in Sources */,
-				0F7C4DB32497320100AE06CA /* PaginaEsquerda.swift in Sources */,
-				0F7C4DB1249731F500AE06CA /* PaginaDireita.swift in Sources */,
 				0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */,
 				0F7C4DB52497B55B00AE06CA /* TextoNormal.swift in Sources */,
 				57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */,

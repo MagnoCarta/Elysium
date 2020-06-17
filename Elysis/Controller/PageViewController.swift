@@ -20,32 +20,32 @@ extension NSView {
 class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
-    let PaginaPrincipal = NSImageView(image: NSImage(named: "LivroCompletoAberto")!)
+    let PaginaPrincipal = NSImageView(image: NSImage(named: "LivrinhoCorreto")!)
     var mouseLocation: NSPoint { NSEvent.mouseLocation }
     var numeroDoTextoAtual = 0
     var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
     var xConstraint: NSLayoutConstraint =   NSLayoutConstraint()
     var heightConstraint1: NSLayoutConstraint = NSLayoutConstraint()
     var xConstraint1: NSLayoutConstraint =   NSLayoutConstraint()
-    let paginasDireitas : [PaginaDireita] = [PaginaDireita()]
-    let paginasEsquerdas : [PaginaEsquerda] = [PaginaEsquerda()]
     var numeroDaPaginaAtual = 0
     var arrayDeNumeroDeTextosPorPagina: [Int] = []
-    var paginas: NSCollectionView = NSCollectionView(frame: NSRect(x: 100, y: 100, width: 300, height: 300))
+    var paginas = [Pagina()]
+    var numeroDePaginas = 1
+    let textoTeste = NSText(frame: NSRect(x: 20, y: 20, width: 385, height: 30))
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
         self.view.wantsLayer = true
-        self.view.layer?.backgroundColor = .init(red: 255, green: 60/255, blue: 60/255, alpha: 0.8)
+        self.view.layer?.backgroundColor = .init(red: 252/255, green: 58/255, blue: 58/255, alpha: 1)
         self.view.window?.acceptsMouseMovedEvents = true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let dobradissa = paginasDireitas[0].pontaDaPaginaDireita else { return }
+        guard let dobradissa = paginas[0].pontaDaPaginaDireita else { return }
         dobradissa.action = #selector(virarPagina(_:))
-        guard let dobradissaEsquerda = paginasEsquerdas[0].pontaDaPaginaEsquerda else { return }
+        guard let dobradissaEsquerda = paginas[0].pontaDaPaginaEsquerda else { return }
         dobradissaEsquerda.action = #selector(virarPagina(_:))
 
             organizarTela(dobradissa: dobradissa, dobradissaEsquerda: dobradissaEsquerda)
@@ -57,9 +57,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             
          return $0 }
         
-        self.paginas.backgroundColors = [.red,.green]
         
-         self.view.addSubview(paginas)
+        
+         
     }
     
     override func viewDidAppear() {
@@ -82,9 +82,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         
         
         if event.keyCode == 36 {
-           
-            self.paginasDireitas[0].texto.proximoTextoNaTelaASerMostrado(speed: 70, controler: self, numeroDoTextoAtual: self.paginasDireitas[0].texto.numeroDoTextoAtual)
-            
+            if true {
+            self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 70, controler: self, numeroDoTextoAtual: self.paginas[numeroDaPaginaAtual].texto.numeroDoTextoAtual)
+            }
             
         }
             
@@ -101,18 +101,21 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
 
     @objc func virarPagina(_ Button: PontaDaPaginaAnimada) {
         
-        if  Button.lado {
-            numeroDaPaginaAtual -= 1
-            
-            
-            
+        if  Button.ladoEsquerdo {
+            if self.numeroDaPaginaAtual > 0 {
+                print("Voltandooo")
+           self.paginas[numeroDaPaginaAtual].passarPaginaPraTras(controler: self)
+            }
             
         }else {
-            print("a")
-            arrayDeNumeroDeTextosPorPagina.append(numeroDoTextoAtual)
-            reorganizarConstraints(numeroDaPagina: numeroDaPaginaAtual, dobradissa: paginasDireitas[numeroDaPaginaAtual].pontaDaPaginaDireita!, dobradissaEsquerda: paginasEsquerdas[numeroDaPaginaAtual].pontaDaPaginaEsquerda!, lado: Button.lado)
+            print(self.paginas[self.numeroDaPaginaAtual].texto.y)
+            print(self.paginas[self.numeroDaPaginaAtual].texto.x)
+            if self.paginas[self.numeroDaPaginaAtual].texto.y < 326 &&  self.paginas[self.numeroDaPaginaAtual].texto.x > 221  {
+                print("Indoooo")
+                self.paginas[numeroDaPaginaAtual].passarPaginaPraFrente(controler: self)
             
-            numeroDaPaginaAtual += 1
+            }
+            
         }
         
     }

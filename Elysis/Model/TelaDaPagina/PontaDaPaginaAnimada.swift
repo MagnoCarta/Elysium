@@ -21,7 +21,7 @@ class PontaDaPaginaAnimada: NSButton {
     let pontaDaPaginaAnimadaType: PontaDaPaginaAnimadaType
     let numeroDeImagens: Int
     var numeroDaImagemAtual: Int
-    let lado: Bool
+    let ladoEsquerdo: Bool
     
      required init?(coder aDecoder: NSCoder) {
         fatalError("Não foi possível init")
@@ -41,11 +41,11 @@ class PontaDaPaginaAnimada: NSButton {
         
         switch pontaDaPaginaAnimadaType {
         case .esquerda:
-            self.imagem = NSImage(named: "Dobradissa2")!
-            self.lado = true
+            self.imagem = NSImage(named: "PontaEsquerda")!
+            self.ladoEsquerdo = true
         case .direita:
-            self.imagem = NSImage(named: "Dobradissa")!
-            self.lado = false
+            self.imagem = NSImage(named: "PontaDireita")!
+            self.ladoEsquerdo = false
         }
         
         

@@ -12,9 +12,9 @@ import Cocoa
 
 class TextoNormal: NSObject {
     var arrayDeTextoNormal: [NSTextView] = []
-    let arrayDeStrings: [String] = ["Era uma vez uma pequena garoitinha que Amava Andar pelo Castelo", "Ela era uma Jovem e Forte Princesa de apena 8 Anos!", "Seu Nome era Otama , e ela Sonhava em Desbravar o mar", "Entretanto ela não poderia realizar seu sonho pois ela estava Fadada a ser a Futura Rainha de Wanateru, o Reino das Flechas", "Um País cercado pela terra Árida , Montanhas gélidas e Florestas Densas, Que impediam a chegada ao mar", "E Sua Responsabilidade era de Cuidar do Reino, caso ela fosse em busca de seu sonho, Golpes e Misérias Ocorreriam em seu Reino", "As últimas palavras de Sua mãe entretanto foram...", "- Nada Impede um Sonho!","Agora que chegamos na segunda página, poderei explicar para ti como a virada de página funciona meu nobre amigo"]
+    let arrayDeStrings: [String] = ["Era uma vez uma pequena garotinha que Amava Andar pelo Castelo", "Ela era uma Jovem e Forte Princesa de apena 8 Anos!", "Seu Nome era Otama , e ela Sonhava em Desbravar o mar", "Entretanto ela não poderia realizar seu sonho pois ela estava Fadada a ser a Futura Rainha de Wanateru, o Reino das Flechas", "Um País cercado pela terra Árida , Montanhas gélidas e Florestas Densas, Que impediam a chegada ao mar", "E Sua Responsabilidade era de Cuidar do Reino, caso ela fosse em busca de seu sonho, Golpes e Misérias Ocorreriam em seu Reino", "As últimas palavras de Sua mãe entretanto foram...", "- Nada Impede um Sonho!","Agora que chegamos na segunda página, poderei explicar para ti como a virada de página funciona meu nobre amigo"]
     var numeroDoTextoAtual: Int = 0
-    var x = 200
+    var x = 220
     var y = 655
     var speed: CGFloat
     var textoCarregando: Bool = false
@@ -35,16 +35,16 @@ class TextoNormal: NSObject {
          numeroDeLinhas  += arrayDeStrings[numeroDoTextoAtual-1].count/31
         print(numeroDeLinhas)
         }
-        if self.y - numeroDeLinhas*50 < 300 && self.x  > 201 {
+        if self.y - numeroDeLinhas*50 < 300 && self.x  > 221 {
             
         }else {
         if !self.textoCarregando {
         self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 20, y: 20, width: 385, height: 35)))
             self.arrayDeTextoNormal[numeroDoTextoAtual].isEditable = false
             self.arrayDeTextoNormal[numeroDoTextoAtual].backgroundColor = .clear
-            self.arrayDeTextoNormal[numeroDoTextoAtual].font = NSFont(name: "Heiti TC", size: 20)
-        self.arrayDeTextoNormal[numeroDoTextoAtual].textColor = .red
-        controler.view.addSubview(arrayDeTextoNormal[numeroDoTextoAtual])
+            self.arrayDeTextoNormal[numeroDoTextoAtual].font = NSFont(name: "Baskerville", size: 18)
+        self.arrayDeTextoNormal[numeroDoTextoAtual].textColor = .black
+            controler.view.addSubview(arrayDeTextoNormal[numeroDoTextoAtual])
         
         
         self.y -=  (numeroDeLinhas * Int(arrayDeTextoNormal[numeroDoTextoAtual].frame.height))
@@ -111,6 +111,13 @@ class TextoNormal: NSObject {
         queue.addOperation(operaFinal)
         
     }
+    
+    func receberTextoDaPagina() {
+        
+        
+        
+        
+    }
 
     
     
@@ -118,3 +125,21 @@ class TextoNormal: NSObject {
     
     
 }
+
+/*Fontes Interessantes pra dar uma olhada e ver qual melhor se aplica
+Baskerville,
+"Baskerville Old Face"
+
+ 
+ 
+ Courier,
+ "Courier New"
+
+ 
+ 
+ 
+ Didot
+ 
+ 
+ 
+ */
