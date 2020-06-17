@@ -31,7 +31,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     let paginasEsquerdas : [PaginaEsquerda] = [PaginaEsquerda()]
     var numeroDaPaginaAtual = 0
     var arrayDeNumeroDeTextosPorPagina: [Int] = []
-    
+    var paginas: NSCollectionView = NSCollectionView(frame: NSRect(x: 100, y: 100, width: 300, height: 300))
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -43,7 +43,6 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         guard let dobradissa = paginasDireitas[0].pontaDaPaginaDireita else { return }
         dobradissa.action = #selector(virarPagina(_:))
         guard let dobradissaEsquerda = paginasEsquerdas[0].pontaDaPaginaEsquerda else { return }
@@ -58,8 +57,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             
          return $0 }
         
+        self.paginas.backgroundColors = [.red,.green]
         
-        
+         self.view.addSubview(paginas)
     }
     
     override func viewDidAppear() {

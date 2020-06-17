@@ -17,7 +17,7 @@ class FlipController: NSCollectionView {
     override func viewDidUnhide() {
         super.viewDidUnhide()
         
-        
+            
         self.backgroundColors = .init(repeating: .red, count: 3)
         
         
