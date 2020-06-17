@@ -12,196 +12,59 @@ import Cocoa
 
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
-    
-    
-    var respostaApi = ApiController()
-    
-    
-    
-    
+    let backg = NSImageView(image: NSImage(named: "10")!)
+    var botaoImagem = NSImageView(image: NSImage(named: "CapaSemSimbolo")!)
 //-----------------------------------------------------------------------------
-    
-    
-   /* override func loadView() {
+    override func loadView() {
         self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
-    }*/
+         self.view.window?.acceptsMouseMovedEvents = true
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        organizarConstraintsEDetalhes()
+        self.view.addSubview(self.backg)
+        self.view.addSubview(botaoImagem)
+        self.botaoImagem.frame.origin = CGPoint(x: self.view.frame.width/2 - 300, y: self.view.frame.height/2 - 300)
+        self.botaoImagem.frame.size = CGSize(width: 600, height: 600)
+        
+        
+        self.backg.translatesAutoresizingMaskIntoConstraints = false
+        self.view.autoresizesSubviews = true
+        self.backg.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.backg.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
+        self.backg.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        self.backg.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        self.backg.imageScaling = .scaleAxesIndependently
         // Do any additional setup after loading the view.
     }
-    
-    
-    
-    
-    
-    
-    
+  
 // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
     override func viewDidAppear() {
+        
+        
+        
+        
         view.window?.makeFirstResponder(self)
     }
     
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        self.view.window!.acceptsMouseMovedEvents = true
+    }
 //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
     override func keyDown(with event: NSEvent) {
-        
-        
-        
-        
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-            respostaApi.Submit("Happy")
+           // respostaApi.Submit("Happy")
             //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
-
-            print("oi")
-            //if Continuar {
-            
-            didTapButtonContinuar(NSButton())
-            
-            //}
-            
-            
-            //if Novo Jogo {
-            
-            didTapButtonNovoJogo(NSButton())
-            
-            
-            //}
-            
-            
-            
-            //if Novo Jogo {
-            
-            didTapButtonOpcoes(NSButton())
-            
-            //}
-            
-        //} Else Estiver na tela do jogo
-            
-            // if Tela de Jogo normal {
-            
-            //Passa o texto
-            
-       // } else BarradeTexto {
-            
-            didTapButtonConfirmar(NSButton())
-            
-      //  }
-            
-            
+            self.view.window?.contentViewController = PageViewController()
             
         }
-        
-        
-        
-        
-        
-        //Se a tecla Down/Baixo for clicada
-        if event.keyCode == 125 {
-            
-            
-            // X%3 , cada vez que clicar aumenta X em 1, assim mudando qual botao está em cima, comecando do 0 , que é o Continuar, 1 Novo jogo, 2 Opcoes :D
-            
-            
-        }
-        
-        
-        
-        //Se a tecla Up/Cima for clicada
-        if event.keyCode == 126 {
-            
-             // X%3 , cada vez que clicar Diminui X em 1, assim mudando qual botao está em cima, comecando do 0 , que é o Continuar, 1 Novo jogo, 2 Opcoes :D
-            
-            
-        }
-        
-        
-        
+   
         
     }
-//------------------------------------------------------------------------------------
-    
-    
-    
-    
-    //Deixo esta função em aberto para criação de todas as constraints e coisas necessárias antes do jogo iniciar
-        func organizarConstraintsEDetalhes() {
-            
-            
-            
-        }
-        
-    //Após o jogo ser iniciado , que tal termos também o jogo reconstruído nesta função?
-        func reorganizarConstraintsEDetalhes(/*parametros = Dados da GameData*/) {
-        
-            
-        }
-    
-    
-    
-    
-    
-    
-    
-// Funções dos Botoes do jogo, Continuar, NovoJogo, Opcoes, Confirmar e outros que podem existir---------------------------------------------------------------------
-   @objc  func didTapButtonContinuar(_ Button: AnyObject){
-        
-    
-    // MODEL FULLSCREEN CONTINUAR OU DIRETO PRO JOGO
-    
-        reorganizarConstraintsEDetalhes()
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonNovoJogo(_ Button: AnyObject){
-        //DIRETO PRO JOGO
-        reorganizarConstraintsEDetalhes()
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonOpcoes(_ Button: AnyObject){
-        
-        //MODEL FULLSCREEN
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonConfirmar(_ Button: AnyObject){
-           
-           // MAGIA DAS OPCOES E CAMINHOS AQUI
-           
-       }
-//------------------------------------------------------------------------------------
-    
-    
-    
-
-    
-    
-    
     
     
     override var representedObject: Any? {
@@ -210,7 +73,13 @@ class ViewController: NSViewController {
         }
     }
 
-
+    override func mouseDown(with event: NSEvent) {
+        if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
+            
+            self.view.window?.contentViewController = PageViewController()
+            
+        }
+    }
     
     
     
