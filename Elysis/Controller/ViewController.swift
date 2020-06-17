@@ -15,6 +15,7 @@ class ViewController: NSViewController {
     
     
     var respostaApi = ApiController()
+    var historia = HistoryModel()
     
     
     
@@ -52,14 +53,21 @@ class ViewController: NSViewController {
         
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-            respostaApi.SubmitSave("I am crazy") { interaction in
+            /*respostaApi.SubmitSave("I am crazy") { interaction in
                 if let interaction = interaction {
                     print(interaction)
                 }
-            }
+            }*/
+            
+            print(historia.getHistory(0, "algo"))
+            print(historia.getHistory(1, "algo"))
+            print(historia.getHistory(2, "algo"))
+            print(historia.getHistory(3, "algo"))
+            print(historia.getHistory(4, "algo"))
+            
             //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
 
-            print("oi")
+            //print("oi")
             //if Continuar {
             
             didTapButtonContinuar(NSButton())

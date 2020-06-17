@@ -24,6 +24,7 @@
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
 		770D101D2499069B0068C5EA /* HistoriaInicial.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101C2499069B0068C5EA /* HistoriaInicial.json */; };
 		770D101F249907FE0068C5EA /* Parte1.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101E249907FE0068C5EA /* Parte1.json */; };
+		77847B77249A4A8A0044315B /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77847B76249A4A8A0044315B /* HistoryModel.swift */; };
 		778B150324994E9300DC2B8D /* Positive.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150224994E9300DC2B8D /* Positive.json */; };
 		778B150524994F3E00DC2B8D /* Negative.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150424994F3E00DC2B8D /* Negative.json */; };
 		778B150724994F4C00DC2B8D /* Neutral.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150624994F4C00DC2B8D /* Neutral.json */; };
@@ -71,6 +72,7 @@
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		770D101C2499069B0068C5EA /* HistoriaInicial.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HistoriaInicial.json; sourceTree = "<group>"; };
 		770D101E249907FE0068C5EA /* Parte1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Parte1.json; sourceTree = "<group>"; };
+		77847B76249A4A8A0044315B /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		778B150224994E9300DC2B8D /* Positive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Positive.json; sourceTree = "<group>"; };
 		778B150424994F3E00DC2B8D /* Negative.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Negative.json; sourceTree = "<group>"; };
 		778B150624994F4C00DC2B8D /* Neutral.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Neutral.json; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				57E40A5D24911DAA00FDB2D4 /* GameState.swift */,
 				5723265D24916D8B00AE4280 /* Interaction.swift */,
 				0B0394CC24916CBD005F0D68 /* ApiModel.swift */,
+				77847B76249A4A8A0044315B /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				0B0394CB2491661F005F0D68 /* ApiController.swift in Sources */,
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
 				5723265E24916D8B00AE4280 /* Interaction.swift in Sources */,
+				77847B77249A4A8A0044315B /* HistoryModel.swift in Sources */,
 				0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */,
 				57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
