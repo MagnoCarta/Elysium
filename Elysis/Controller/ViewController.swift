@@ -9,16 +9,15 @@
 // LEMBRANDO QUE ISSO CASO FAÇAMOS POR MEIO DO CODIGO , TAMBEM PDOEMOS FAZER POR STORYBOARD SE FOR VONTADE DE VOCES !!! AINDA USAMOS IB NESSA, APENAS COMPONETIZAMOS ELA
 
 import Cocoa
-import SpriteKit
+
 
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     let backg = NSImageView(image: NSImage(named: "10")!)
     var botaoImagem = NSImageView(image: NSImage(named: "CapaSemSimbolo")!)
-    let background = SKSpriteNode()
 //-----------------------------------------------------------------------------
     override func loadView() {
-        self.view  = SKView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
+        self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
          self.view.window?.acceptsMouseMovedEvents = true
     }
     
