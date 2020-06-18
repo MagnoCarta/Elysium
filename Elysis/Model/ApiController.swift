@@ -37,8 +37,8 @@ class ApiController{
         let task = URLSession.shared.dataTask(with: request) {
             data, response, error in
             
-            print("Error", error ?? "nil")
-            print("Response", response ?? "nil")
+            //print("Error", error ?? "nil")
+            //print("Response", response ?? "nil")
            
             if let data = data {
                 do {
