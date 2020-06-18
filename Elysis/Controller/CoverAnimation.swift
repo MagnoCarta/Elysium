@@ -21,9 +21,5 @@ class CoverAnimation: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-//    override func didMove(to view: SKView) {
-//        addChild(background)
-//       // let animation = SKAction.animate(with: <#T##[SKTexture]#>, timePerFrame: <#T##TimeInterval#>)
-//        //background.run(animation)
-//    }
+
 }

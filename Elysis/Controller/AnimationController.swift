@@ -31,7 +31,7 @@ class AnimationController: NSViewController{
     }()
     
     override func loadView() {
-        self.view  = SKView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
+        self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
     }
     
     override func viewDidLoad() {
@@ -52,20 +52,21 @@ class AnimationController: NSViewController{
         let constraints = [
             buttonCover.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             buttonCover.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            buttonCover.widthAnchor.constraint(equalToConstant: 100),
-            buttonCover.heightAnchor.constraint(equalToConstant: 80)
+            //buttonCover.widthAnchor.constraint(equalToConstant: ),
+            buttonCover.heightAnchor.constraint(equalToConstant: 800)
         ]
         NSLayoutConstraint.activate(constraints)
         
-        buttonCover.title = "Button"
-        //buttonCover.image = NSImage(named: "capaDoLivroOficialProntoPronto")
+        buttonCover.isBordered = false
+        buttonCover.image = NSImage(named: "capaDoLivroOficialProntoPronto")
+        buttonCover.imageScaling = .scaleProportionallyUpOrDown
         fadeIn()
         
     }
     
     func fadeIn(){
         NSAnimationContext.runAnimationGroup({ (context) in
-          context.duration = 10.0
+          context.duration = 1.0
           buttonCover.animator().alphaValue = 0
         })
     }

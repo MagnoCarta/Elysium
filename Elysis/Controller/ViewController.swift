@@ -12,9 +12,17 @@ import Cocoa
 import SpriteKit
 
 class ViewController: NSViewController {
-// VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
-    var background = SKSpriteNode()
-    var respostaApi = ApiController()    
+// VAMOS CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELAS AQUI  ---------------------------------------------------------------------------
+    
+    var buttonCover = NSButton()
+    
+    private lazy var background: SKSpriteNode = {
+        let background = SKSpriteNode(imageNamed: "BackgroundGame")
+        background.position = NSPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+        background.size = CGSize(width: 1280, height: 800)
+        background.zPosition = 0
+        return background
+    }()
     
 //-----------------------------------------------------------------------------
     
@@ -28,7 +36,6 @@ class ViewController: NSViewController {
         // Do any additional setup after loading the view.
     }
     
-    
 // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
     override func viewDidAppear() {
         view.window?.makeFirstResponder(self)
@@ -41,7 +48,6 @@ class ViewController: NSViewController {
 
         //Se a tecla Enter for clicada
         if event.keyCode == 36 {
-            //self.view.window?.contentViewController = AnimationController()
             print("oi")
       
         }
@@ -55,13 +61,41 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    
+    func ButtonSettings() {
+        self.view.addSubview(buttonCover)
+        
+        buttonCover.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            buttonCover.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            buttonCover.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            //buttonCover.widthAnchor.constraint(equalToConstant: ),
+            buttonCover.heightAnchor.constraint(equalToConstant: 800)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        buttonCover.isBordered = false
+        buttonCover.image = NSImage(named: "capaDoLivroOficialProntoPronto")
+        buttonCover.imageScaling = .scaleProportionallyUpOrDown
+        fadeIn()
+        
+    }
+    
+    func fadeIn(){
+        NSAnimationContext.runAnimationGroup({ (context) in
+          context.duration = 1.0
+          buttonCover.animator().alphaValue = 0
+        })
+    }
  
     
 }
 
-
-
-
+//    override func didMove(to view: SKView) {
+//        addChild(background)
+//       // let animation = SKAction.animate(with: <#T##[SKTexture]#>, timePerFrame: <#T##TimeInterval#>)
+//        //background.run(animation)
+//    }
 
 //import Cocoa
 //import SpriteKit
@@ -105,7 +139,3 @@ class ViewController: NSViewController {
 //        }
 //    }
 //}
-//
-//
-//
-//＀
