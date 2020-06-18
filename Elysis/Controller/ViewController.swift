@@ -9,26 +9,28 @@
 // LEMBRANDO QUE ISSO CASO FAÇAMOS POR MEIO DO CODIGO , TAMBEM PDOEMOS FAZER POR STORYBOARD SE FOR VONTADE DE VOCES !!! AINDA USAMOS IB NESSA, APENAS COMPONETIZAMOS ELA
 
 import Cocoa
+import SpriteKit
+
 
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
     
     var respostaApi = ApiController()
-    
-    
+//    var cover = CoverAnimation()
     
     
 //-----------------------------------------------------------------------------
     
     
     override func loadView() {
-        self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
+        self.view  = SKView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -51,13 +53,11 @@ class ViewController: NSViewController {
     
 //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
     override func keyDown(with event: NSEvent) {
-        
-        
-        
-        
-        //Se a tecla Espaço for clicada
+
+        //Se a tecla Enter for clicada
         if event.keyCode == 36 {
-            self.view.window?.contentViewController = AnimationController()
+            //self.view.window?.contentViewController = AnimationController()
+        
             print("oi")
       
         }
