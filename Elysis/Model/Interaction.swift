@@ -10,9 +10,9 @@ import Foundation
 
 // The possible results from the Sentim API
 enum Polarity: String, Codable {
-    case positive
-    case neutral
-    case negative
+    case positive = "positive"
+    case neutral = "neutral"
+    case negative = "negative"
 }
 
 // The struct that will represent each interaction the player does.

@@ -13,8 +13,17 @@ import Cocoa
 
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
+
     let backg = NSImageView(image: NSImage(named: "10")!)
     var botaoImagem = NSImageView(image: NSImage(named: "CapaSemSimbolo")!)
+
+    
+    var historia = HistoryModel()
+    
+    
+    
+    
+
 //-----------------------------------------------------------------------------
     override func loadView() {
         self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -59,8 +68,7 @@ class ViewController: NSViewController {
     override func keyDown(with event: NSEvent) {
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-           // respostaApi.Submit("Happy")
-            //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
+
             
             self.view.window?.contentViewController = PageViewController()
             
