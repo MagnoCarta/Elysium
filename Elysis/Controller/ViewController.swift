@@ -13,8 +13,7 @@ import Cocoa
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
-    
-    var respostaApi = ApiController()
+    var historia = HistoryModel()
     
     
     
@@ -52,15 +51,26 @@ class ViewController: NSViewController {
         
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-            respostaApi.SubmitSave("I am crazy") { interaction in
-                if let interaction = interaction {
-                    print(interaction)
+            
+            /*
+            historia.getHistory(0, "Inicio") { historia in
+                print(historia)
+            }
+            historia.getHistory(1, "Happy") { historia in
+                print(historia)
+            }
+            
+            historia.getHistory(2, "Normal") { historia in
+                print(historia)
+                self.historia.getHistory(3, "Happy") { historia in
+                    print(historia)
                 }
             }
-            //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
-
-            print("oi")
-            //if Continuar {
+            
+            historia.getHistory(4, "Sad") { historia in
+                print(historia)
+            }
+            */
             
             didTapButtonContinuar(NSButton())
             
