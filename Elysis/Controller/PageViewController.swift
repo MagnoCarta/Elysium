@@ -20,7 +20,7 @@ extension NSView {
 class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
-    let PaginaPrincipal = NSImageView(image: NSImage(named: "LivrinhoCorreto")!)
+    let PaginaPrincipal = NSImageView(image: NSImage(named: "TelaDePagina")!)
     var mouseLocation: NSPoint { NSEvent.mouseLocation }
     var numeroDoTextoAtual = 0
     var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
@@ -51,8 +51,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             organizarTela(dobradissa: dobradissa, dobradissaEsquerda: dobradissaEsquerda)
         NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved]) {
             
-            dobradissa.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 1,xConstant: 0.48)
-            dobradissaEsquerda.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 1,xConstant: -0.48)
+            dobradissa.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
+            dobradissaEsquerda.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
             
             
          return $0 }

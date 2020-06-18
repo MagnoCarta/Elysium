@@ -69,8 +69,8 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         controler.view.addSubview(controler.paginas[controler.numeroDaPaginaAtual].imagemAtual)
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -10).isActive = true
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 600).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -72).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 658).isActive = true
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.centerXAnchor.constraint(equalTo: controler.PaginaPrincipal.centerXAnchor, constant: 0).isActive = true
         
         
