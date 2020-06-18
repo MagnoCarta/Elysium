@@ -6,22 +6,24 @@
 //  Copyright © 2020 Gilberto Magno. All rights reserved.
 //
 
+import Cocoa
 import SpriteKit
 //import GameplayKit
 
-class CoverAnimation: SKScene {
+class CoverAnimation: NSViewController {
     
-    private lazy var background: SKSpriteNode = {
-        let background = SKSpriteNode(imageNamed: "BackgroundGame")
-        background.position = CGPoint(x: size.width/2, y: size.height/2)
-        background.size = CGSize(width: 1280, height: 800)
-        background.zPosition = 0
-        return background
-    }()
+
     
-    override func didMove(to view: SKView) {
-        addChild(background)
-       // let animation = SKAction.animate(with: <#T##[SKTexture]#>, timePerFrame: <#T##TimeInterval#>)
-        //background.run(animation)
+    override func loadView() {
+        self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+//    override func didMove(to view: SKView) {
+//        addChild(background)
+//       // let animation = SKAction.animate(with: <#T##[SKTexture]#>, timePerFrame: <#T##TimeInterval#>)
+//        //background.run(animation)
+//    }
 }

@@ -8,6 +8,7 @@
 
 
 import Cocoa
+import SpriteKit
 
 extension NSView {
     
@@ -19,43 +20,54 @@ extension NSView {
 
 class AnimationController: NSViewController{
 
+    var buttonCover = NSButton()
     
-    var transformLayer: CALayer!
-
+    private lazy var background: SKSpriteNode = {
+        let background = SKSpriteNode(imageNamed: "BackgroundGame")
+        background.position = NSPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+        background.size = CGSize(width: 1280, height: 800)
+        background.zPosition = 0
+        return background
+    }()
+    
     override func loadView() {
-        self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
+        self.view  = SKView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.wantsLayer = true //Indica se a exibição usa um layer como armazenamento de suporte
-        transformLayer = CALayer()
-        transformLayer.frame = view.bounds.insetBy(dx: 50, dy: 50)
-        transformLayer.backgroundColor = NSColor.white.cgColor
-        view.layer?.addSublayer(transformLayer)
+        ButtonSettings()
+            
     }
-
+    
     override func viewDidAppear() {
         self.view.window?.makeFirstResponder(self)// Faz a window responder à view atual
         self.view.window?.makeKey() // Reconhece o keyboard
     }
-
-    override func keyDown(with event: NSEvent) {
-        print(event.keyCode)
-        if event.keyCode == 123 { //Seta esquerda
-            setAngle(degrees: 45)
-        } else if event.keyCode == 124 { //Seta direita
-            setAngle(degrees: -45)
-        }
+    
+    func ButtonSettings() {
+        self.view.addSubview(buttonCover)
+        
+        buttonCover.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            buttonCover.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            buttonCover.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            buttonCover.widthAnchor.constraint(equalToConstant: 100),
+            buttonCover.heightAnchor.constraint(equalToConstant: 80)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        buttonCover.title = "Button"
+        //buttonCover.image = NSImage(named: "capaDoLivroOficialProntoPronto")
+        fadeIn()
+        
     }
-
-    func setAngle(degrees: CGFloat){
-        let radians = CGFloat(Double.pi) * degrees / 180.0
-        var transform = CATransform3DIdentity
-        transform.m34 = 1 / -25 //Indica a profundidade da animação
-        transform = CATransform3DRotate(transform, radians, 0, 1, 0)
-        transformLayer.transform = transform
+    
+    func fadeIn(){
+        NSAnimationContext.runAnimationGroup({ (context) in
+          context.duration = 10.0
+          buttonCover.animator().alphaValue = 0
+        })
     }
     
 }
