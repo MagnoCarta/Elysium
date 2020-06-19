@@ -13,8 +13,7 @@ import Cocoa
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
-    let botao = NSButton(frame: NSRect(x: 200, y: 200, width: 100, height: 100))
-    var respostaApi = ApiController()
+    var historia = HistoryModel()
     
 //-----------------------------------------------------------------------------
     
@@ -25,9 +24,6 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         organizarConstraintsEDetalhes()
-        view.addSubview(botao)
-        botao.action = #selector(didTapButtonOpcoes(_:))
-        // Do any additional setup after loading the view.
     }
     
     
@@ -43,11 +39,26 @@ class ViewController: NSViewController {
         
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-            respostaApi.Submit("Happy")
-            //Se estiver na tela principal, poderá clicar em   Continue, NovoJogo ou Opcoes {
-
-            print("oi")
-            //if Continuar {
+            
+            /*
+            historia.getHistory(0, "Inicio") { historia in
+                print(historia)
+            }
+            historia.getHistory(1, "Happy") { historia in
+                print(historia)
+            }
+            
+            historia.getHistory(2, "Normal") { historia in
+                print(historia)
+                self.historia.getHistory(3, "Happy") { historia in
+                    print(historia)
+                }
+            }
+            
+            historia.getHistory(4, "Sad") { historia in
+                print(historia)
+            }
+            */
             
             didTapButtonContinuar(NSButton())
             
