@@ -82,7 +82,7 @@ class SettingsViewController: NSViewController {
     var textSizeSlider: NSSlider = {
         let slider = NSSlider()
         slider.minValue = 16
-        slider.maxValue = 48
+        slider.maxValue = 32
         // Initial Value
         slider.doubleValue = Double(UserDefaults.standard.integer(forKey: "textSize"))
         slider.alignment = .center
@@ -103,7 +103,7 @@ class SettingsViewController: NSViewController {
     var textSizeMaxLabel: NSText = {
         let label = NSText()
         label.string = "A"
-        label.font = NSFont(name: "AppleSystemUIFont", size: 48)
+        label.font = NSFont(name: "AppleSystemUIFont", size: 32)
         label.isEditable = false
         label.backgroundColor = .clear
         return label
@@ -127,13 +127,13 @@ class SettingsViewController: NSViewController {
         slider.doubleValue = UserDefaults.standard.double(forKey: "textSpeed")
         slider.alignment = .center
         slider.action = #selector(didChangeSlider(_:))
-        slider.numberOfTickMarks = 5
+        slider.numberOfTickMarks = 2
         return slider
     }()
     
     var textSpeedMinLabel: NSText = {
         let label = NSText()
-        label.string = "16px"
+        label.string = "Slowest"
         label.font = NSFont(name: "AppleSystemUIFont", size: 16)
         label.isEditable = false
         label.backgroundColor = .clear
@@ -142,7 +142,7 @@ class SettingsViewController: NSViewController {
     
     var textSpeedMaxLabel: NSText = {
         let label = NSText()
-        label.string = "48px"
+        label.string = "Fastest"
         label.font = NSFont(name: "AppleSystemUIFont", size: 16)
         label.isEditable = false
         label.backgroundColor = .clear
@@ -179,9 +179,11 @@ class SettingsViewController: NSViewController {
         setup(label: textSizeLabel, relativeTo: sfxVolumeLabel)
         setup(slider: textSizeSlider, for: textSizeLabel)
         setup(label: textSizeMinLabel, for: .min, relativeTo: textSizeSlider)
-        setup(label: textSizeMaxLabel, for: .max, relativeTo: textSizeSlider)
+        setup(label: textSizeMaxLabel, for: .max, relativeTo: textSizeSlider, yVariation: -5)
         setup(label: textSpeedLabel, relativeTo: textSizeLabel)
         setup(slider: textSpeedSlider, for: textSpeedLabel)
+        setup(label: textSpeedMinLabel, for: .min, relativeTo: textSpeedSlider, widthMultiplier: 4, xVariation: -25)
+        setup(label: textSpeedMaxLabel, for: .max, relativeTo: textSpeedSlider, widthMultiplier: 2, heightMultiplier: 0.5, xVariation: -18)
         setup(button: doneButton, relativeTo: textSpeedLabel, trailingConstant: 100)
         setup(button: resetButton, relativeTo: textSpeedLabel, trailingConstant: 300)
     }
@@ -249,30 +251,30 @@ class SettingsViewController: NSViewController {
         slider.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             slider.topAnchor.constraint(equalTo: label.topAnchor, constant: -25),
-            slider.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 100),
+            slider.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 75),
             slider.heightAnchor.constraint(equalToConstant: view.frame.height * 0.10),
             slider.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
         ])
     }
     
-    func setup(label: NSText, for value: SliderValue, relativeTo slider: NSSlider) {
+    func setup(label: NSText, for value: SliderValue, relativeTo slider: NSSlider, widthMultiplier: CGFloat = 1, heightMultiplier: CGFloat = 1, xVariation: CGFloat = 0, yVariation: CGFloat = 0) {
         self.view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         switch value {
         case SliderValue.min:
             NSLayoutConstraint.activate([
-                label.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: -20),
-                label.leadingAnchor.constraint(equalTo: slider.leadingAnchor, constant: -5),
-                label.heightAnchor.constraint(equalToConstant: view.frame.height * 0.10),
-                label.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
+                label.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: -25 + yVariation),
+                label.leadingAnchor.constraint(equalTo: slider.leadingAnchor, constant: -2 + xVariation),
+                label.heightAnchor.constraint(equalToConstant: view.frame.height * 0.02 * heightMultiplier),
+                label.widthAnchor.constraint(equalToConstant: view.frame.width * 0.015 * widthMultiplier)
             ])
             break
         case SliderValue.max:
             NSLayoutConstraint.activate([
-                label.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: -20),
-                label.leadingAnchor.constraint(equalTo: slider.trailingAnchor, constant: -10),
-                label.heightAnchor.constraint(equalToConstant: view.frame.height * 0.10),
-                label.widthAnchor.constraint(equalToConstant: view.frame.width * 0.2)
+                label.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: -25 + yVariation),
+                label.leadingAnchor.constraint(equalTo: slider.trailingAnchor, constant: -23 + xVariation),
+                label.heightAnchor.constraint(equalToConstant: view.frame.height * 0.04 * heightMultiplier),
+                label.widthAnchor.constraint(equalToConstant: view.frame.width * 0.025 * widthMultiplier)
             ])
             break
         }
