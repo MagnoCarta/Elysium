@@ -11,6 +11,24 @@
 import Cocoa
 
 
+extension NSWindow {
+    
+    
+    open override var acceptsFirstResponder: Bool {
+        
+        get {   return true }
+        
+    }
+    
+    open override func becomeFirstResponder() -> Bool {
+         return true
+    }
+    
+    
+    
+    
+}
+
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
 
@@ -85,6 +103,10 @@ class ViewController: NSViewController {
     }
 
     override func mouseDown(with event: NSEvent) {
+        
+        self.view.window?.makeFirstResponder(self)
+        self.view.window?.makeKey()
+        
         if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
             
             self.view.window?.contentViewController = PageViewController()

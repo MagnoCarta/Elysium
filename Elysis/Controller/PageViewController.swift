@@ -32,6 +32,11 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     var paginas = [Pagina()]
     var numeroDePaginas = 1
     let textoTeste = NSText(frame: NSRect(x: 20, y: 20, width: 385, height: 30))
+    var iteracaoAtual = 0
+    let historia = HistoryModel()
+    var polaridadeAtual = "Neutral"
+    var respostasDoUsuario: [String] = ["Neutral","Positive","Positive","Negative","Negative"]
+    
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -83,7 +88,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         
         if event.keyCode == 36 {
             if true {
-            self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 70, controler: self, numeroDoTextoAtual: self.paginas[numeroDaPaginaAtual].texto.numeroDoTextoAtual)
+            self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 220, controler: self)
             }
             
         }
@@ -92,7 +97,11 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             
         }
         
-    
+    override func mouseDown(with event: NSEvent) {
+             self.view.window?.makeFirstResponder(self)
+             self.view.window?.makeKey()
+    }
+     
     
     override func keyUp(with event: NSEvent) {
         
@@ -110,14 +119,18 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         }else {
             print(self.paginas[self.numeroDaPaginaAtual].texto.y)
             print(self.paginas[self.numeroDaPaginaAtual].texto.x)
-            if self.paginas[self.numeroDaPaginaAtual].texto.y < 326 &&  self.paginas[self.numeroDaPaginaAtual].texto.x > 221  {
+            if self.paginas[self.numeroDaPaginaAtual].texto.y - (self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*20) < 326 &&  self.paginas[self.numeroDaPaginaAtual].texto.x > 221  {
                 print("Indoooo")
                 self.paginas[numeroDaPaginaAtual].passarPaginaPraFrente(controler: self)
-            
+        
+               
             }
             
         }
         
     }
+    
+    
+
     
 }
