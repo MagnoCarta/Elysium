@@ -15,6 +15,7 @@ class ApiControllerTests: XCTestCase {
         
         //Given
         let sut = ApiController()
+        let expec = expectation(description: "SubmitSave")
         var playerAnswer: String?
         var answerPolarity: Polarity?
         
@@ -25,14 +26,18 @@ class ApiControllerTests: XCTestCase {
             
             //Then
             XCTAssertEqual(answerPolarity, Polarity(rawValue: "positive"))
-            XCTAssertEqual(playerAnswer, "I am Happy")
+            XCTAssertEqual(playerAnswer, "I am happy")
+            expec.fulfill()
         }
+        
+        wait(for: [expec], timeout: 20)
     }
     
     func test_apiController_submit_apiResponse() {
         
         //Given
         let sut = ApiController()
+        let expec = expectation(description: "Submit")
         var resultApiType: String?
         
         //When
@@ -42,6 +47,9 @@ class ApiControllerTests: XCTestCase {
             
             //Then
             XCTAssertEqual(resultApiType, "negative")
+            expec.fulfill()
         }
+        
+        wait(for: [expec], timeout: 20)
     }
 }

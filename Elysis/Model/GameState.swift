@@ -57,7 +57,7 @@ class GameState {
             return interactions
         } catch {
             print("It was not possible to load the game state.")
+            return interactions
         }
-        return interactions
     }
 }

@@ -10,6 +10,12 @@ import XCTest
 @testable import Elysis
 
 class GameStationTests: XCTestCase {
+    
+    func mockSave(_ arrayInt: [Int], _ sut: GameState ) {
+        
+        let jsonData = try? JSONEncoder().encode(arrayInt)
+        try? jsonData!.write(to: sut.gameStateURL!)
+    }
 
     func test_gameState_createFilePath_true() {
         
@@ -48,6 +54,22 @@ class GameStationTests: XCTestCase {
         XCTAssertEqual(answerPolarityOne, Polarity(rawValue: "positive"))
         XCTAssertEqual(playerAnswerTwo, "Sad")
         XCTAssertEqual(answerPolarityTwo, Polarity(rawValue: "negative"))
+        
+        try? FileManager.default.removeItem(at: sut.gameStateURL!)
+    }
+    
+    func test_gameState_load_error() {
+        
+        //Given
+        let sut = GameState()
+        let interactionWrong = [1,2,4]
+        
+        //When
+        self.mockSave(interactionWrong, sut)
+        let interaction = sut.load()
+        
+        //Then
+        XCTAssertNotEqual(interaction.count, interactionWrong.count)
         
         try? FileManager.default.removeItem(at: sut.gameStateURL!)
     }
