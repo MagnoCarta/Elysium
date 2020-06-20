@@ -69,7 +69,6 @@ class PontaDaPaginaAnimada: NSButton {
                 if self.numeroDaImagemAtual > 0 {
                 }
                 self.numeroDaImagemAtual += 1
-            Thread.sleep(forTimeInterval: 0.0001)
             }
         }else {
             
@@ -78,7 +77,7 @@ class PontaDaPaginaAnimada: NSButton {
                 heightConstraint.constant -= constantHeight
                 xConstraint.constant += xConstant
             self.numeroDaImagemAtual -= 1
-            Thread.sleep(forTimeInterval: 0.0001)
+
             }
         }
         

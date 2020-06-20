@@ -54,12 +54,26 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         dobradissaEsquerda.action = #selector(virarPagina(_:))
 
             organizarTela(dobradissa: dobradissa, dobradissaEsquerda: dobradissaEsquerda)
+        var runCount =  CGFloat(0)
+        var ai = true
         NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved]) {
+            if ai {
+                ai = false
+                Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                    runCount += 0.01
+                    
+                    if runCount == 0.1 {
+                        timer.invalidate()
+                        runCount = 0
+                        ai = true
+                    }
             
-            dobradissa.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
-            dobradissaEsquerda.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
+                dobradissa.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
+                dobradissaEsquerda.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
             
+            }
             
+            }
          return $0 }
         
         
@@ -132,7 +146,6 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         }
         
     }
-    
     
 
     
