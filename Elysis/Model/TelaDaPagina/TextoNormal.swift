@@ -35,7 +35,8 @@ class TextoNormal: NSObject {
     var x1Aux = 665
     var numeroDeEspacos = 0
     var Nindice: [String.Index] = []
-    var numeroDeLinhas = 4
+    var numeroDeLinhas = 0
+    var textoFormatadoEmArrays:[String] = []
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Não foi Possível iniciar!")
@@ -49,74 +50,22 @@ class TextoNormal: NSObject {
         
         
         
-        
-        
-        
-        
         if self.y - self.numeroDeLinhas*18 < 300 && self.x  > 221 {
             
-        }else {
+        }
+        
+        else {
             if !self.textoCarregando {
-                controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
-                    print(result)
-                    if controler.numeroDoTextoAtual == 0 || self.numeroDoTextoAtual == 0 {
-                        self.numeroDeEspacos = result.indices(of: "\n").count
-                        self.Nindice = result.indices(of: "\n")
-                    }
-                    if controler.numeroDoTextoAtual < self.numeroDeEspacos && controler.numeroDoTextoAtual > 0 {
-                        self.textoAtual = String(result[self.Nindice[controler.numeroDoTextoAtual-1]...self.Nindice[controler.numeroDoTextoAtual]])
-                        controler.numeroDoTextoAtual += 1
-                        
-                    }else  if controler.numeroDoTextoAtual == 0 {
-                        self.textoAtual = String(result[...self.Nindice[controler.numeroDoTextoAtual]]
-                        )
-                        controler.numeroDoTextoAtual += 1
-                    }
-                    if controler.numeroDoTextoAtual == self.numeroDeEspacos {
-                        
-                        controler.iteracaoAtual += 1
-                        controler.numeroDoTextoAtual = 0
-                        
-                    }
-                    if self.textoAtual == "" {
-                        self.textoAtual = "..."
-                    }
- 
-                    
-    
-                    
-                    
-                    
-                    
-                    
-                    
-                    DispatchQueue.main.async {
-                    self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 20, y: 20, width: 425, height: 0)))
-                    self.arrayDeTextoNormal[self.numeroDoTextoAtual].isEditable = false
-                    self.arrayDeTextoNormal[self.numeroDoTextoAtual].backgroundColor = .clear
-                    self.arrayDeTextoNormal[self.numeroDoTextoAtual].font = NSFont(name: "Baskerville", size: 18)
-                    self.arrayDeTextoNormal[self.numeroDoTextoAtual].textColor = .black
-                    controler.view.addSubview(self.arrayDeTextoNormal[self.numeroDoTextoAtual])
-                    
-                    
-                    self.y -=  (self.numeroDeLinhas * 21)
-                    if self.y < 180 {
-                        self.y = 655
-                        self.x = self.x1Aux
-                    }
-                    
-                    if self.numeroDoTextoAtual > 0 || !(self.y == 655 && self.x == 220) {
-                        self.numeroDeLinhas  = 1 + self.textoAtual.count/53
-                        print(self.numeroDeLinhas)
-                        print(self.y)
-                    }
-                    self.arrayDeTextoNormal[self.numeroDoTextoAtual].setFrameOrigin(NSPoint(x: self.x, y: self.y))
-                      
-                    self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: speed)
-                    self.numeroDoTextoAtual += 1
-                  
-                    }
-                } )
+                if self.numeroDoTextoAtual == self.arrayDeTextoNormal.count {
+                    controler.numeroDoTextoAtual = 0
+                    self.receberTextoDaPagina(controler: controler)
+                    controler.iteracaoAtual += 1
+                }else {
+                
+                    self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                
+                
+                }
             }else {
                 
                 
@@ -132,12 +81,11 @@ class TextoNormal: NSObject {
     }
     
     
-    
     func animacaoTextoRolando(numeroDoTextoAtual: Int, speed: TimeInterval) {
         self.textoCarregando = true
         var operac = [BlockOperation]()
 
-        for a in self.textoAtual {
+        for a in self.textoFormatadoEmArrays[numeroDoTextoAtual] {
             
             let opera = BlockOperation {
                 DispatchQueue.main.async {
@@ -149,7 +97,7 @@ class TextoNormal: NSObject {
             }
             operac.append(opera)
         }
-        for i in 1...textoAtual.count-1 {
+        for i in 1...self.textoFormatadoEmArrays[numeroDoTextoAtual].count-1 {
             operac[i].addDependency(operac[i-1])
             
         }
@@ -159,10 +107,10 @@ class TextoNormal: NSObject {
             self.textoCarregando = false
         }
         
-        operaFinal.addDependency(operac[textoAtual.count-1])
+        operaFinal.addDependency(operac[self.textoFormatadoEmArrays[numeroDoTextoAtual].count-1])
         let queue = OperationQueue()
         
-        for i in 0...textoAtual.count-1 {
+        for i in 0...self.textoFormatadoEmArrays[numeroDoTextoAtual].count-1 {
             
             queue.addOperation(operac[i])
             
@@ -176,11 +124,84 @@ class TextoNormal: NSObject {
     
     func receberTextoDaPagina(controler: PageViewController) {
         
+        controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
+            DispatchQueue.main.async {
+            self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)
+            self.organizarPosicoesDoTextoEAnimar(controler: controler)
+            
+            }
+            
+        })
+        
+        
+        
     }
     
     
+    func organizarArrayDeTextoETextoNormal(texto: String,controler: PageViewController) {
+        self.Nindice = texto.indices(of: "\n")
+        self.numeroDeEspacos = self.Nindice.count
+        
+        for a in self.numeroDoTextoAtual...self.numeroDeEspacos-1+self.numeroDoTextoAtual {
+            self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
+            self.arrayDeTextoNormal[a].isEditable = false
+            self.arrayDeTextoNormal[a].backgroundColor = .clear
+            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: 18)
+            self.arrayDeTextoNormal[a].textColor = .black
+            controler.view.addSubview(self.arrayDeTextoNormal[a])
+            if a == self.numeroDoTextoAtual {
+                self.textoFormatadoEmArrays.append(String(texto[...self.Nindice[a-self.numeroDoTextoAtual]]))
+            }else {
+                self.textoFormatadoEmArrays.append(String(texto[self.Nindice[a-self.numeroDoTextoAtual-1]...self.Nindice[a-self.numeroDoTextoAtual]]))
+                
+            }
+        }
+        
+    }
     
     
+    func receberTextoDaPaginaAnteriorPorqueNaoAcabouAIteracaoAinda(controler: PageViewController) {
+        
+        controler.paginas[controler.numeroDaPaginaAtual].texto.textoFormatadoEmArrays = controler.paginas[controler.numeroDaPaginaAtual-1].texto.textoFormatadoEmArrays
+        controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDoTextoAtual = controler.paginas[controler.numeroDaPaginaAtual-1].texto.numeroDoTextoAtual 
+        for a in 0...controler.paginas[controler.numeroDaPaginaAtual].texto.textoFormatadoEmArrays.count-1 {
+            
+            self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
+            self.arrayDeTextoNormal[a].isEditable = false
+            self.arrayDeTextoNormal[a].backgroundColor = .clear
+            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: 18)
+            self.arrayDeTextoNormal[a].textColor = .black
+            controler.view.addSubview(self.arrayDeTextoNormal[a])
+            
+        }
+        
+    }
+    
+    
+    func organizarPosicoesDoTextoEAnimar(controler: PageViewController) {
+        
+        
+        
+        
+        self.y -= self.numeroDeLinhas*20
+        
+        if self.y < 300 {
+            
+            self.y = 685
+            self.x = self.x1Aux
+            
+        }
+        
+        self.arrayDeTextoNormal[self.numeroDoTextoAtual].setFrameOrigin(NSPoint(x: self.x, y: self.y))
+        
+        
+        self.numeroDeLinhas = 1+self.textoFormatadoEmArrays[self.numeroDoTextoAtual].count/47
+        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: 600)
+        
+        self.numeroDoTextoAtual += 1
+        controler.numeroDoTextoAtual += 1
+        
+    }
     
     
 }

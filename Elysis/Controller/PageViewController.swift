@@ -35,7 +35,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     var iteracaoAtual = 0
     let historia = HistoryModel()
     var polaridadeAtual = "Neutral"
-    var respostasDoUsuario: [String] = ["Neutral","Positive","Positive","Negative","Negative"]
+    var respostasDoUsuario: [String] = ["positive","positive","positive","positive","positive"]
     
     
     override func loadView() {
@@ -88,7 +88,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         
         if event.keyCode == 36 {
             if true {
-            self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 220, controler: self)
+            self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 620, controler: self)
             }
             
         }
@@ -100,6 +100,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     override func mouseDown(with event: NSEvent) {
              self.view.window?.makeFirstResponder(self)
              self.view.window?.makeKey()
+        
+        
+        
     }
      
     

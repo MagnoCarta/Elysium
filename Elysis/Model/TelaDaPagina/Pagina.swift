@@ -33,6 +33,11 @@ func passarPaginaPraFrente(controler: PageViewController) {
         controler.paginas.append(Pagina())
         controler.paginas[controler.numeroDaPaginaAtual].organizarConstraints(controler: controler)
         controler.numeroDePaginas += 1
+        if self.texto.numeroDoTextoAtual < self.texto.arrayDeTextoNormal.count {
+            
+            controler.paginas[controler.numeroDaPaginaAtual].texto.receberTextoDaPaginaAnteriorPorqueNaoAcabouAIteracaoAinda(controler: controler)
+            
+        }
     }else {
         
         controler.PaginaPrincipal.addSubview(controler.paginas[controler.numeroDaPaginaAtual].imagemAtual)
