@@ -42,6 +42,7 @@ class HistoryModel {
                     }
                     else {
                         self.json = self.json!["negativeOrNeutral"] as? [String : Any]
+
                         guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
                         completion(result)
                     }
