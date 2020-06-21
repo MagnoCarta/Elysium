@@ -38,6 +38,7 @@ class ViewController: NSViewController {
     
     var historia = HistoryModel()
     
+
     
     
     
@@ -69,6 +70,7 @@ class ViewController: NSViewController {
   
 // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
     override func viewDidAppear() {
+
         
         
         
@@ -94,8 +96,6 @@ class ViewController: NSViewController {
    
         
     }
-    
-    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -113,7 +113,10 @@ class ViewController: NSViewController {
         }
     }
     
-    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        self.view.window?.close()
+        //Pass data to new view
+    }
     
     
     
