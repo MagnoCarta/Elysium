@@ -47,23 +47,31 @@ extension PageViewController {
         self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -456)
         self.xConstraint1.isActive = true
         dobradissaEsquerda.imageScaling = .scaleProportionallyDown
-        
-        
+        self.paginas[0].imagemAtual.addSubview(self.lapisAnimado)
+        self.lapisAnimado.translatesAutoresizingMaskIntoConstraints = false
+        self.lapisAnimado.bottomConstraint = self.lapisAnimado.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -580)
+        self.lapisAnimado.bottomConstraint.isActive = true
+        self.lapisAnimado.heightConstraint = self.lapisAnimado.heightAnchor.constraint(equalToConstant: 50)
+        self.lapisAnimado.heightConstraint.isActive = true
+        self.lapisAnimado.xConstraint = self.lapisAnimado.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor)
+        self.lapisAnimado.xConstraint.isActive = true
+        self.lapisAnimado.imageScaling = .scaleProportionallyDown
+        self.view.addSubview(optionButton)
+        self.optionButton.translatesAutoresizingMaskIntoConstraints = false
+        self.optionButton.heightConstraint = self.optionButton.heightAnchor.constraint(equalToConstant: 60)
+        self.optionButton.heightConstraint.isActive = true
+        self.optionButton.xConstraint = self.optionButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        self.optionButton.xConstraint.isActive = true
+        self.optionButton.topConstraint = self.optionButton.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.topAnchor,constant: 10)
+        self.optionButton.topConstraint.isActive = true
+        self.optionButton.imageScaling = .scaleProportionallyDown
     }
     
-    func reorganizarConstraints(numeroDaPagina: Int,dobradissa: PontaDaPaginaAnimada,dobradissaEsquerda: PontaDaPaginaAnimada,lado: Bool) {
+    func reorganizarConstraints(dobradissa: PontaDaPaginaAnimada,dobradissaEsquerda: PontaDaPaginaAnimada,LapisAnimado: LapisFeedback) {
         dobradissaEsquerda.removeFromSuperview()
         dobradissa.removeFromSuperview()
-        if lado {
-            
-            
-            
-            
-        }else{
-            
-            
-            
-        }
+        LapisAnimado.removeFromSuperview()
+        self.view.addSubview(LapisAnimado)
         self.view.addSubview(dobradissaEsquerda)
         self.view.addSubview(dobradissa)
         

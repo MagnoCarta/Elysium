@@ -18,8 +18,8 @@ let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaNormal")
 let texto = TextoNormal(speed: 10)
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
-    
-    
+let barraDeTexto = NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
+let barraDeTextoBackgroundImage = NSImageView(image: NSImage(named: "BarraDeTextoBackground")!)
     
 func passarPaginaPraFrente(controler: PageViewController) {
     
@@ -36,6 +36,7 @@ func passarPaginaPraFrente(controler: PageViewController) {
         if self.texto.numeroDoTextoAtual < self.texto.arrayDeTextoNormal.count {
             
             controler.paginas[controler.numeroDaPaginaAtual].texto.receberTextoDaPaginaAnteriorPorqueNaoAcabouAIteracaoAinda(controler: controler)
+            controler.paginas[controler.numeroDaPaginaAtual].texto.horaDaBarraDeTexto = true
             
         }
     }else {
@@ -80,6 +81,33 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         
     }
+    
+    func animarAparicaoDaBarraDeTexto(controler: PageViewController) {
+        self.barraDeTextoBackgroundImage.alphaValue = 0
+        self.imagemAtual.addSubview(self.barraDeTextoBackgroundImage)
+        self.barraDeTextoBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        self.barraDeTextoBackgroundImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        self.barraDeTextoBackgroundImage.topAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor,constant: 0).isActive = true
+        self.barraDeTextoBackgroundImage.centerXAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].centerXAnchor).isActive = true
+        self.barraDeTextoBackgroundImage.imageScaling = .scaleProportionallyDown
+        self.imagemAtual.addSubview(self.barraDeTexto)
+        self.barraDeTexto.translatesAutoresizingMaskIntoConstraints = false
+        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        self.barraDeTexto.topAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor,constant: 0).isActive = true
+        self.barraDeTexto.centerXAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].centerXAnchor).isActive = true
+        self.barraDeTexto.string = "I am really Happy"
+        
+        
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+            self.barraDeTextoBackgroundImage.alphaValue += 0.005
+            
+            if self.barraDeTextoBackgroundImage.alphaValue == 1 {
+                timer.invalidate()
+            }
+            
+        }
+    }
+    
     
     
 }
