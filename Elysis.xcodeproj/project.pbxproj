@@ -20,6 +20,7 @@
 		0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9C248F2B8400AE06CA /* GameData.swift */; };
 		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
+		773A192C2491161400DC25CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A192B2491161400DC25CE /* SettingsViewController.swift */; };
 		0F7C4DAD24940AC300AE06CA /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DAC24940AC300AE06CA /* PageViewController.swift */; };
 		0F7C4DAF2496EADF00AE06CA /* PontaDaPaginaAnimada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */; };
 		0F7C4DB52497B55B00AE06CA /* TextoNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */; };
@@ -77,6 +78,7 @@
 		0F7C4D9C248F2B8400AE06CA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		0F7C4DA0248FD54F00AE06CA /* Page.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page.storyboard; sourceTree = "<group>"; };
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		773A192B2491161400DC25CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0F7C4DAC24940AC300AE06CA /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PontaDaPaginaAnimada.swift; sourceTree = "<group>"; };
 		0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextoNormal.swift; sourceTree = "<group>"; };
@@ -204,6 +206,8 @@
 				0F7C4E39249F1FA700AE06CA /* SettingsViewController.swift */,
 				0F7C4D62248F216400AE06CA /* ViewController.swift */,
 				0F7C4D60248F216400AE06CA /* AppDelegate.swift */,
+				773A192B2491161400DC25CE /* SettingsViewController.swift */,
+				0B0394CA2491661F005F0D68 /* ApiController.swift */,
 				0F7C4DAC24940AC300AE06CA /* PageViewController.swift */,
 				0F7C4DB7249823C500AE06CA /* ConstraintsPageViewController .swift */,
 			);
@@ -392,6 +396,7 @@
 				0F7C4DB8249823C500AE06CA /* ConstraintsPageViewController .swift in Sources */,
 				0F7C4E34249C4CBA00AE06CA /* BarraDeTexto.swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
+				773A192C2491161400DC25CE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
