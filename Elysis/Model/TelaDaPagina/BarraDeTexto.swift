@@ -9,11 +9,10 @@
 import Cocoa
 
 
-class BarraDeText: NSTextField {
+class BarraDeText: NSObject {
     
     
-    
-    
+        
     func organizarConstraints() {
         
         

@@ -31,11 +31,14 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     var arrayDeNumeroDeTextosPorPagina: [Int] = []
     var paginas = [Pagina()]
     var numeroDePaginas = 1
-    let textoTeste = NSText(frame: NSRect(x: 20, y: 20, width: 385, height: 30))
     var iteracaoAtual = 0
     let historia = HistoryModel()
-    var polaridadeAtual = "Neutral"
-    var respostasDoUsuario: [String] = ["positive","positive","positive","positive","positive"]
+    var respostasDoUsuario: [String] = []
+    var imagemAtualLapisAnimation: Int = 0
+    var incrementadorDeImagemLapisAnimation: Int = 1
+    let lapisAnimado: LapisFeedback = LapisFeedback()
+    var transparencia: CGFloat = 1
+    let optionButton: OptionButton = OptionButton()
     
     
     override func loadView() {
@@ -52,8 +55,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         dobradissa.action = #selector(virarPagina(_:))
         guard let dobradissaEsquerda = paginas[0].pontaDaPaginaEsquerda else { return }
         dobradissaEsquerda.action = #selector(virarPagina(_:))
-
+        
             organizarTela(dobradissa: dobradissa, dobradissaEsquerda: dobradissaEsquerda)
+        
         var runCount =  CGFloat(0)
         var ai = true
         NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved]) {
@@ -70,12 +74,15 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             
                 dobradissa.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
                 dobradissaEsquerda.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
+                    self.optionButton.mouseSobreBotao(mouseLocation: self.mouseLocation)
             
             }
             
             }
          return $0 }
         
+        
+        self.lapisAnimado.arrumarConstraint(controler: self, xConstraint: self.lapisAnimado.xConstraint, bottomConstraint: self.lapisAnimado.bottomConstraint)
         
         
          
@@ -114,8 +121,11 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     override func mouseDown(with event: NSEvent) {
              self.view.window?.makeFirstResponder(self)
              self.view.window?.makeKey()
-        
-        
+        if event.locationInWindow.y > self.optionButton.frame.minY && event.locationInWindow.y < self.optionButton.frame.maxY && event.locationInWindow.x > self.optionButton.frame.minX && event.locationInWindow.x < self.optionButton.frame.maxX {
+            
+            self.presentAsSheet(SettingsViewController())
+           // self.view.window?.contentViewController = SettingsViewController()
+        }
         
     }
      
@@ -146,6 +156,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         }
         
     }
+    
+    
+
     
 
     

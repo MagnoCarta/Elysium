@@ -80,7 +80,7 @@ class ViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.view.window!.acceptsMouseMovedEvents = true
+        //self.view.window!.acceptsMouseMovedEvents = true
     }
 //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
     override func keyDown(with event: NSEvent) {
@@ -110,7 +110,6 @@ class ViewController: NSViewController {
         if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
             
             self.view.window?.contentViewController = PageViewController()
-            
         }
     }
     
