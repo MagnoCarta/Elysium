@@ -14,7 +14,7 @@ class Pagina: NSObject {
     
     
 let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaNormal")!]
-let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaNormal")!)
+let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaP")!)
 let texto = TextoNormal(speed: 10)
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)

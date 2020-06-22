@@ -20,7 +20,7 @@ extension NSView {
 class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
-    let PaginaPrincipal = NSImageView(image: NSImage(named: "TelaDePagina")!)
+    let PaginaPrincipal = NSImageView(image: NSImage(named: "LivroPrincipal1")!)
     var mouseLocation: NSPoint { NSEvent.mouseLocation }
     var numeroDoTextoAtual = 0
     var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
@@ -39,7 +39,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     let lapisAnimado: LapisFeedback = LapisFeedback()
     var transparencia: CGFloat = 1
     let optionButton: OptionButton = OptionButton()
-    
+    let dobradissa = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
+    let dobradissaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -51,12 +52,12 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let dobradissa = paginas[0].pontaDaPaginaDireita else { return }
-        dobradissa.action = #selector(virarPagina(_:))
-        guard let dobradissaEsquerda = paginas[0].pontaDaPaginaEsquerda else { return }
-        dobradissaEsquerda.action = #selector(virarPagina(_:))
         
-            organizarTela(dobradissa: dobradissa, dobradissaEsquerda: dobradissaEsquerda)
+        self.dobradissa!.action = #selector(virarPagina(_:))
+       
+        self.dobradissaEsquerda!.action = #selector(virarPagina(_:))
+        
+        organizarTela(dobradissa: dobradissa!, dobradissaEsquerda: dobradissaEsquerda!)
         
         var runCount =  CGFloat(0)
         var ai = true
@@ -72,8 +73,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
                         ai = true
                     }
             
-                dobradissa.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
-                dobradissaEsquerda.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
+                    self.dobradissa!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
+                    self.dobradissaEsquerda!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
                     self.optionButton.mouseSobreBotao(mouseLocation: self.mouseLocation)
             
             }
@@ -140,7 +141,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         if  Button.ladoEsquerdo {
             if self.numeroDaPaginaAtual > 0 {
                 print("Voltandooo")
+                
            self.paginas[numeroDaPaginaAtual].passarPaginaPraTras(controler: self)
+                self.reorganizarConstraints(dobradissa: self.dobradissa!, dobradissaEsquerda: self.dobradissaEsquerda!, LapisAnimado: self.lapisAnimado)
             }
             
         }else {
@@ -149,7 +152,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             if self.paginas[self.numeroDaPaginaAtual].texto.y - (self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*20) < 326 &&  self.paginas[self.numeroDaPaginaAtual].texto.x > 221  {
                 print("Indoooo")
                 self.paginas[numeroDaPaginaAtual].passarPaginaPraFrente(controler: self)
-        
+                
+                self.reorganizarConstraints(dobradissa: self.dobradissa!, dobradissaEsquerda: self.dobradissaEsquerda!, LapisAnimado: self.lapisAnimado)
                
             }
             
