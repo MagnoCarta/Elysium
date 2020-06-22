@@ -158,7 +158,7 @@ class TextoNormal: NSObject {
             self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
             self.arrayDeTextoNormal[a].isEditable = false
             self.arrayDeTextoNormal[a].backgroundColor = .clear
-            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: 18)
+            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))
             self.arrayDeTextoNormal[a].textColor = .black
             controler.view.addSubview(self.arrayDeTextoNormal[a])
             if a == self.numeroDoTextoAtual {
@@ -181,7 +181,7 @@ class TextoNormal: NSObject {
             self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
             self.arrayDeTextoNormal[a].isEditable = false
             self.arrayDeTextoNormal[a].backgroundColor = .clear
-            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: 18)
+            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))
             self.arrayDeTextoNormal[a].textColor = .black
             controler.view.addSubview(self.arrayDeTextoNormal[a])
             
@@ -207,8 +207,8 @@ class TextoNormal: NSObject {
         self.arrayDeTextoNormal[self.numeroDoTextoAtual].setFrameOrigin(NSPoint(x: self.x, y: self.y))
         
         
-        self.numeroDeLinhas = 1+self.textoFormatadoEmArrays[self.numeroDoTextoAtual].count/52
-        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: 120)
+        self.numeroDeLinhas = 1+self.textoFormatadoEmArrays[self.numeroDoTextoAtual].count/(52*18/Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual].font!.pointSize))
+        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: UserDefaults.standard.double(forKey: "textSpeed"))
         
         self.numeroDoTextoAtual += 1
         controler.numeroDoTextoAtual += 1
