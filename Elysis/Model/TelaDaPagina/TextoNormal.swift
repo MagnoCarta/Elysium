@@ -38,6 +38,7 @@ class TextoNormal: NSObject {
     var numeroDeLinhas = 0
     var textoFormatadoEmArrays:[String] = []
     var horaDaBarraDeTexto: Bool = false
+    var auxi = 0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Não foi Possível iniciar!")
@@ -51,8 +52,10 @@ class TextoNormal: NSObject {
     func proximoTextoNaTelaASerMostrado(speed: TimeInterval,controler: PageViewController) {
         
         
-        
-        if self.y - self.numeroDeLinhas*18 < 300 && self.x  > 221 {
+        if self.numeroDoTextoAtual > 0 {
+            auxi =  self.numeroDeLinhas*(Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].font!.capHeight)+11)
+        }
+        if self.y - auxi < 300 && self.x  > 221 || (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
             
         }
         
@@ -124,10 +127,11 @@ class TextoNormal: NSObject {
     }
     
     func receberTextoDaPagina(controler: PageViewController) {
+        self.textoCarregando = true
         if self.horaDaBarraDeTexto {
             controler.paginas[controler.numeroDaPaginaAtual].animarAparicaoDaBarraDeTexto(controler: controler)
             self.horaDaBarraDeTexto = false
-            self.y  -= 70
+            self.y  -= 120
         }else {
             self.horaDaBarraDeTexto = true
             controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.string)
@@ -154,7 +158,7 @@ class TextoNormal: NSObject {
             self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
             self.arrayDeTextoNormal[a].isEditable = false
             self.arrayDeTextoNormal[a].backgroundColor = .clear
-            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: 18)
+            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))
             self.arrayDeTextoNormal[a].textColor = .black
             controler.view.addSubview(self.arrayDeTextoNormal[a])
             if a == self.numeroDoTextoAtual {
@@ -177,7 +181,7 @@ class TextoNormal: NSObject {
             self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
             self.arrayDeTextoNormal[a].isEditable = false
             self.arrayDeTextoNormal[a].backgroundColor = .clear
-            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: 18)
+            self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))
             self.arrayDeTextoNormal[a].textColor = .black
             controler.view.addSubview(self.arrayDeTextoNormal[a])
             
@@ -193,7 +197,7 @@ class TextoNormal: NSObject {
         
         self.y -= self.numeroDeLinhas*(Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual].font!.capHeight)+11)
         
-        if self.y < 300 {
+        if self.y < 280 {
             
             self.y = 685
             self.x = self.x1Aux
@@ -203,11 +207,12 @@ class TextoNormal: NSObject {
         self.arrayDeTextoNormal[self.numeroDoTextoAtual].setFrameOrigin(NSPoint(x: self.x, y: self.y))
         
         
-        self.numeroDeLinhas = 1+self.textoFormatadoEmArrays[self.numeroDoTextoAtual].count/52
-        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: 120)
+        self.numeroDeLinhas = 1+self.textoFormatadoEmArrays[self.numeroDoTextoAtual].count/(52*18/Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual].font!.pointSize))
+        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: UserDefaults.standard.double(forKey: "textSpeed"))
         
         self.numeroDoTextoAtual += 1
         controler.numeroDoTextoAtual += 1
+        self.textoCarregando = false
         
     }
     

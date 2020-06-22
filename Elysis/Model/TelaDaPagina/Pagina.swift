@@ -14,7 +14,7 @@ class Pagina: NSObject {
     
     
 let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaNormal")!]
-let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaNormal")!)
+let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaP")!)
 let texto = TextoNormal(speed: 10)
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
@@ -86,26 +86,42 @@ func passarPaginaPraFrente(controler: PageViewController) {
         self.barraDeTextoBackgroundImage.alphaValue = 0
         self.imagemAtual.addSubview(self.barraDeTextoBackgroundImage)
         self.barraDeTextoBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        self.barraDeTextoBackgroundImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        self.barraDeTextoBackgroundImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
         self.barraDeTextoBackgroundImage.topAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor,constant: 0).isActive = true
         self.barraDeTextoBackgroundImage.centerXAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].centerXAnchor).isActive = true
         self.barraDeTextoBackgroundImage.imageScaling = .scaleProportionallyDown
-        self.imagemAtual.addSubview(self.barraDeTexto)
+        controler.view.addSubview(self.barraDeTexto)
+        self.barraDeTexto.font = NSFont(name: "Baskerville", size: 18)
         self.barraDeTexto.translatesAutoresizingMaskIntoConstraints = false
-        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        self.barraDeTexto.topAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor,constant: 0).isActive = true
-        self.barraDeTexto.centerXAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].centerXAnchor).isActive = true
         self.barraDeTexto.string = "I am really Happy"
+        self.barraDeTexto.alphaValue = 0
+        self.barraDeTexto.backgroundColor = .clear
+        
+        
+//        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        self.barraDeTexto.bottomAnchor.constraint(equalTo: self.imagemAtual.topAnchor,constant: 0).isActive = true
+//        self.barraDeTexto.centerXAnchor.constraint(equalTo: controler.view.centerXAnchor).isActive = true
+        
+        
+        
         
         
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+            if self.barraDeTextoBackgroundImage.alphaValue == 0 {
+                self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x/10) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
+            }
             self.barraDeTextoBackgroundImage.alphaValue += 0.005
+            self.barraDeTexto.alphaValue += 0.005
             
-            if self.barraDeTextoBackgroundImage.alphaValue == 1 {
+            if self.barraDeTextoBackgroundImage.alphaValue > 1 {
+                
+                
+                self.texto.textoCarregando = false
                 timer.invalidate()
             }
             
         }
+        
     }
     
     
