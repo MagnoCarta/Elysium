@@ -196,7 +196,8 @@ class SettingsViewController: NSViewController {
         defaults.set(sfxVolumeSlider.doubleValue, forKey: "sfxVolume")
         defaults.set(textSizeSlider.doubleValue, forKey: "textSize")
         defaults.set(textSpeedSlider.doubleValue, forKey: "textSpeed")
-        self.view.window!.contentViewController = ViewController()
+        self.dismiss(self)
+       // self.view.window!.contentViewController = ViewController()
     }
     
     @objc func didTapResetButton() {
