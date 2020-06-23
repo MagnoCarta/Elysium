@@ -97,7 +97,7 @@ class TextoNormal: NSObject {
                     self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(a)"
                 }
                 
-                Thread.sleep(forTimeInterval: TimeInterval(1)/speed)
+                Thread.sleep(forTimeInterval: TimeInterval(0))
             }
             operac.append(opera)
         }
@@ -134,8 +134,13 @@ class TextoNormal: NSObject {
             self.y  -= 120
         }else {
             self.horaDaBarraDeTexto = true
+            if !controler.isLoading {
             controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.string)
-        
+            }
+            
+            if controler.iteracaoAtual == controler.respostasDoUsuario.count {
+                controler.isLoading = false
+            }
         controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
             DispatchQueue.main.async {
             self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)

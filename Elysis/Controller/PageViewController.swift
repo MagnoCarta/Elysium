@@ -41,6 +41,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     let optionButton: OptionButton = OptionButton()
     let dobradissa = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
     let dobradissaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
+    var isLoading: Bool = false
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -58,6 +59,13 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         self.dobradissaEsquerda!.action = #selector(virarPagina(_:))
         
         organizarTela(dobradissa: dobradissa!, dobradissaEsquerda: dobradissaEsquerda!)
+       if self.respostasDoUsuario.count > 0 {
+        self.isLoading = true
+        
+        
+        self.recriarTelaLoad()
+        
+       }
         
         var runCount =  CGFloat(0)
         var ai = true
@@ -141,8 +149,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         if  Button.ladoEsquerdo {
             if self.numeroDaPaginaAtual > 0 {
                 print("Voltandooo")
-                
-           self.paginas[numeroDaPaginaAtual].passarPaginaPraTras(controler: self)
+                let auxiliarBooleanoProLado = true
+                self.paginas[numeroDaPaginaAtual].getAnimationEsquerdaDireita()
+           self.paginas[self.numeroDaPaginaAtual].animarPaginaVirandoa(controler: self, ladoEsquerdo: auxiliarBooleanoProLado)
                 self.reorganizarConstraints(dobradissa: self.dobradissa!, dobradissaEsquerda: self.dobradissaEsquerda!, LapisAnimado: self.lapisAnimado)
             }
             
@@ -151,13 +160,59 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             print(self.paginas[self.numeroDaPaginaAtual].texto.x)
             if self.paginas[self.numeroDaPaginaAtual].texto.y - (self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*20) < 326 &&  self.paginas[self.numeroDaPaginaAtual].texto.x > 221  {
                 print("Indoooo")
-                self.paginas[numeroDaPaginaAtual].passarPaginaPraFrente(controler: self)
+                let auxiliarBooleanoProLado = false
+                self.paginas[numeroDaPaginaAtual].getAnimationDireitaEsquerda()
+          
+    
+                self.paginas[self.numeroDaPaginaAtual].animarPaginaVirandoa(controler: self, ladoEsquerdo: auxiliarBooleanoProLado)
+               
                 
                 self.reorganizarConstraints(dobradissa: self.dobradissa!, dobradissaEsquerda: self.dobradissaEsquerda!, LapisAnimado: self.lapisAnimado)
                
             }
             
         }
+        
+    }
+    
+    
+    
+    
+    func recriarTelaLoad() {
+        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+        
+        
+        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+//                    for a in 0...self.respostasDoUsuario.count-1 {
+//                        let opera = BlockOperation {
+//                            DispatchQueue.main.async {
+//                            self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+//
+//                            }
+//                        }
+//                        let opera1 = BlockOperation{
+//                            DispatchQueue.main.async {
+//                        for b in 0...self.paginas[self.numeroDaPaginaAtual].texto.textoFormatadoEmArrays.count+1 {
+//                            if self.numeroDoTextoAtual > 0 {
+//                                self.paginas[self.numeroDaPaginaAtual].texto.auxi = self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*(Int(self.paginas[self.numeroDaPaginaAtual].texto.arrayDeTextoNormal[self.numeroDoTextoAtual-1].font!.capHeight)+11)
+//                            }
+//                            if self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < 300 && self.paginas[self.numeroDaPaginaAtual].texto.x  > 221 || (self.iteracaoAtual == 5 && self.numeroDoTextoAtual == 5) {
+//
+//                                self.virarPagina(self.dobradissa!)
+//                            }else  {
+//
+//                                self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+//
+//                            }
+//                        }
+//                            }
+//                        }
+//                        opera1.addDependency(opera)
+//                        let queue = OperationQueue()
+//                        queue.addOperation(opera)
+//                        queue.addOperation(opera1)
+//                    }
+        
         
     }
     
