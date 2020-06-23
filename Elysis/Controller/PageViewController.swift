@@ -20,7 +20,7 @@ extension NSView {
 class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
-    let PaginaPrincipal = NSImageView(image: NSImage(named: "LivroPrincipal1")!)
+    let PaginaPrincipal = NSImageView(image: NSImage(named: "LivroAbertoPrincipalAzulRoxeado")!)
     var mouseLocation: NSPoint { NSEvent.mouseLocation }
     var numeroDoTextoAtual = 0
     var heightConstraint: NSLayoutConstraint = NSLayoutConstraint()
@@ -130,6 +130,10 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     override func mouseDown(with event: NSEvent) {
              self.view.window?.makeFirstResponder(self)
              self.view.window?.makeKey()
+        if event.locationInWindow.y > self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.minY && event.locationInWindow.y < self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.maxY && event.locationInWindow.x > self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.minX/2 - 30 && event.locationInWindow.x < self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.maxX {
+        
+             self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 620, controler: self)
+        }
         if event.locationInWindow.y > self.optionButton.frame.minY && event.locationInWindow.y < self.optionButton.frame.maxY && event.locationInWindow.x > self.optionButton.frame.minX && event.locationInWindow.x < self.optionButton.frame.maxX {
             
             self.presentAsSheet(SettingsViewController())

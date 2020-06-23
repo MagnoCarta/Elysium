@@ -25,9 +25,9 @@ extension PageViewController {
         
         self.PaginaPrincipal.addSubview(self.paginas[0].imagemAtual)
         self.paginas[0].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
-        let paginaDireitaBottomConstraint = self.paginas[0].imagemAtual.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -72)
+        let paginaDireitaBottomConstraint = self.paginas[0].imagemAtual.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -90)
         paginaDireitaBottomConstraint.isActive = true
-        let paginaDireitaHeightConstraint = self.paginas[0].imagemAtual.heightAnchor.constraint(equalToConstant: 658)
+        let paginaDireitaHeightConstraint = self.paginas[0].imagemAtual.heightAnchor.constraint(equalToConstant: 628)
         paginaDireitaHeightConstraint.isActive = true
         let paginaDireitaxConstraint = self.paginas[0].imagemAtual.centerXAnchor.constraint(equalTo: self.PaginaPrincipal.centerXAnchor, constant: 0)
         paginaDireitaxConstraint.isActive = true

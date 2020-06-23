@@ -25,12 +25,11 @@
 		0F7C4DC02499AD9400AE06CA /* Pagina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DBF2499AD9400AE06CA /* Pagina.swift */; };
 		0F7C4E32249BD52A00AE06CA /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E31249BD52A00AE06CA /* OptionButton.swift */; };
 		0F7C4E36249DDB1600AE06CA /* LapisFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */; };
-		0F7C4E3A249F1FA700AE06CA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E39249F1FA700AE06CA /* SettingsViewController.swift */; };
 		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
+		5796E0BD24A24F3F00E0A2B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */; };
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
 		770D101D2499069B0068C5EA /* HistoriaInicial.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101C2499069B0068C5EA /* HistoriaInicial.json */; };
 		770D101F249907FE0068C5EA /* Parte1.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101E249907FE0068C5EA /* Parte1.json */; };
-		773A192C2491161400DC25CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A192B2491161400DC25CE /* SettingsViewController.swift */; };
 		77847B77249A4A8A0044315B /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77847B76249A4A8A0044315B /* HistoryModel.swift */; };
 		778B150324994E9300DC2B8D /* positive.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150224994E9300DC2B8D /* positive.json */; };
 		778B150524994F3E00DC2B8D /* negative.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150424994F3E00DC2B8D /* negative.json */; };
@@ -80,12 +79,11 @@
 		0F7C4DBF2499AD9400AE06CA /* Pagina.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina.swift; sourceTree = "<group>"; };
 		0F7C4E31249BD52A00AE06CA /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
 		0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapisFeedback.swift; sourceTree = "<group>"; };
-		0F7C4E39249F1FA700AE06CA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		770D101C2499069B0068C5EA /* HistoriaInicial.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HistoriaInicial.json; sourceTree = "<group>"; };
 		770D101E249907FE0068C5EA /* Parte1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Parte1.json; sourceTree = "<group>"; };
-		773A192B2491161400DC25CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		77847B76249A4A8A0044315B /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		778B150224994E9300DC2B8D /* positive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = positive.json; sourceTree = "<group>"; };
 		778B150424994F3E00DC2B8D /* negative.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = negative.json; sourceTree = "<group>"; };
@@ -195,10 +193,9 @@
 		0F7C4D8E248F282300AE06CA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0F7C4E39249F1FA700AE06CA /* SettingsViewController.swift */,
+				5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */,
 				0F7C4D62248F216400AE06CA /* ViewController.swift */,
 				0F7C4D60248F216400AE06CA /* AppDelegate.swift */,
-				773A192B2491161400DC25CE /* SettingsViewController.swift */,
 				0F7C4DAC24940AC300AE06CA /* PageViewController.swift */,
 				0F7C4DB7249823C500AE06CA /* ConstraintsPageViewController .swift */,
 				0F7C4DB62497BE2900AE06CA /* TelaDaPagina */,
@@ -372,6 +369,7 @@
 				0B0394CD24916CBD005F0D68 /* ApiModel.swift in Sources */,
 				0F7C4E3A249F1FA700AE06CA /* SettingsViewController.swift in Sources */,
 				0F7C4DAF2496EADF00AE06CA /* PontaDaPaginaAnimada.swift in Sources */,
+				5796E0BD24A24F3F00E0A2B7 /* SettingsViewController.swift in Sources */,
 				0F7C4E32249BD52A00AE06CA /* OptionButton.swift in Sources */,
 				0B0394CB2491661F005F0D68 /* ApiController.swift in Sources */,
 				0F7C4DC02499AD9400AE06CA /* Pagina.swift in Sources */,
@@ -383,7 +381,6 @@
 				0F7C4E36249DDB1600AE06CA /* LapisFeedback.swift in Sources */,
 				0F7C4DB8249823C500AE06CA /* ConstraintsPageViewController .swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
-				773A192C2491161400DC25CE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

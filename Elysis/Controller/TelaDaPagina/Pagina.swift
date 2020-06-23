@@ -13,8 +13,9 @@ class Pagina: NSObject {
     
     
     
-    var arrayDeImagens: [NSImage] = []
-let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaP")!)
+
+let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaLegal")!]
+let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaLegal")!)
 let texto = TextoNormal(speed: 10)
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
@@ -113,8 +114,8 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         controler.view.addSubview(controler.paginas[controler.numeroDaPaginaAtual].imagemAtual)
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -72).isActive = true
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 658).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -90).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 628).isActive = true
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.centerXAnchor.constraint(equalTo: controler.PaginaPrincipal.centerXAnchor, constant: 0).isActive = true
         
         
@@ -146,8 +147,9 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             if self.barraDeTextoBackgroundImage.alphaValue == 0 {
-                self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x
-                    ) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
+
+                self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
+
             }
             self.barraDeTextoBackgroundImage.alphaValue += 0.005
             self.barraDeTexto.alphaValue += 0.005

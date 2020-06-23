@@ -122,7 +122,7 @@ class SettingsViewController: NSViewController {
     var textSpeedSlider: NSSlider = {
         let slider = NSSlider()
         slider.minValue = 5
-        slider.maxValue = 100
+        slider.maxValue = 120
         // Initial Value
         slider.doubleValue = UserDefaults.standard.double(forKey: "textSpeed")
         slider.alignment = .center
