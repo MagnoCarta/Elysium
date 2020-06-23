@@ -108,7 +108,7 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             if self.barraDeTextoBackgroundImage.alphaValue == 0 {
-                self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x/10) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
+                self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
             }
             self.barraDeTextoBackgroundImage.alphaValue += 0.005
             self.barraDeTexto.alphaValue += 0.005
