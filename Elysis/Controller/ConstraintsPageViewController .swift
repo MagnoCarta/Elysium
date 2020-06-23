@@ -37,14 +37,14 @@ extension PageViewController {
         dobradissa.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8).isActive = true
         self.heightConstraint = dobradissa.heightAnchor.constraint(equalToConstant: 65)
         self.heightConstraint.isActive = true
-        self.xConstraint = dobradissa.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: 456)
+        self.xConstraint = dobradissa.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: 447)
         self.xConstraint.isActive = true
         dobradissa.imageScaling = .scaleProportionallyDown
         dobradissaEsquerda.translatesAutoresizingMaskIntoConstraints = false
         dobradissaEsquerda.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8).isActive = true
         self.heightConstraint1 = dobradissaEsquerda.heightAnchor.constraint(equalToConstant: 65)
         self.heightConstraint1.isActive = true
-        self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -456)
+        self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -447)
         self.xConstraint1.isActive = true
         dobradissaEsquerda.imageScaling = .scaleProportionallyDown
         self.paginas[0].imagemAtual.addSubview(self.lapisAnimado)
@@ -62,7 +62,7 @@ extension PageViewController {
         self.optionButton.heightConstraint.isActive = true
         self.optionButton.xConstraint = self.optionButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         self.optionButton.xConstraint.isActive = true
-        self.optionButton.topConstraint = self.optionButton.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.topAnchor,constant: 10)
+        self.optionButton.topConstraint = self.optionButton.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.topAnchor,constant: 14)
         self.optionButton.topConstraint.isActive = true
         self.optionButton.imageScaling = .scaleProportionallyDown
     }

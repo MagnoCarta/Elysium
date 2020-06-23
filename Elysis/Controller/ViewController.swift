@@ -32,8 +32,8 @@ extension NSWindow {
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
 
-    let backg = NSImageView(image: NSImage(named: "BackgroundGame")!)
-    var botaoImagem = NSImageView(image: NSImage(named: "capaDoLivroOficialProntoPronto")!)
+    let backg = NSImageView(image: NSImage(named: "Cover")!)
+    var botaoImagem = NSImageView(image: NSImage(named: "LettersCover")!)
 
     
     var historia = HistoryModel()
@@ -54,8 +54,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         self.view.addSubview(self.backg)
         self.view.addSubview(botaoImagem)
-        self.botaoImagem.frame.origin = CGPoint(x: self.view.frame.width/2 - 300, y: self.view.frame.height/2 - 300)
-        self.botaoImagem.frame.size = CGSize(width: 600, height: 600)
+       
         
         
         self.backg.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +63,23 @@ class ViewController: NSViewController {
         self.backg.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
         self.backg.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         self.backg.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        self.backg.imageScaling = .scaleAxesIndependently
+        self.backg.imageScaling = .scaleProportionallyDown
+        self.botaoImagem.translatesAutoresizingMaskIntoConstraints = false
+        self.botaoImagem.imageScaling = .scaleProportionallyDown
+        self.botaoImagem.centerYAnchor.constraint(equalTo: self.backg.centerYAnchor).isActive = true
+        self.botaoImagem.centerXAnchor.constraint(equalTo: self.backg.centerXAnchor, constant: -300).isActive = true
+        self.botaoImagem.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        var fadeSpeed: CGFloat = 0.01
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+            
+            self.botaoImagem.alphaValue -= fadeSpeed
+            if self.botaoImagem.alphaValue <= 0.009 {
+                fadeSpeed = -0.01
+            }else if self.botaoImagem.alphaValue >= 0.991 {
+                fadeSpeed = 0.01
+            }
+            
+        }
         // Do any additional setup after loading the view.
     }
   

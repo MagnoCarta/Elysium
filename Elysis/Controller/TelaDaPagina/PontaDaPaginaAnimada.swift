@@ -41,10 +41,10 @@ class PontaDaPaginaAnimada: NSButton {
         
         switch pontaDaPaginaAnimadaType {
         case .esquerda:
-            self.imagem = NSImage(named: "PontaEsquerda")!
+            self.imagem = NSImage(named: "PontinhaEsquerda")!
             self.ladoEsquerdo = true
         case .direita:
-            self.imagem = NSImage(named: "PontaDireita")!
+            self.imagem = NSImage(named: "PontinhaDireita")!
             self.ladoEsquerdo = false
         }
         
@@ -73,7 +73,6 @@ class PontaDaPaginaAnimada: NSButton {
         }else {
             
             if self.numeroDaImagemAtual > 0 {
-                
                 heightConstraint.constant -= constantHeight
                 xConstraint.constant += xConstant
             self.numeroDaImagemAtual -= 1

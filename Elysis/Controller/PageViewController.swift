@@ -80,7 +80,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
                         runCount = 0
                         ai = true
                     }
-            
+                
                     self.dobradissa!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
                     self.dobradissaEsquerda!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
                     self.optionButton.mouseSobreBotao(mouseLocation: self.mouseLocation)
