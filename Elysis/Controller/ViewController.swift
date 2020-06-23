@@ -34,7 +34,10 @@ class ViewController: NSViewController {
 
     let backg = NSImageView(image: NSImage(named: "Cover")!)
     var botaoImagem = NSImageView(image: NSImage(named: "LettersCover")!)
-
+    var botConstraint : NSLayoutConstraint = NSLayoutConstraint()
+    var heiConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    var leadConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    var widConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     var historia = HistoryModel()
     
@@ -62,11 +65,16 @@ class ViewController: NSViewController {
         
         self.backg.translatesAutoresizingMaskIntoConstraints = false
         self.view.autoresizesSubviews = true
-        self.backg.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        self.backg.heightAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
-        self.backg.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.backg.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        self.backg.imageScaling = .scaleProportionallyDown
+         botConstraint = self.backg.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            botConstraint.isActive = true
+         heiConstraint =
+            self.backg.heightAnchor.constraint(equalToConstant: self.view.frame.height)
+                heiConstraint.isActive = true
+        leadConstraint = self.backg.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+            leadConstraint.isActive = true
+        widConstraint = self.backg.widthAnchor.constraint(equalToConstant: self.view.frame.width)
+            widConstraint.isActive = true
+        self.backg.imageScaling = .scaleAxesIndependently
         self.botaoImagem.translatesAutoresizingMaskIntoConstraints = false
         self.botaoImagem.imageScaling = .scaleProportionallyDown
         self.botaoImagem.centerYAnchor.constraint(equalTo: self.backg.centerYAnchor).isActive = true
@@ -116,9 +124,19 @@ class ViewController: NSViewController {
             
           //  self.view.window?.zoom(self)
         
-        self.view.window?.contentViewController = PageViewController()
+        //self.view.window?.contentViewController = PageViewController()
+            Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
+                self.heiConstraint.constant += 0.73
+                self.widConstraint.constant += 1.1
+                self.leadConstraint.constant -= 1
+                self.botConstraint.constant += 0.35
+                if self.heiConstraint.constant  >= self.view.frame.height + 1050 {
+                    self.view.window?.contentViewController = PageViewController()
+                    timer.invalidate()
+                    
+                }
             
-            
+            }
         }
    
         
