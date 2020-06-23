@@ -24,7 +24,7 @@ let barraDeTextoBackgroundImage = NSImageView(image: NSImage(named: "BarraDeText
     
     func getAnimationDireitaEsquerda() {
         for a in 0...99 {
-            arrayDeImagens.append(NSImage(named: "PaginaPD\(a+1)")!)
+//            arrayDeImagens.append(NSImage(named: "PaginaPD\(a+1)")!)
         }
         
     }
@@ -32,31 +32,30 @@ let barraDeTextoBackgroundImage = NSImageView(image: NSImage(named: "BarraDeText
     func getAnimationEsquerdaDireita() {
         
         for a in 0...99 {
-            arrayDeImagens.append(NSImage(named: "PaginaPD\(100 - a)")!)
+//            arrayDeImagens.append(NSImage(named: "PaginaPD\(100 - a)")!)
         }
         
     }
     
     
     func animarPaginaVirandoa(controler: PageViewController, ladoEsquerdo: Bool) {
-        var runCount = 0
-        Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
-            self.imagemAtual.image = self.arrayDeImagens[runCount]
-            runCount += 1
-            Thread.sleep(forTimeInterval: 0.0002)
-            if runCount >= 100 {
+//        var runCount = 0
+//        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+//            self.imagemAtual.image = self.arrayDeImagens[runCount]
+//            runCount += 1
+//            if runCount >= 100 {
                 if !ladoEsquerdo {
                 self.passarPaginaPraFrente(controler: controler)
-                    
+
                 }else{
                     self.passarPaginaPraTras(controler: controler)
-                    
+
                 }
-                self.arrayDeImagens.removeAll()
-                timer.invalidate()
-            }
-            
-        }
+//                self.arrayDeImagens.removeAll()
+//                timer.invalidate()
+//            }
+//
+//        }
         
     }
     
