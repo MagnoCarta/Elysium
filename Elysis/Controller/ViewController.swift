@@ -47,6 +47,9 @@ class ViewController: NSViewController {
     override func loadView() {
         self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
          self.view.window?.acceptsMouseMovedEvents = true
+        
+        
+       
     }
     
     
@@ -85,6 +88,11 @@ class ViewController: NSViewController {
   
 // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
     override func viewDidAppear() {
+        if self.view.window!.isZoomed {
+            
+            self.view.window?.toggleFullScreen(self)
+            
+        }
 
         
         
@@ -103,9 +111,13 @@ class ViewController: NSViewController {
     override func keyDown(with event: NSEvent) {
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
-
             
-            self.view.window?.contentViewController = PageViewController()
+          //  self.view.window?.performZoom(self)
+            
+          //  self.view.window?.zoom(self)
+        
+        self.view.window?.contentViewController = PageViewController()
+            
             
         }
    
