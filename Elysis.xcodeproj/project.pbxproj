@@ -21,6 +21,11 @@
 		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
 		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
+		5796E0B3249CE0F000E0A2B7 /* negative.json in Resources */ = {isa = PBXBuildFile; fileRef = 5796E0B2249CE0F000E0A2B7 /* negative.json */; };
+		5796E0B8249CE13400E0A2B7 /* HistoriaInicial.json in Resources */ = {isa = PBXBuildFile; fileRef = 5796E0B4249CE13400E0A2B7 /* HistoriaInicial.json */; };
+		5796E0B9249CE13400E0A2B7 /* positive.json in Resources */ = {isa = PBXBuildFile; fileRef = 5796E0B5249CE13400E0A2B7 /* positive.json */; };
+		5796E0BA249CE13400E0A2B7 /* neutral.json in Resources */ = {isa = PBXBuildFile; fileRef = 5796E0B6249CE13400E0A2B7 /* neutral.json */; };
+		5796E0BB249CE13400E0A2B7 /* Parte1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5796E0B7249CE13400E0A2B7 /* Parte1.json */; };
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
 		770D101D2499069B0068C5EA /* HistoriaInicial.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101C2499069B0068C5EA /* HistoriaInicial.json */; };
 		770D101F249907FE0068C5EA /* Parte1.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101E249907FE0068C5EA /* Parte1.json */; };
@@ -69,6 +74,11 @@
 		0F7C4DA0248FD54F00AE06CA /* Page.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page.storyboard; sourceTree = "<group>"; };
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		5796E0B2249CE0F000E0A2B7 /* negative.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = negative.json; sourceTree = "<group>"; };
+		5796E0B4249CE13400E0A2B7 /* HistoriaInicial.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HistoriaInicial.json; sourceTree = "<group>"; };
+		5796E0B5249CE13400E0A2B7 /* positive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = positive.json; sourceTree = "<group>"; };
+		5796E0B6249CE13400E0A2B7 /* neutral.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = neutral.json; sourceTree = "<group>"; };
+		5796E0B7249CE13400E0A2B7 /* Parte1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Parte1.json; sourceTree = "<group>"; };
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		770D101C2499069B0068C5EA /* HistoriaInicial.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HistoriaInicial.json; sourceTree = "<group>"; };
 		770D101E249907FE0068C5EA /* Parte1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Parte1.json; sourceTree = "<group>"; };
@@ -189,9 +199,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		5796E0B1249CE03E00E0A2B7 /* english */ = {
+			isa = PBXGroup;
+			children = (
+				5796E0B4249CE13400E0A2B7 /* HistoriaInicial.json */,
+				5796E0B6249CE13400E0A2B7 /* neutral.json */,
+				5796E0B7249CE13400E0A2B7 /* Parte1.json */,
+				5796E0B5249CE13400E0A2B7 /* positive.json */,
+				5796E0B2249CE0F000E0A2B7 /* negative.json */,
+			);
+			path = english;
+			sourceTree = "<group>";
+		};
 		770D101B2499064F0068C5EA /* HistoryData */ = {
 			isa = PBXGroup;
 			children = (
+				5796E0B1249CE03E00E0A2B7 /* english */,
 				770D101C2499069B0068C5EA /* HistoriaInicial.json */,
 				770D101E249907FE0068C5EA /* Parte1.json */,
 				778B150224994E9300DC2B8D /* positive.json */,
@@ -305,14 +328,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5796E0B8249CE13400E0A2B7 /* HistoriaInicial.json in Resources */,
 				778B150524994F3E00DC2B8D /* negative.json in Resources */,
 				0F7C4D65248F216900AE06CA /* Assets.xcassets in Resources */,
+				5796E0BA249CE13400E0A2B7 /* neutral.json in Resources */,
 				778B150724994F4C00DC2B8D /* neutral.json in Resources */,
 				770D101F249907FE0068C5EA /* Parte1.json in Resources */,
+				5796E0B3249CE0F000E0A2B7 /* negative.json in Resources */,
 				770D101D2499069B0068C5EA /* HistoriaInicial.json in Resources */,
 				0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */,
+				5796E0B9249CE13400E0A2B7 /* positive.json in Resources */,
 				0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */,
 				0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */,
+				5796E0BB249CE13400E0A2B7 /* Parte1.json in Resources */,
 				778B150324994E9300DC2B8D /* positive.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
