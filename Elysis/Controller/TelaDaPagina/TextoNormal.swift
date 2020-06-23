@@ -29,7 +29,7 @@ class TextoNormal: NSObject {
     var textoAtual: String = ""
     var numeroDoTextoAtual: Int = 0
     var x = 190
-    var y = 685
+    var y = 665
     var speed: CGFloat
     var textoCarregando: Bool = false
     var x1Aux = 665
@@ -199,7 +199,7 @@ class TextoNormal: NSObject {
         
         if self.y < 280 {
             
-            self.y = 685
+            self.y = 665
             self.x = self.x1Aux
             
         }

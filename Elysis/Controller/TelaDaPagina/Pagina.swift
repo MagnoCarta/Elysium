@@ -13,8 +13,8 @@ class Pagina: NSObject {
     
     
     
-let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaNormal")!]
-let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaP")!)
+let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaLegal")!]
+let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaLegal")!)
 let texto = TextoNormal(speed: 10)
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
@@ -75,8 +75,8 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         controler.view.addSubview(controler.paginas[controler.numeroDaPaginaAtual].imagemAtual)
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -72).isActive = true
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 658).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -90).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 628).isActive = true
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.centerXAnchor.constraint(equalTo: controler.PaginaPrincipal.centerXAnchor, constant: 0).isActive = true
         
         

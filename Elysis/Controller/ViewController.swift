@@ -32,8 +32,8 @@ extension NSWindow {
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
 
-    let backg = NSImageView(image: NSImage(named: "10")!)
-    var botaoImagem = NSImageView(image: NSImage(named: "CapaSemSimbolo")!)
+    let backg = NSImageView(image: NSImage(named: "BackgroundGame")!)
+    var botaoImagem = NSImageView(image: NSImage(named: "capaDoLivroOficialProntoPronto")!)
 
     
     var historia = HistoryModel()
