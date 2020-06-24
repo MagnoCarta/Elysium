@@ -174,7 +174,6 @@
 				5723265D24916D8B00AE4280 /* Interaction.swift */,
 				0B0394CA2491661F005F0D68 /* ApiController.swift */,
 				0B0394CC24916CBD005F0D68 /* ApiModel.swift */,
-				77847B76249A4A8A0044315B /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,6 +205,7 @@
 		0F7C4DB62497BE2900AE06CA /* TelaDaPagina */ = {
 			isa = PBXGroup;
 			children = (
+				77847B76249A4A8A0044315B /* HistoryModel.swift */,
 				0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */,
 				0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */,
 				0F7C4DBF2499AD9400AE06CA /* Pagina.swift */,
@@ -367,7 +367,6 @@
 				0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */,
 				0F7C4DAD24940AC300AE06CA /* PageViewController.swift in Sources */,
 				0B0394CD24916CBD005F0D68 /* ApiModel.swift in Sources */,
-				0F7C4E3A249F1FA700AE06CA /* SettingsViewController.swift in Sources */,
 				0F7C4DAF2496EADF00AE06CA /* PontaDaPaginaAnimada.swift in Sources */,
 				5796E0BD24A24F3F00E0A2B7 /* SettingsViewController.swift in Sources */,
 				0F7C4E32249BD52A00AE06CA /* OptionButton.swift in Sources */,

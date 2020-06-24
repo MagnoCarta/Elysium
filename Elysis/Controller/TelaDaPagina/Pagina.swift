@@ -16,7 +16,7 @@ class Pagina: NSObject {
 
 let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaLegal")!]
 let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaLegal")!)
-let texto = TextoNormal(speed: 10)
+    let texto = TextoNormal(speed: 100000000000000000000)
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
 let barraDeTexto = NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
@@ -132,7 +132,7 @@ func passarPaginaPraFrente(controler: PageViewController) {
         controler.view.addSubview(self.barraDeTexto)
         self.barraDeTexto.font = NSFont(name: "Baskerville", size: 18)
         self.barraDeTexto.translatesAutoresizingMaskIntoConstraints = false
-        self.barraDeTexto.string = "I am really Happy"
+        self.barraDeTexto.string = ""
         self.barraDeTexto.alphaValue = 0
         self.barraDeTexto.backgroundColor = .clear
         
@@ -148,7 +148,7 @@ func passarPaginaPraFrente(controler: PageViewController) {
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             if self.barraDeTextoBackgroundImage.alphaValue == 0 {
 
-                self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
+                self.barraDeTexto.setFrameOrigin(NSPoint(x: (controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.frame.origin.x) - (self.barraDeTextoBackgroundImage.frame.size.width - 20) , y: self.barraDeTextoBackgroundImage.frame.minY + 65))
 
             }
             self.barraDeTextoBackgroundImage.alphaValue += 0.005
@@ -156,7 +156,7 @@ func passarPaginaPraFrente(controler: PageViewController) {
             
             if self.barraDeTextoBackgroundImage.alphaValue > 1 {
                 
-                
+                controler.view.window?.makeFirstResponder(self.barraDeTexto)
                 self.texto.textoCarregando = false
                 timer.invalidate()
             }
