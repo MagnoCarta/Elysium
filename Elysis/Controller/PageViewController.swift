@@ -72,7 +72,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         self.recriarTelaLoad()
         
        }
-        self.loadDoJogoMockado()
+     //   self.loadDoJogoMockado()
         
         var runCount =  CGFloat(0)
         var ai = true
@@ -231,9 +231,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
     func loadDoJogoMockado() {
-        let arrayDeIteracoes : [String] = ["positive","positive","positive"]
+        let arrayDeIteracoes : [String] = ["positive","positive"]
         let numeroDeIteracoes = arrayDeIteracoes.count
-        if iteracaoAtual == numeroDeIteracoes {
+        if iteracaoAtual == numeroDeIteracoes+1 {
             
             return
             
