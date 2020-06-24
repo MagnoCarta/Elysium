@@ -125,6 +125,7 @@ class ViewController: NSViewController {
           //  self.view.window?.zoom(self)
         
         //self.view.window?.contentViewController = PageViewController()
+            
             Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
                 self.heiConstraint.constant += 0.73
                 self.widConstraint.constant += 1.1

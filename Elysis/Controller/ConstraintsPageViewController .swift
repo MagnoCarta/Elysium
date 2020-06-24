@@ -41,7 +41,8 @@ extension PageViewController {
         self.xConstraint.isActive = true
         dobradissa.imageScaling = .scaleProportionallyDown
         dobradissaEsquerda.translatesAutoresizingMaskIntoConstraints = false
-        dobradissaEsquerda.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8).isActive = true
+        self.botConstraint = dobradissaEsquerda.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8)
+        self.botConstraint.isActive = true
         self.heightConstraint1 = dobradissaEsquerda.heightAnchor.constraint(equalToConstant: 65)
         self.heightConstraint1.isActive = true
         self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -447)
@@ -67,13 +68,24 @@ extension PageViewController {
         self.optionButton.imageScaling = .scaleProportionallyDown
     }
     
-    func reorganizarConstraints(dobradissa: PontaDaPaginaAnimada,dobradissaEsquerda: PontaDaPaginaAnimada,LapisAnimado: LapisFeedback) {
-        dobradissaEsquerda.removeFromSuperview()
-        dobradissa.removeFromSuperview()
+    func reorganizarConstraints(LapisAnimado: LapisFeedback) {
+        self.dobradissaEsquerda!.removeFromSuperview()
+        self.dobradissa!.removeFromSuperview()
         LapisAnimado.removeFromSuperview()
         self.view.addSubview(LapisAnimado)
-        self.view.addSubview(dobradissaEsquerda)
-        self.view.addSubview(dobradissa)
+        if self.numeroDaPaginaAtual > 0 {
+            
+          
+            self.view.addSubview(self.dobradissaEsquerda!)
+            self.dobradissaEsquerda!.setFrameOrigin(NSPoint(x: 140, y: (self.dobradissa?.frame.minY)!))
+        }
+        self.view.addSubview(self.dobradissa!)
+//        self.dobradissa?.translatesAutoresizingMaskIntoConstraints = false
+//        self.xConstraint.isActive = true
+//        self.dobradissa?.bottomAnchor.constraint(equalTo: self.paginas[self.numeroDaPaginaAtual].imagemAtual.bottomAnchor, constant: -8).isActive = true
+//        self.heightConstraint.isActive = true
+        
+        
         
     }
     

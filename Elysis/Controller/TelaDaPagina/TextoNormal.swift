@@ -57,6 +57,15 @@ class TextoNormal: NSObject {
         }
         if self.y - auxi < 300 && self.x  > 221 || (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
             
+            var auxis = controler.dobradissa!.frame.origin
+            auxis.y += 1
+            auxis.x += 1
+            Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                controler.dobradissa!.dobrarPontaDaPagina(mouseLocation: auxis, xConstraint: controler.xConstraint, heightConstraint: controler.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
+                if controler.dobradissa!.numeroDaImagemAtual >= 20 {
+                    timer.invalidate()
+                }
+            }
         }
         
         else {

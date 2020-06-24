@@ -42,6 +42,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     let dobradissa = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
     let dobradissaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
     var isLoading: Bool = false
+    var botConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -59,6 +60,11 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         self.dobradissaEsquerda!.action = #selector(virarPagina(_:))
         
         organizarTela(dobradissa: dobradissa!, dobradissaEsquerda: dobradissaEsquerda!)
+        if self.numeroDaPaginaAtual == 0 {
+            
+            self.dobradissaEsquerda?.removeFromSuperview()
+            
+        }
        if self.respostasDoUsuario.count > 0 {
         self.isLoading = true
         
@@ -156,7 +162,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
                 let auxiliarBooleanoProLado = true
                 self.paginas[numeroDaPaginaAtual].getAnimationEsquerdaDireita()
            self.paginas[self.numeroDaPaginaAtual].animarPaginaVirandoa(controler: self, ladoEsquerdo: auxiliarBooleanoProLado)
-                self.reorganizarConstraints(dobradissa: self.dobradissa!, dobradissaEsquerda: self.dobradissaEsquerda!, LapisAnimado: self.lapisAnimado)
+                self.reorganizarConstraints(LapisAnimado: self.lapisAnimado)
+                
             }
             
         }else {
@@ -171,7 +178,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
                 self.paginas[self.numeroDaPaginaAtual].animarPaginaVirandoa(controler: self, ladoEsquerdo: auxiliarBooleanoProLado)
                
                 
-                self.reorganizarConstraints(dobradissa: self.dobradissa!, dobradissaEsquerda: self.dobradissaEsquerda!, LapisAnimado: self.lapisAnimado)
+                self.reorganizarConstraints(LapisAnimado: self.lapisAnimado)
                
             }
             
