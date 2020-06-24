@@ -16,7 +16,7 @@ class Pagina: NSObject {
 
 let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaLegal")!]
 let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaLegal")!)
-    let texto = TextoNormal(speed: 100000000000000000000)
+    let texto = TextoNormal(speed: UserDefaults.standard.double(forKey: "textSpeed"))
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
 let barraDeTexto = NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
