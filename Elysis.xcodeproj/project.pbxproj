@@ -15,9 +15,7 @@
 		0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D66248F216900AE06CA /* Cover.storyboard */; };
 		0F7C4D74248F216900AE06CA /* ElysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D73248F216900AE06CA /* ElysisTests.swift */; };
 		0F7C4D7F248F216900AE06CA /* ElysisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */; };
-		0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D98248F2AEF00AE06CA /* Sprites.swift */; };
 		0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */; };
-		0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9C248F2B8400AE06CA /* GameData.swift */; };
 		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
 		0F7C4DA3248FD58A00AE06CA /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */; };
 		0F7C4DAD24940AC300AE06CA /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DAC24940AC300AE06CA /* PageViewController.swift */; };
@@ -26,7 +24,6 @@
 		0F7C4DB8249823C500AE06CA /* ConstraintsPageViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DB7249823C500AE06CA /* ConstraintsPageViewController .swift */; };
 		0F7C4DC02499AD9400AE06CA /* Pagina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4DBF2499AD9400AE06CA /* Pagina.swift */; };
 		0F7C4E32249BD52A00AE06CA /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E31249BD52A00AE06CA /* OptionButton.swift */; };
-		0F7C4E34249C4CBA00AE06CA /* BarraDeTexto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E33249C4CBA00AE06CA /* BarraDeTexto.swift */; };
 		0F7C4E36249DDB1600AE06CA /* LapisFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */; };
 		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
 		5796E0BD24A24F3F00E0A2B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */; };
@@ -72,9 +69,7 @@
 		0F7C4D7A248F216900AE06CA /* ElysisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElysisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElysisUITests.swift; sourceTree = "<group>"; };
 		0F7C4D80248F216900AE06CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F7C4D98248F2AEF00AE06CA /* Sprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprites.swift; sourceTree = "<group>"; };
 		0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTrack.swift; sourceTree = "<group>"; };
-		0F7C4D9C248F2B8400AE06CA /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		0F7C4DA0248FD54F00AE06CA /* Page.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Page.storyboard; sourceTree = "<group>"; };
 		0F7C4DA2248FD58A00AE06CA /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		0F7C4DAC24940AC300AE06CA /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +78,6 @@
 		0F7C4DB7249823C500AE06CA /* ConstraintsPageViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConstraintsPageViewController .swift"; sourceTree = "<group>"; };
 		0F7C4DBF2499AD9400AE06CA /* Pagina.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagina.swift; sourceTree = "<group>"; };
 		0F7C4E31249BD52A00AE06CA /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
-		0F7C4E33249C4CBA00AE06CA /* BarraDeTexto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarraDeTexto.swift; sourceTree = "<group>"; };
 		0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapisFeedback.swift; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -175,9 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				770D101B2499064F0068C5EA /* HistoryData */,
-				0F7C4D9C248F2B8400AE06CA /* GameData.swift */,
 				0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */,
-				0F7C4D98248F2AEF00AE06CA /* Sprites.swift */,
 				57E40A5D24911DAA00FDB2D4 /* GameState.swift */,
 				5723265D24916D8B00AE4280 /* Interaction.swift */,
 				0B0394CA2491661F005F0D68 /* ApiController.swift */,
@@ -218,7 +210,6 @@
 				0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */,
 				0F7C4DBF2499AD9400AE06CA /* Pagina.swift */,
 				0F7C4E31249BD52A00AE06CA /* OptionButton.swift */,
-				0F7C4E33249C4CBA00AE06CA /* BarraDeTexto.swift */,
 				0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */,
 			);
 			path = TelaDaPagina;
@@ -376,7 +367,7 @@
 				0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */,
 				0F7C4DAD24940AC300AE06CA /* PageViewController.swift in Sources */,
 				0B0394CD24916CBD005F0D68 /* ApiModel.swift in Sources */,
-				0F7C4D99248F2AEF00AE06CA /* Sprites.swift in Sources */,
+				0F7C4E3A249F1FA700AE06CA /* SettingsViewController.swift in Sources */,
 				0F7C4DAF2496EADF00AE06CA /* PontaDaPaginaAnimada.swift in Sources */,
 				5796E0BD24A24F3F00E0A2B7 /* SettingsViewController.swift in Sources */,
 				0F7C4E32249BD52A00AE06CA /* OptionButton.swift in Sources */,
@@ -385,12 +376,10 @@
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
 				5723265E24916D8B00AE4280 /* Interaction.swift in Sources */,
 				77847B77249A4A8A0044315B /* HistoryModel.swift in Sources */,
-				0F7C4D9D248F2B8400AE06CA /* GameData.swift in Sources */,
 				0F7C4DB52497B55B00AE06CA /* TextoNormal.swift in Sources */,
 				57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */,
 				0F7C4E36249DDB1600AE06CA /* LapisFeedback.swift in Sources */,
 				0F7C4DB8249823C500AE06CA /* ConstraintsPageViewController .swift in Sources */,
-				0F7C4E34249C4CBA00AE06CA /* BarraDeTexto.swift in Sources */,
 				0F7C4D61248F216400AE06CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

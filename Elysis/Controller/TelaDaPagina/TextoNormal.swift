@@ -57,6 +57,15 @@ class TextoNormal: NSObject {
         }
         if self.y - auxi < 300 && self.x  > 221 || (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
             
+            var auxis = controler.dobradissa!.frame.origin
+            auxis.y += 1
+            auxis.x += 1
+            Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                controler.dobradissa!.dobrarPontaDaPagina(mouseLocation: auxis, xConstraint: controler.xConstraint, heightConstraint: controler.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
+                if controler.dobradissa!.numeroDaImagemAtual >= 20 {
+                    timer.invalidate()
+                }
+            }
         }
         
         else {
@@ -97,7 +106,7 @@ class TextoNormal: NSObject {
                     self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(a)"
                 }
                 
-                Thread.sleep(forTimeInterval: TimeInterval(1)/speed)
+                Thread.sleep(forTimeInterval: TimeInterval(1/speed))
             }
             operac.append(opera)
         }
@@ -134,8 +143,13 @@ class TextoNormal: NSObject {
             self.y  -= 120
         }else {
             self.horaDaBarraDeTexto = true
+            if !controler.isLoading {
             controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.string)
-        
+            }
+            
+            if controler.iteracaoAtual == controler.respostasDoUsuario.count {
+                controler.isLoading = false
+            }
         controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
             DispatchQueue.main.async {
             self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)

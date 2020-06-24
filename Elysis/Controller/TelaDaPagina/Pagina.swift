@@ -13,6 +13,7 @@ class Pagina: NSObject {
     
     
     
+
 let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaLegal")!]
 let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaLegal")!)
 let texto = TextoNormal(speed: 10)
@@ -20,6 +21,44 @@ let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direi
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
 let barraDeTexto = NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
 let barraDeTextoBackgroundImage = NSImageView(image: NSImage(named: "BarraDeTextoBackground")!)
+    
+    
+    func getAnimationDireitaEsquerda() {
+        for a in 0...99 {
+//            arrayDeImagens.append(NSImage(named: "PaginaPD\(a+1)")!)
+        }
+        
+    }
+    
+    func getAnimationEsquerdaDireita() {
+        
+        for a in 0...99 {
+//            arrayDeImagens.append(NSImage(named: "PaginaPD\(100 - a)")!)
+        }
+        
+    }
+    
+    
+    func animarPaginaVirandoa(controler: PageViewController, ladoEsquerdo: Bool) {
+//        var runCount = 0
+//        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+//            self.imagemAtual.image = self.arrayDeImagens[runCount]
+//            runCount += 1
+//            if runCount >= 100 {
+                if !ladoEsquerdo {
+                self.passarPaginaPraFrente(controler: controler)
+
+                }else{
+                    self.passarPaginaPraTras(controler: controler)
+
+                }
+//                self.arrayDeImagens.removeAll()
+//                timer.invalidate()
+//            }
+//
+//        }
+        
+    }
     
 func passarPaginaPraFrente(controler: PageViewController) {
     
@@ -108,7 +147,9 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             if self.barraDeTextoBackgroundImage.alphaValue == 0 {
+
                 self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
+
             }
             self.barraDeTextoBackgroundImage.alphaValue += 0.005
             self.barraDeTexto.alphaValue += 0.005
