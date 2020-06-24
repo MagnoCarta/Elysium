@@ -72,6 +72,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         self.recriarTelaLoad()
         
        }
+        self.loadDoJogoMockado()
         
         var runCount =  CGFloat(0)
         var ai = true
@@ -228,6 +229,31 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     }
     
     
+    
+    func loadDoJogoMockado() {
+        let arrayDeIteracoes : [String] = ["positive","positive","positive"]
+        let numeroDeIteracoes = arrayDeIteracoes.count
+        if iteracaoAtual == numeroDeIteracoes {
+            
+            return
+            
+        }
+        if self.paginas[self.numeroDaPaginaAtual].texto.numeroDoTextoAtual > 0 {
+            self.paginas[self.numeroDaPaginaAtual].texto.auxi =  self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*(Int(self.paginas[self.numeroDaPaginaAtual].texto.arrayDeTextoNormal[self.paginas[self.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].font!.capHeight)+11)
+        }
+        if self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < 300 && self.paginas[self.numeroDaPaginaAtual].texto.x  > 221 || (self.iteracaoAtual == 5 && self.numeroDoTextoAtual == 5) {
+            self.virarPagina(self.dobradissa!)
+        }else {
+        self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 10000000000, controler: self)
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+            if self.paginas[self.numeroDaPaginaAtual].texto.textoFormatadoEmArrays.count > 0 {
+                timer.invalidate()
+                return self.loadDoJogoMockado()
+                
+            }
+        }
+    }
 
     
 

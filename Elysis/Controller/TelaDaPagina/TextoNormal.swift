@@ -30,7 +30,7 @@ class TextoNormal: NSObject {
     var numeroDoTextoAtual: Int = 0
     var x = 190
     var y = 665
-    var speed: CGFloat
+    var speed: TimeInterval
     var textoCarregando: Bool = false
     var x1Aux = 665
     var numeroDeEspacos = 0
@@ -44,7 +44,7 @@ class TextoNormal: NSObject {
         fatalError("Não foi Possível iniciar!")
     }
     
-    init(speed: CGFloat){
+    init(speed: TimeInterval){
         self.speed = speed
         
     }
@@ -222,7 +222,7 @@ class TextoNormal: NSObject {
         
         
         self.numeroDeLinhas = 1+self.textoFormatadoEmArrays[self.numeroDoTextoAtual].count/(52*18/Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual].font!.pointSize))
-        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: UserDefaults.standard.double(forKey: "textSpeed"))
+        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: self.speed)
         
         self.numeroDoTextoAtual += 1
         controler.numeroDoTextoAtual += 1
