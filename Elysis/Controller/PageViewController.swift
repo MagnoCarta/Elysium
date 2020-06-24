@@ -72,7 +72,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         self.recriarTelaLoad()
         
        }
-     //   self.loadDoJogoMockado()
+       // self.loadDoJogoMockado()
         
         var runCount =  CGFloat(0)
         var ai = true

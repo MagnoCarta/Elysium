@@ -144,7 +144,7 @@ class TextoNormal: NSObject {
         }else {
             self.horaDaBarraDeTexto = true
             if !controler.isLoading {
-            controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.string)
+                controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue)
             }
             
             if controler.iteracaoAtual == controler.respostasDoUsuario.count {

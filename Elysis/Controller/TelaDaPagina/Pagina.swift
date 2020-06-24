@@ -9,6 +9,7 @@
 import Cocoa
 
 
+
 class Pagina: NSObject {
     
     
@@ -19,7 +20,8 @@ let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaLegal")!
     let texto = TextoNormal(speed: UserDefaults.standard.double(forKey: "textSpeed"))
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
-let barraDeTexto = NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
+let barraDeTexto = NSTextField(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
+//let placeholder = NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
 let barraDeTextoBackgroundImage = NSImageView(image: NSImage(named: "BarraDeTextoBackground")!)
     
     
@@ -132,10 +134,22 @@ func passarPaginaPraFrente(controler: PageViewController) {
         controler.view.addSubview(self.barraDeTexto)
         self.barraDeTexto.font = NSFont(name: "Baskerville", size: 18)
         self.barraDeTexto.translatesAutoresizingMaskIntoConstraints = false
-        self.barraDeTexto.string = ""
-        self.barraDeTexto.alphaValue = 0
-        self.barraDeTexto.backgroundColor = .clear
+        let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : NSFont(name: "HelveticaNeue-Light", size: 19)!, NSAttributedString.Key.foregroundColor : NSColor.gray]
         
+        self.barraDeTexto.placeholderAttributedString = NSAttributedString(string: "Enter your Name", attributes: attributes)
+        self.barraDeTexto.alphaValue = 0
+        self.barraDeTexto.backgroundColor = .systemBlue
+        self.barraDeTexto.textColor = .black
+        
+        
+//         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+//
+//            if self.barraDeTexto.string = "" {
+//
+//
+//            }
+//
+//        }
         
 //        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
 //        self.barraDeTexto.bottomAnchor.constraint(equalTo: self.imagemAtual.topAnchor,constant: 0).isActive = true
@@ -148,10 +162,10 @@ func passarPaginaPraFrente(controler: PageViewController) {
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             if self.barraDeTextoBackgroundImage.alphaValue == 0 {
 
-                self.barraDeTexto.setFrameOrigin(NSPoint(x: (controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.frame.origin.x) - (self.barraDeTextoBackgroundImage.frame.size.width - 20) , y: self.barraDeTextoBackgroundImage.frame.minY + 65))
+                self.barraDeTexto.setFrameOrigin(NSPoint(x: 200  , y: self.barraDeTextoBackgroundImage.frame.minY + 65))
 
             }
-            self.barraDeTextoBackgroundImage.alphaValue += 0.005
+            self.barraDeTextoBackgroundImage.alphaValue += 0.000
             self.barraDeTexto.alphaValue += 0.005
             
             if self.barraDeTextoBackgroundImage.alphaValue > 1 {
