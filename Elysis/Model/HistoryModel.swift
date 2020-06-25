@@ -96,7 +96,7 @@ class HistoryModel {
         var respostaUsuario : String = ""
         var respostaPolaridade : String = ""
         
-        if interactions.isEmpty == true {
+        if interactions.isEmpty == true {   
             return historia
         }
         

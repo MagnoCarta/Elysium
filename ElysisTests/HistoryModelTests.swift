@@ -189,6 +189,24 @@ class HistoryModelTests: XCTestCase {
         
     }
     
+    func test_historyModel_loadHistory_inicialGame () {
+        
+        //Given
+        let sut = HistoryModel()
+        let _ = GameState()
+        
+        //When
+        let historia = sut.loadHistory()
+        
+        //Then
+        XCTAssertEqual(historia, [])
+        
+        
+        
+        
+        
+    }
+    
     func getHistoryPositiveNeutralNegativeNeutral() -> [String]{
         let historiaInicial = "O vazio é bem confortante e seguro de fato, não concorda?, aqui você não tem nada a temer, nada a arriscar, nada a expor, é a bolha perfeita, Nada acontece!\nVocê não parece muito confortável ou seguro, ou estou enganado?, poucos são aqueles que merecem o vazio, estou aqui para alerta-lo, você ainda pode merecer ,porém saiba de uma coisa, após começar, não terá mais volta, Algo maior está para acontecer e suas ações influenciarão oque ocorrerá, Como você se sente sabendo de tudo isso!?\n"
         
