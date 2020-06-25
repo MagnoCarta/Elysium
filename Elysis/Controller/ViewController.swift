@@ -153,10 +153,24 @@ class ViewController: NSViewController {
         self.view.window?.makeFirstResponder(self)
         self.view.window?.makeKey()
         
-        if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
-            
-            self.view.window?.contentViewController = PageViewController()
+        Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
+            self.heiConstraint.constant += 0.73
+            self.widConstraint.constant += 1.1
+            self.leadConstraint.constant -= 1
+            self.botConstraint.constant += 0.35
+            if self.heiConstraint.constant  >= self.view.frame.height + 1050 {
+                self.view.window?.contentViewController = PageViewController()
+                timer.invalidate()
+                
+            }
+        
         }
+        
+        
+//        if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
+//
+//            self.view.window?.contentViewController = PageViewController()
+//        }
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

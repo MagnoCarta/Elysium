@@ -220,7 +220,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
     func recriarTelaLoad() {
-//        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
 //
 //        
 //        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)

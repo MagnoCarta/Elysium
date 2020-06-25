@@ -133,9 +133,12 @@ func passarPaginaPraFrente(controler: PageViewController) {
         self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
         self.barraDeTexto.leadingAnchor.constraint(equalTo:self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].leadingAnchor).isActive = true
         self.barraDeTexto.trailingAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].trailingAnchor).isActive = true
-        let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : NSFont(name: "Baskerville", size: 23)!, NSAttributedString.Key.foregroundColor : NSColor.black]
+        let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : NSFont(name: "Baskerville", size: 23)!, NSAttributedString.Key.foregroundColor : NSColor.gray]
         self.barraDeTexto.placeholderAttributedString = NSAttributedString(string: "Enter your Feeling Here...", attributes: attributes)
         self.barraDeTexto.alphaValue = 0
+        self.barraDeTexto.textColor = .black
+        self.barraDeTexto.backgroundColor = .lightGray
+        
         
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             self.barraDeTexto.alphaValue += 0.01
