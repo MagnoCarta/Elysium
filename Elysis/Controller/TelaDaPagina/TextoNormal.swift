@@ -24,6 +24,22 @@ extension StringProtocol {
     }
 }
 
+extension StringProtocol {
+    subscript(offset: Int) -> Character { self[index(startIndex, offsetBy: offset)] }
+    subscript(range: Range<Int>) -> SubSequence {
+        let startIndex = index(self.startIndex, offsetBy: range.lowerBound)
+        return self[startIndex..<index(startIndex, offsetBy: range.count)]
+    }
+    subscript(range: ClosedRange<Int>) -> SubSequence {
+        let startIndex = index(self.startIndex, offsetBy: range.lowerBound)
+        return self[startIndex..<index(startIndex, offsetBy: range.count)]
+    }
+    subscript(range: PartialRangeFrom<Int>) -> SubSequence { self[index(startIndex, offsetBy: range.lowerBound)...] }
+    subscript(range: PartialRangeThrough<Int>) -> SubSequence { self[...index(startIndex, offsetBy: range.upperBound)] }
+    subscript(range: PartialRangeUpTo<Int>) -> SubSequence { self[..<index(startIndex, offsetBy: range.upperBound)] }
+}
+
+
 class TextoNormal: NSObject {
     var arrayDeTextoNormal: [NSTextView] = []
     var textoAtual: String = ""
@@ -56,7 +72,7 @@ class TextoNormal: NSObject {
             auxi =  self.numeroDeLinhas*(Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].font!.capHeight)+11)
         }
         if self.y - auxi < 300 && self.x  > 221 || (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
-            
+            print("aa")
             var auxis = controler.dobradissa!.frame.origin
             auxis.y += 1
             auxis.x += 1
@@ -96,42 +112,21 @@ class TextoNormal: NSObject {
     
     func animacaoTextoRolando(numeroDoTextoAtual: Int, speed: TimeInterval) {
         self.textoCarregando = true
-        var operac = [BlockOperation]()
-
-        for a in self.textoFormatadoEmArrays[numeroDoTextoAtual] {
-            
-            let opera = BlockOperation {
-                DispatchQueue.main.async {
-                    
-                    self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(a)"
-                }
+        
+        
+        var runCount = 0
+        Timer.scheduledTimer(withTimeInterval: 1/speed, repeats: true) { timer in
+        
+            self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(self.textoFormatadoEmArrays[numeroDoTextoAtual][runCount...runCount])"
+            runCount += 1
+            if runCount >= self.textoFormatadoEmArrays[numeroDoTextoAtual].count {
+                print("Deu bao")
+                self.textoCarregando = false
+                timer.invalidate()
                 
-                Thread.sleep(forTimeInterval: TimeInterval(1/speed))
             }
-            operac.append(opera)
         }
-        for i in 1...self.textoFormatadoEmArrays[numeroDoTextoAtual].count-1 {
-            operac[i].addDependency(operac[i-1])
-            
-        }
-        
-        
-        let operaFinal = BlockOperation {
-            self.textoCarregando = false
-        }
-        
-        operaFinal.addDependency(operac[self.textoFormatadoEmArrays[numeroDoTextoAtual].count-1])
-        let queue = OperationQueue()
-        
-        for i in 0...self.textoFormatadoEmArrays[numeroDoTextoAtual].count-1 {
-            
-            queue.addOperation(operac[i])
-            
-        }
-        
-        
-        
-        queue.addOperation(operaFinal)
+
         
     }
     
@@ -144,7 +139,7 @@ class TextoNormal: NSObject {
         }else {
             self.horaDaBarraDeTexto = true
             if !controler.isLoading {
-            controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.string)
+            //controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.string)
             }
             
             if controler.iteracaoAtual == controler.respostasDoUsuario.count {

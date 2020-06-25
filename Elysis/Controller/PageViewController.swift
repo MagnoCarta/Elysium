@@ -33,7 +33,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     var numeroDePaginas = 1
     var iteracaoAtual = 0
     let historia = HistoryModel()
-    var respostasDoUsuario: [String] = []
+    var respostasDoUsuario: [String] = ["positive","positive","positive","positive","positive"]
     var imagemAtualLapisAnimation: Int = 0
     var incrementadorDeImagemLapisAnimation: Int = 1
     let lapisAnimado: LapisFeedback = LapisFeedback()
@@ -43,6 +43,9 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     let dobradissaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
     var isLoading: Bool = false
     var botConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    var isWriting: Bool = false
+    var willWrite: Bool = true
+    
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -98,8 +101,32 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
          return $0 }
         
         
-        self.lapisAnimado.arrumarConstraint(controler: self, xConstraint: self.lapisAnimado.xConstraint, bottomConstraint: self.lapisAnimado.bottomConstraint)
         
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.lapisAnimado.animar(controler: self)
+        }
+        
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+        if self.paginas[self.numeroDaPaginaAtual].texto.arrayDeTextoNormal.count > 0 {
+            
+            if self.isWriting && self.willWrite {
+                if self.lapisAnimado.alphaValue != 1 {
+                    self.lapisAnimado.alphaValue += 0.1
+                }
+            } else if self.willWrite{
+                if self.lapisAnimado.alphaValue < 0.5  {
+                    self.lapisAnimado.alphaValue += 0.1
+                } else if self.lapisAnimado.alphaValue != 0.5 {
+                    self.lapisAnimado.alphaValue -= 0.1
+                }
+            } else  {
+                if self.lapisAnimado.alphaValue > 0 {
+                    self.lapisAnimado.alphaValue -= 0.1
+                }
+            }
+            }
+        }
         
          
     }
@@ -126,6 +153,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         if event.keyCode == 36 {
             if true {
             self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 620, controler: self)
+                self.lapisAnimado.arrumarConstraint(controler: self, xConstraint: self.lapisAnimado.xConstraint, bottomConstraint: self.lapisAnimado.bottomConstraint)
             }
             
         }
@@ -140,6 +168,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         if event.locationInWindow.y > self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.minY && event.locationInWindow.y < self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.maxY && event.locationInWindow.x > self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.minX/2 - 30 && event.locationInWindow.x < self.paginas[self.numeroDaPaginaAtual].imagemAtual.frame.maxX {
         
              self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 620, controler: self)
+            self.lapisAnimado.arrumarConstraint(controler: self, xConstraint: self.lapisAnimado.xConstraint, bottomConstraint: self.lapisAnimado.bottomConstraint)
         }
         if event.locationInWindow.y > self.optionButton.frame.minY && event.locationInWindow.y < self.optionButton.frame.maxY && event.locationInWindow.x > self.optionButton.frame.minX && event.locationInWindow.x < self.optionButton.frame.maxX {
             
@@ -191,10 +220,10 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
     func recriarTelaLoad() {
-        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
-        
-        
-        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+//        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+//
+//        
+//        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
 //                    for a in 0...self.respostasDoUsuario.count-1 {
 //                        let opera = BlockOperation {
 //                            DispatchQueue.main.async {
