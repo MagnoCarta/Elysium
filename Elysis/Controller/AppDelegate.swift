@@ -11,10 +11,19 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    
+    
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let defaults = UserDefaults.standard
+        defaults.register(defaults:
+            [
+                "bgmVolume": 1,
+                "sfxVolume": 1,
+                "textSize": 20,
+                "textSpeed": 30
+            ])
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
