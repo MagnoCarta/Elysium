@@ -13,7 +13,6 @@
 		0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D62248F216400AE06CA /* ViewController.swift */; };
 		0F7C4D65248F216900AE06CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D64248F216900AE06CA /* Assets.xcassets */; };
 		0F7C4D68248F216900AE06CA /* Cover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4D66248F216900AE06CA /* Cover.storyboard */; };
-		0F7C4D74248F216900AE06CA /* ElysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D73248F216900AE06CA /* ElysisTests.swift */; };
 		0F7C4D7F248F216900AE06CA /* ElysisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */; };
 		0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4D9A248F2B2000AE06CA /* SoundTrack.swift */; };
 		0F7C4DA1248FD54F00AE06CA /* Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7C4DA0248FD54F00AE06CA /* Page.storyboard */; };
@@ -30,10 +29,13 @@
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
 		770D101D2499069B0068C5EA /* HistoriaInicial.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101C2499069B0068C5EA /* HistoriaInicial.json */; };
 		770D101F249907FE0068C5EA /* Parte1.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101E249907FE0068C5EA /* Parte1.json */; };
+		77106DDC2497FA57004A1A0A /* GameStationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77106DDB2497FA57004A1A0A /* GameStationTests.swift */; };
+		77106DDE2498173C004A1A0A /* ApiControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77106DDD2498173C004A1A0A /* ApiControllerTests.swift */; };
 		77847B77249A4A8A0044315B /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77847B76249A4A8A0044315B /* HistoryModel.swift */; };
 		778B150324994E9300DC2B8D /* positive.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150224994E9300DC2B8D /* positive.json */; };
 		778B150524994F3E00DC2B8D /* negative.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150424994F3E00DC2B8D /* negative.json */; };
 		778B150724994F4C00DC2B8D /* neutral.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150624994F4C00DC2B8D /* neutral.json */; };
+		77F0DC60249EFED50088CB41 /* HistoryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F0DC5F249EFED50088CB41 /* HistoryModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,6 @@
 		0F7C4D69248F216900AE06CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7C4D6A248F216900AE06CA /* Elysis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Elysis.entitlements; sourceTree = "<group>"; };
 		0F7C4D6F248F216900AE06CA /* ElysisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElysisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F7C4D73248F216900AE06CA /* ElysisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElysisTests.swift; sourceTree = "<group>"; };
 		0F7C4D75248F216900AE06CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F7C4D7A248F216900AE06CA /* ElysisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElysisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7C4D7E248F216900AE06CA /* ElysisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElysisUITests.swift; sourceTree = "<group>"; };
@@ -80,14 +81,18 @@
 		0F7C4E31249BD52A00AE06CA /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
 		0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapisFeedback.swift; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		5763D16E24A4DA1B00E5471A /* ElysisRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElysisRelease.entitlements; sourceTree = "<group>"; };
 		5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		770D101C2499069B0068C5EA /* HistoriaInicial.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HistoriaInicial.json; sourceTree = "<group>"; };
 		770D101E249907FE0068C5EA /* Parte1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Parte1.json; sourceTree = "<group>"; };
+		77106DDB2497FA57004A1A0A /* GameStationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStationTests.swift; sourceTree = "<group>"; };
+		77106DDD2498173C004A1A0A /* ApiControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiControllerTests.swift; sourceTree = "<group>"; };
 		77847B76249A4A8A0044315B /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		778B150224994E9300DC2B8D /* positive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = positive.json; sourceTree = "<group>"; };
 		778B150424994F3E00DC2B8D /* negative.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = negative.json; sourceTree = "<group>"; };
 		778B150624994F4C00DC2B8D /* neutral.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = neutral.json; sourceTree = "<group>"; };
+		77F0DC5F249EFED50088CB41 /* HistoryModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +143,7 @@
 		0F7C4D5F248F216400AE06CA /* Elysis */ = {
 			isa = PBXGroup;
 			children = (
+				5763D16E24A4DA1B00E5471A /* ElysisRelease.entitlements */,
 				0F7C4D6A248F216900AE06CA /* Elysis.entitlements */,
 				0F7C4D69248F216900AE06CA /* Info.plist */,
 				0F7C4D8E248F282300AE06CA /* Controller */,
@@ -150,8 +156,10 @@
 		0F7C4D72248F216900AE06CA /* ElysisTests */ = {
 			isa = PBXGroup;
 			children = (
-				0F7C4D73248F216900AE06CA /* ElysisTests.swift */,
 				0F7C4D75248F216900AE06CA /* Info.plist */,
+				77106DDB2497FA57004A1A0A /* GameStationTests.swift */,
+				77106DDD2498173C004A1A0A /* ApiControllerTests.swift */,
+				77F0DC5F249EFED50088CB41 /* HistoryModelTests.swift */,
 			);
 			path = ElysisTests;
 			sourceTree = "<group>";
@@ -298,6 +306,7 @@
 					};
 					0F7C4D6E248F216900AE06CA = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 						TestTargetID = 0F7C4D5C248F216400AE06CA;
 					};
 					0F7C4D79248F216900AE06CA = {
@@ -387,7 +396,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F7C4D74248F216900AE06CA /* ElysisTests.swift in Sources */,
+				77F0DC60249EFED50088CB41 /* HistoryModelTests.swift in Sources */,
+				77106DDE2498173C004A1A0A /* ApiControllerTests.swift in Sources */,
+				77106DDC2497FA57004A1A0A /* GameStationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = Elysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,7 +574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Elysis/Elysis.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Elysis/ElysisRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -584,6 +595,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ElysisTests/Info.plist;
@@ -595,6 +607,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = MagnoCarta.ElysisTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Elysis.app/Contents/MacOS/Elysis";
 			};
@@ -605,6 +618,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ElysisTests/Info.plist;

@@ -49,7 +49,7 @@ class HistoryModel {
                 }
                 else {
                 
-                    if polarityBefore == "negative" {
+                    if self.polarity! == "negative" {
                         self.json = self.json![self.polarity!] as? [String : Any]
                         guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
                         completion(result)
@@ -86,5 +86,85 @@ class HistoryModel {
         self.json = try? (JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String : Any])
         guard let result = self.json!["\(jsonKey)"] as? String else {fatalError("ERRO")}
         return result
+    }
+    
+    func loadHistory() -> [String] {
+        
+        let gameState = GameState()
+        var historia: [String] = []
+        let interactions = gameState.load()
+        var respostaUsuario : String = ""
+        var respostaPolaridade : String = ""
+        
+        if interactions.isEmpty == true {   
+            return historia
+        }
+        
+        for i in 0..<interactions.count {
+            
+            switch i{
+            case 0:
+                
+                historia.append(getJson("HistoriaInicial"))
+                respostaUsuario = interactions[i].playerAnswer
+                historia.append(respostaUsuario)
+            
+            case 1:
+                
+                respostaPolaridade = interactions[i].answerPolarity.rawValue
+                respostaUsuario = interactions[i].playerAnswer
+                historia.append(self.getJson("Parte1", respostaPolaridade))
+                historia.append(respostaUsuario)
+            
+            case 2:
+                
+                respostaPolaridade = interactions[i].answerPolarity.rawValue
+                respostaUsuario = interactions[i].playerAnswer
+                historia.append(self.getJson(respostaPolaridade))
+                historia.append(respostaUsuario)
+                
+            case 3:
+                
+                respostaPolaridade = interactions[i].answerPolarity.rawValue
+                respostaUsuario = interactions[i].playerAnswer
+                
+                if interactions[i-1].answerPolarity.rawValue == "positive" || interactions[i-1].answerPolarity.rawValue == "negative" {
+                    
+                    if respostaPolaridade == "positive" {
+                        self.json = self.json![respostaPolaridade] as? [String : Any]
+                        guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
+                        historia.append(result)
+                        historia.append(respostaUsuario)
+                    }
+                    else {
+                        self.json = self.json!["negativeOrNeutral"] as? [String : Any]
+
+                        guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
+                        historia.append(result)
+                        historia.append(respostaUsuario)
+                    }
+                }
+                else {
+                
+                    if respostaPolaridade == "negative" {
+                        self.json = self.json![respostaPolaridade] as? [String : Any]
+                        guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
+                        historia.append(result)
+                        historia.append(respostaUsuario)
+                    }
+                    else {
+                        self.json = self.json!["positiveOrNeutral"] as? [String : Any]
+                        guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
+                        historia.append(result)
+                        historia.append(respostaUsuario)
+                    }
+                }
+                
+            default:
+                historia = []
+            }
+        }
+        
+        return historia
     }
 }

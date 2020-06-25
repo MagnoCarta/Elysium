@@ -11,8 +11,7 @@ import Foundation
 class ApiController{
     
     func Submit(_ text: String, completion: @escaping (ApiResponse) -> Void) {
-        
-        
+
         let urlApi = URL(string: "https://sentim-api.herokuapp.com/api/v1/")
         guard let requestUrl = urlApi else { fatalError() }
         
@@ -43,7 +42,6 @@ class ApiController{
             if let data = data {
                 do {
                     let apiResponse = try JSONDecoder().decode(ApiResponse.self, from: data)
-                    //print(apiResponse.result.type)
                     completion(apiResponse)
                 } catch{
                     print(NSDebugDescriptionErrorKey)
