@@ -81,7 +81,7 @@ class ViewController: NSViewController {
         self.botaoImagem.centerXAnchor.constraint(equalTo: self.backg.centerXAnchor, constant: -300).isActive = true
         self.botaoImagem.heightAnchor.constraint(equalToConstant: 200).isActive = true
         var fadeSpeed: CGFloat = 0.01
-        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
             
             self.botaoImagem.alphaValue -= fadeSpeed
             if self.botaoImagem.alphaValue <= 0.009 {

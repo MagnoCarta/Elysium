@@ -44,41 +44,46 @@ class LapisFeedback: NSImageView {
     
     
     func arrumarConstraint(controler: PageViewController, xConstraint: NSLayoutConstraint , bottomConstraint: NSLayoutConstraint) {
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            self.animar(controler: controler)
-        }
+        
        // xConstraint.constant += CGFloat(controler.incrementadorDeImagemLapisAnimation)
         //self.rotate(byDegrees: CGFloat(controler.incrementadorDeImagemLapisAnimation)/3)
        // print(self.frame.minY)
-        var aux = true
-        var aux1 = true
+        var runCount = 0
+        var runCount1 = 0
         
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-        if controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal.count > 0 {
-            var runCount =  0
             
-            if aux && aux1 {
-                self.alphaValue = 1
-            } else {
-                self.alphaValue = 0.5
-            }
-        if self.frame.minY > controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal[controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].frame.minY - 105 {
-         
+            
             Timer.scheduledTimer(withTimeInterval: 0.009, repeats: true) { timer in
-                bottomConstraint.constant += 0.5
+                if controler.paginas[controler.numeroDaPaginaAtual].texto.y == 665 {
+                bottomConstraint.constant -= 1
                 runCount += 1
-                aux = false
-                if runCount == 20 {
-                }
-                if runCount == controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDeLinhas*Int(controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal[controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].font!.capHeight+11) {
-                    aux = true
+                    controler.isWriting = true
+                if bottomConstraint.constant <= -580 {
+                    controler.isWriting = false
                     timer.invalidate()
 
                 }
                 
             }
             
-        }//else if self.frame.minY < controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal[controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].frame.minY - 105{
+        }
+        
+        if CGFloat(self.frame.minY) > CGFloat(controler.paginas[controler.numeroDaPaginaAtual].texto.y - 105) {
+         
+            Timer.scheduledTimer(withTimeInterval: 0.009, repeats: true) { timer in
+                bottomConstraint.constant += 1
+                runCount1 += 1
+                controler.isWriting = true
+                if runCount1 == controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDeLinhas*Int(controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal[controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].font!.capHeight+11) {
+                    controler.isWriting = false
+                    timer.invalidate()
+
+                }
+                
+            }
+            
+        }
+                        //else if self.frame.minY < controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal[controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].frame.minY - 105{
 //            Timer.scheduledTimer(withTimeInterval: 0.003, repeats: true) { timer in
 //                bottomConstraint.constant -= 0.5
 //
@@ -93,9 +98,4 @@ class LapisFeedback: NSImageView {
             }
         }
         
-    }
-    
-    
-    
-}
-
+   

@@ -16,25 +16,25 @@ class Pagina: NSObject {
 
 let arrayDeImagens: [NSImage] = [NSImage(named: "PaginaLegal")!]
 let imagemAtual: NSImageView = NSImageView(image: NSImage(named: "PaginaLegal")!)
-let texto = TextoNormal(speed: 10)
+    let texto = TextoNormal(speed: UserDefaults.standard.double(forKey: "textSpeed"))
 let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direita)
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
-let barraDeTexto = NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 100))
+let barraDeTexto = NSTextField()
 let barraDeTextoBackgroundImage = NSImageView(image: NSImage(named: "BarraDeTextoBackground")!)
     
     
     func getAnimationDireitaEsquerda() {
-        for a in 0...99 {
+       // for a in 0...99 {
 //            arrayDeImagens.append(NSImage(named: "PaginaPD\(a+1)")!)
-        }
+    //    }
         
     }
     
     func getAnimationEsquerdaDireita() {
         
-        for a in 0...99 {
+       // for a in 0...99 {
 //            arrayDeImagens.append(NSImage(named: "PaginaPD\(100 - a)")!)
-        }
+      //  }
         
     }
     
@@ -64,6 +64,7 @@ func passarPaginaPraFrente(controler: PageViewController) {
     
     AnimarPaginaVirando(ladoEsquerdo: false)
     self.imagemAtual.removeFromSuperview()
+    self.barraDeTexto.removeFromSuperview()
     for texta in self.texto.arrayDeTextoNormal {
         texta.removeFromSuperview()
     }
@@ -79,7 +80,7 @@ func passarPaginaPraFrente(controler: PageViewController) {
             
         }
     }else {
-        
+        controler.view.addSubview(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto)
         controler.PaginaPrincipal.addSubview(controler.paginas[controler.numeroDaPaginaAtual].imagemAtual)
         for texta in controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal {
             controler.view.addSubview(texta)
@@ -94,13 +95,16 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         AnimarPaginaVirando(ladoEsquerdo: true)
         self.imagemAtual.removeFromSuperview()
+        self.barraDeTexto.removeFromSuperview()
         for texta in self.texto.arrayDeTextoNormal {
             texta.removeFromSuperview()
         }
         controler.numeroDaPaginaAtual -= 1
         controler.PaginaPrincipal.addSubview(controler.paginas[controler.numeroDaPaginaAtual].imagemAtual)
+        controler.view.addSubview(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto)
         for texta in controler.paginas[controler.numeroDaPaginaAtual].texto.arrayDeTextoNormal {
             controler.view.addSubview(texta)
+            
         }
     }
     
@@ -122,46 +126,30 @@ func passarPaginaPraFrente(controler: PageViewController) {
     }
     
     func animarAparicaoDaBarraDeTexto(controler: PageViewController) {
-        self.barraDeTextoBackgroundImage.alphaValue = 0
-        self.imagemAtual.addSubview(self.barraDeTextoBackgroundImage)
-        self.barraDeTextoBackgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        self.barraDeTextoBackgroundImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        self.barraDeTextoBackgroundImage.topAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor,constant: 0).isActive = true
-        self.barraDeTextoBackgroundImage.centerXAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].centerXAnchor).isActive = true
-        self.barraDeTextoBackgroundImage.imageScaling = .scaleProportionallyDown
+        var runCount = 0
         controler.view.addSubview(self.barraDeTexto)
-        self.barraDeTexto.font = NSFont(name: "Baskerville", size: 18)
         self.barraDeTexto.translatesAutoresizingMaskIntoConstraints = false
-        self.barraDeTexto.string = "I am really Happy"
+        self.barraDeTexto.topAnchor.constraint(equalTo:self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor).isActive = true
+        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        self.barraDeTexto.leadingAnchor.constraint(equalTo:self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].leadingAnchor).isActive = true
+        self.barraDeTexto.trailingAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].trailingAnchor).isActive = true
+        let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : NSFont(name: "Baskerville", size: 23)!, NSAttributedString.Key.foregroundColor : NSColor.black]
+        self.barraDeTexto.placeholderAttributedString = NSAttributedString(string: "Enter your Feeling Here...", attributes: attributes)
         self.barraDeTexto.alphaValue = 0
-        self.barraDeTexto.backgroundColor = .clear
-        
-        
-//        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        self.barraDeTexto.bottomAnchor.constraint(equalTo: self.imagemAtual.topAnchor,constant: 0).isActive = true
-//        self.barraDeTexto.centerXAnchor.constraint(equalTo: controler.view.centerXAnchor).isActive = true
-        
-        
-        
-        
         
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
-            if self.barraDeTextoBackgroundImage.alphaValue == 0 {
-
-                self.barraDeTexto.setFrameOrigin(NSPoint(x: (self.barraDeTextoBackgroundImage.frame.origin.x) - 10, y: self.barraDeTextoBackgroundImage.frame.minY + 65))
-
-            }
-            self.barraDeTextoBackgroundImage.alphaValue += 0.005
-            self.barraDeTexto.alphaValue += 0.005
+            self.barraDeTexto.alphaValue += 0.01
+            runCount += 1
             
-            if self.barraDeTextoBackgroundImage.alphaValue > 1 {
+            if runCount == 100 {
                 
-                
-                self.texto.textoCarregando = false
+            self.texto.textoCarregando = false
                 timer.invalidate()
             }
             
         }
+        
+        
         
     }
     

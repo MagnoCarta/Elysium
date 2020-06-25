@@ -182,7 +182,6 @@
 				5723265D24916D8B00AE4280 /* Interaction.swift */,
 				0B0394CA2491661F005F0D68 /* ApiController.swift */,
 				0B0394CC24916CBD005F0D68 /* ApiModel.swift */,
-				77847B76249A4A8A0044315B /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +213,7 @@
 		0F7C4DB62497BE2900AE06CA /* TelaDaPagina */ = {
 			isa = PBXGroup;
 			children = (
+				77847B76249A4A8A0044315B /* HistoryModel.swift */,
 				0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */,
 				0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */,
 				0F7C4DBF2499AD9400AE06CA /* Pagina.swift */,
