@@ -10,6 +10,11 @@ import XCTest
 @testable import Elysis
 
 class ApiControllerTests: XCTestCase {
+    
+    override func tearDown() {
+        let gameState = GameState()
+        try? FileManager.default.removeItem(at: gameState.gameStateURL)
+    }
 
     func test_apiController_submitSave_interactions() {
         
@@ -30,7 +35,7 @@ class ApiControllerTests: XCTestCase {
             expec.fulfill()
         }
         
-        wait(for: [expec], timeout: 20)
+        wait(for: [expec], timeout: 60)
     }
     
     func test_apiController_submit_apiResponse() {
@@ -50,6 +55,6 @@ class ApiControllerTests: XCTestCase {
             expec.fulfill()
         }
         
-        wait(for: [expec], timeout: 20)
+        wait(for: [expec], timeout: 60)
     }
 }

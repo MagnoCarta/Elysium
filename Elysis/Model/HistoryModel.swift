@@ -100,37 +100,37 @@ class HistoryModel {
             return historia
         }
         
-        for i in 1...interactions.count {
+        for i in 0..<interactions.count {
             
             switch i{
-            case 1:
+            case 0:
                 
                 historia.append(getJson("HistoriaInicial"))
                 respostaUsuario = interactions[i].playerAnswer
                 historia.append(respostaUsuario)
             
-            case 2:
+            case 1:
                 
                 respostaPolaridade = interactions[i].answerPolarity.rawValue
                 respostaUsuario = interactions[i].playerAnswer
                 historia.append(self.getJson("Parte1", respostaPolaridade))
                 historia.append(respostaUsuario)
             
-            case 3:
+            case 2:
                 
                 respostaPolaridade = interactions[i].answerPolarity.rawValue
                 respostaUsuario = interactions[i].playerAnswer
                 historia.append(self.getJson(respostaPolaridade))
                 historia.append(respostaUsuario)
                 
-            case 4:
+            case 3:
                 
                 respostaPolaridade = interactions[i].answerPolarity.rawValue
                 respostaUsuario = interactions[i].playerAnswer
                 
                 if interactions[i-1].answerPolarity.rawValue == "positive" || interactions[i-1].answerPolarity.rawValue == "negative" {
                     
-                    if self.polarity! == "positive" {
+                    if respostaPolaridade == "positive" {
                         self.json = self.json![respostaPolaridade] as? [String : Any]
                         guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
                         historia.append(result)
@@ -146,7 +146,7 @@ class HistoryModel {
                 }
                 else {
                 
-                    if interactions[i-1].answerPolarity.rawValue == "negative" {
+                    if respostaPolaridade == "negative" {
                         self.json = self.json![respostaPolaridade] as? [String : Any]
                         guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
                         historia.append(result)
@@ -159,10 +159,6 @@ class HistoryModel {
                         historia.append(respostaUsuario)
                     }
                 }
-                
-            case 5:
-                
-                historia = []
                 
             default:
                 historia = []

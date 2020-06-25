@@ -11,6 +11,11 @@ import XCTest
 
 class GameStationTests: XCTestCase {
     
+    override func tearDown() {
+        let gameState = GameState()
+        try? FileManager.default.removeItem(at: gameState.gameStateURL)
+    }
+    
     func mockSave(_ arrayInt: [Int], _ sut: GameState ) {
         
         let jsonData = try? JSONEncoder().encode(arrayInt)
@@ -28,9 +33,6 @@ class GameStationTests: XCTestCase {
         //Then
         XCTAssertEqual(FileManager.default.fileExists(atPath: path.path), true)
         
-        try? FileManager.default.removeItem(at: path)
-        
-        //XCTAssertEqual(FileManager.default.fileExists(atPath: path!.path), false)
     }
     
     func teste_gameState_saveAndLoad_sucess() {
@@ -55,7 +57,6 @@ class GameStationTests: XCTestCase {
         XCTAssertEqual(playerAnswerTwo, "Sad")
         XCTAssertEqual(answerPolarityTwo, Polarity(rawValue: "negative"))
         
-        try? FileManager.default.removeItem(at: sut.gameStateURL)
     }
     
     func test_gameState_load_error() {
@@ -71,6 +72,5 @@ class GameStationTests: XCTestCase {
         //Then
         XCTAssertNotEqual(interaction.count, interactionWrong.count)
         
-        try? FileManager.default.removeItem(at: sut.gameStateURL)
     }
 }

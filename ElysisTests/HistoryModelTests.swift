@@ -12,6 +12,12 @@ import XCTest
 
 class HistoryModelTests: XCTestCase {
     
+    
+    override func tearDown() {
+        let gameState = GameState()
+        try? FileManager.default.removeItem(at: gameState.gameStateURL)
+    }
+    
     func test_historyModel_getHistory_positiveNegativePositiveNeutral () {
         
         //Given
@@ -195,13 +201,157 @@ class HistoryModelTests: XCTestCase {
         let sut = HistoryModel()
         let _ = GameState()
         
+        
         //When
-        let historia = sut.loadHistory()
+        let interaction = sut.loadHistory()
         
         //Then
-        XCTAssertEqual(historia, [])
-
+        XCTAssertEqual(interaction, [])
+        
     }
+    
+    func test_historyModel_getHistory_positiveNegativePositive () {
+        
+        //Given
+        let sut = HistoryModel()
+        let gameState = GameState()
+        let interactionOne = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTwo = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTree = Interaction(playerAnswer: "Sad", answerPolarity: .negative)
+        let interactionFour = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionArray = [interactionOne, interactionTwo, interactionTree, interactionFour]
+        
+        //When
+        gameState.save(interactionArray)
+        let interaction = sut.loadHistory()
+        let historia = getHistoryPositiveNegativePositiveNeutral()
+        
+        //Then
+        XCTAssertEqual(interaction[0], historia[0])
+        XCTAssertEqual(interaction[1], interactionArray[0].playerAnswer)
+    
+        XCTAssertEqual(interaction[2], historia[1])
+        XCTAssertEqual(interaction[3], interactionArray[1].playerAnswer)
+               
+        XCTAssertEqual(interaction[4], historia[2])
+        XCTAssertEqual(interaction[5], interactionArray[2].playerAnswer)
+        
+        XCTAssertEqual(interaction[6], historia[3])
+        XCTAssertEqual(interaction[7], interactionArray[3].playerAnswer)
+    }
+    
+    func test_historyModel_getHistory_positiveNegativeNegative () {
+        
+        //Given
+        let sut = HistoryModel()
+        let gameState = GameState()
+        let interactionOne = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTwo = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTree = Interaction(playerAnswer: "Sad", answerPolarity: .negative)
+        let interactionFour = Interaction(playerAnswer: "Sad", answerPolarity: .negative)
+        let interactionArray = [interactionOne, interactionTwo, interactionTree, interactionFour]
+        
+        //When
+        gameState.save(interactionArray)
+        let interaction = sut.loadHistory()
+        let historia = getHistoryPositiveNegativeNegativeNeutral()
+        
+        //Then
+        XCTAssertEqual(interaction[0], historia[0])
+        XCTAssertEqual(interaction[1], interactionArray[0].playerAnswer)
+    
+        XCTAssertEqual(interaction[2], historia[1])
+        XCTAssertEqual(interaction[3], interactionArray[1].playerAnswer)
+                   
+        XCTAssertEqual(interaction[4], historia[2])
+        XCTAssertEqual(interaction[5], interactionArray[2].playerAnswer)
+            
+        XCTAssertEqual(interaction[6], historia[3])
+        XCTAssertEqual(interaction[7], interactionArray[3].playerAnswer)
+        
+    }
+    
+    func test_historyModel_getHistory_positiveNeutralPositive () {
+        
+        //Given
+        let sut = HistoryModel()
+        let gameState = GameState()
+        let interactionOne = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTwo = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTree = Interaction(playerAnswer: "Neutral", answerPolarity: .neutral)
+        let interactionFour = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionArray = [interactionOne, interactionTwo, interactionTree, interactionFour]
+        
+        //When
+        gameState.save(interactionArray)
+        let interaction = sut.loadHistory()
+        let historia = getHistoryPositiveNeutralPositiveNeutral()
+        
+        //Then
+        XCTAssertEqual(interaction[0], historia[0])
+        XCTAssertEqual(interaction[1], interactionArray[0].playerAnswer)
+        
+        XCTAssertEqual(interaction[2], historia[1])
+        XCTAssertEqual(interaction[3], interactionArray[1].playerAnswer)
+        
+        XCTAssertEqual(interaction[4], historia[2])
+        XCTAssertEqual(interaction[5], interactionArray[2].playerAnswer)
+        
+        XCTAssertEqual(interaction[6], historia[3])
+        XCTAssertEqual(interaction[7], interactionArray[3].playerAnswer)
+    }
+    
+    func test_historyModel_getHistory_positiveNeutralNegative () {
+     
+        //Given
+        let sut = HistoryModel()
+        let gameState = GameState()
+        let interactionOne = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTwo = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTree = Interaction(playerAnswer: "Neutral", answerPolarity: .neutral)
+        let interactionFour = Interaction(playerAnswer: "Sad", answerPolarity: .negative)
+        let interactionArray = [interactionOne, interactionTwo, interactionTree, interactionFour]
+        
+        //When
+        gameState.save(interactionArray)
+        let interaction = sut.loadHistory()
+        let historia = getHistoryPositiveNeutralNegativeNeutral()
+        
+        //Then
+        XCTAssertEqual(interaction[0], historia[0])
+        XCTAssertEqual(interaction[1], interactionArray[0].playerAnswer)
+        
+        XCTAssertEqual(interaction[2], historia[1])
+        XCTAssertEqual(interaction[3], interactionArray[1].playerAnswer)
+        
+        XCTAssertEqual(interaction[4], historia[2])
+        XCTAssertEqual(interaction[5], interactionArray[2].playerAnswer)
+        
+        XCTAssertEqual(interaction[6], historia[3])
+        XCTAssertEqual(interaction[7], interactionArray[3].playerAnswer)
+    }
+    
+    func test_historyModel_loadHistory_fullGame(){
+        
+        //Given
+        let sut = HistoryModel()
+        let gameState = GameState()
+        let interactionOne = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTwo = Interaction(playerAnswer: "Happy", answerPolarity: .positive)
+        let interactionTree = Interaction(playerAnswer: "Neutral", answerPolarity: .neutral)
+        let interactionFour = Interaction(playerAnswer: "Sad", answerPolarity: .negative)
+        let interactionFive = Interaction(playerAnswer: "Neutral", answerPolarity: .neutral)
+        let interactionArray = [interactionOne, interactionTwo, interactionTree, interactionFour, interactionFive]
+        
+        
+        //When
+        gameState.save(interactionArray)
+        let interaction = sut.loadHistory()
+        
+        //Then
+        XCTAssertEqual(interaction, [])
+    }
+    
     
     func getHistoryPositiveNeutralNegativeNeutral() -> [String]{
         let historiaInicial = "O vazio é bem confortante e seguro de fato, não concorda?, aqui você não tem nada a temer, nada a arriscar, nada a expor, é a bolha perfeita, Nada acontece!\nVocê não parece muito confortável ou seguro, ou estou enganado?, poucos são aqueles que merecem o vazio, estou aqui para alerta-lo, você ainda pode merecer ,porém saiba de uma coisa, após começar, não terá mais volta, Algo maior está para acontecer e suas ações influenciarão oque ocorrerá, Como você se sente sabendo de tudo isso!?\n"
