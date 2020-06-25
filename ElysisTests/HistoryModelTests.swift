@@ -200,11 +200,7 @@ class HistoryModelTests: XCTestCase {
         
         //Then
         XCTAssertEqual(historia, [])
-        
-        
-        
-        
-        
+
     }
     
     func getHistoryPositiveNeutralNegativeNeutral() -> [String]{

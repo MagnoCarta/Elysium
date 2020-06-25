@@ -49,7 +49,7 @@ class HistoryModel {
                 }
                 else {
                 
-                    if polarityBefore == "negative" {
+                    if self.polarity! == "negative" {
                         self.json = self.json![self.polarity!] as? [String : Any]
                         guard let result = self.json!["result"] as? String else {fatalError("ERRO")}
                         completion(result)
