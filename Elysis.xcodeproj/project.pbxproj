@@ -199,6 +199,18 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		57110B7124A4CA56002934F8 /* portuguese */ = {
+			isa = PBXGroup;
+			children = (
+				770D101C2499069B0068C5EA /* HistoriaInicial.json */,
+				770D101E249907FE0068C5EA /* Parte1.json */,
+				778B150224994E9300DC2B8D /* positive.json */,
+				778B150424994F3E00DC2B8D /* negative.json */,
+				778B150624994F4C00DC2B8D /* neutral.json */,
+			);
+			path = portuguese;
+			sourceTree = "<group>";
+		};
 		5796E0B1249CE03E00E0A2B7 /* english */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,12 +226,8 @@
 		770D101B2499064F0068C5EA /* HistoryData */ = {
 			isa = PBXGroup;
 			children = (
+				57110B7124A4CA56002934F8 /* portuguese */,
 				5796E0B1249CE03E00E0A2B7 /* english */,
-				770D101C2499069B0068C5EA /* HistoriaInicial.json */,
-				770D101E249907FE0068C5EA /* Parte1.json */,
-				778B150224994E9300DC2B8D /* positive.json */,
-				778B150424994F3E00DC2B8D /* negative.json */,
-				778B150624994F4C00DC2B8D /* neutral.json */,
 			);
 			path = HistoryData;
 			sourceTree = "<group>";
