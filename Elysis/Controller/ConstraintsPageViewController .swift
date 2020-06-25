@@ -73,6 +73,14 @@ extension PageViewController {
         self.dobradissa!.removeFromSuperview()
         LapisAnimado.removeFromSuperview()
         self.view.addSubview(LapisAnimado)
+//        self.lapisAnimado.translatesAutoresizingMaskIntoConstraints = false
+//        self.lapisAnimado.bottomConstraint = self.lapisAnimado.bottomAnchor.constraint(equalTo: self.paginas[self.numeroDaPaginaAtual].imagemAtual.bottomAnchor, constant: -580)
+//        self.lapisAnimado.bottomConstraint.isActive = true
+//        self.lapisAnimado.heightConstraint = self.lapisAnimado.heightAnchor.constraint(equalToConstant: 50)
+//        self.lapisAnimado.heightConstraint.isActive = true
+//        self.lapisAnimado.xConstraint = self.lapisAnimado.centerXAnchor.constraint(equalTo: self.paginas[self.numeroDaPaginaAtual].imagemAtual.centerXAnchor)
+//        self.lapisAnimado.xConstraint.isActive = true
+//        self.lapisAnimado.imageScaling = .scaleProportionallyDown
         if self.numeroDaPaginaAtual > 0 {
             
           
