@@ -31,7 +31,6 @@
 		770D101F249907FE0068C5EA /* Parte1.json in Resources */ = {isa = PBXBuildFile; fileRef = 770D101E249907FE0068C5EA /* Parte1.json */; };
 		77106DDC2497FA57004A1A0A /* GameStationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77106DDB2497FA57004A1A0A /* GameStationTests.swift */; };
 		77106DDE2498173C004A1A0A /* ApiControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77106DDD2498173C004A1A0A /* ApiControllerTests.swift */; };
-		773A192C2491161400DC25CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A192B2491161400DC25CE /* SettingsViewController.swift */; };
 		77847B77249A4A8A0044315B /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77847B76249A4A8A0044315B /* HistoryModel.swift */; };
 		778B150324994E9300DC2B8D /* positive.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150224994E9300DC2B8D /* positive.json */; };
 		778B150524994F3E00DC2B8D /* negative.json in Resources */ = {isa = PBXBuildFile; fileRef = 778B150424994F3E00DC2B8D /* negative.json */; };
@@ -82,13 +81,13 @@
 		0F7C4E31249BD52A00AE06CA /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
 		0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapisFeedback.swift; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		5763D16E24A4DA1B00E5471A /* ElysisRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElysisRelease.entitlements; sourceTree = "<group>"; };
 		5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57E40A5D24911DAA00FDB2D4 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		770D101C2499069B0068C5EA /* HistoriaInicial.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HistoriaInicial.json; sourceTree = "<group>"; };
 		770D101E249907FE0068C5EA /* Parte1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Parte1.json; sourceTree = "<group>"; };
 		77106DDB2497FA57004A1A0A /* GameStationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStationTests.swift; sourceTree = "<group>"; };
 		77106DDD2498173C004A1A0A /* ApiControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiControllerTests.swift; sourceTree = "<group>"; };
-		773A192B2491161400DC25CE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		77847B76249A4A8A0044315B /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		778B150224994E9300DC2B8D /* positive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = positive.json; sourceTree = "<group>"; };
 		778B150424994F3E00DC2B8D /* negative.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = negative.json; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 		0F7C4D5F248F216400AE06CA /* Elysis */ = {
 			isa = PBXGroup;
 			children = (
+				5763D16E24A4DA1B00E5471A /* ElysisRelease.entitlements */,
 				0F7C4D6A248F216900AE06CA /* Elysis.entitlements */,
 				0F7C4D69248F216900AE06CA /* Info.plist */,
 				0F7C4D8E248F282300AE06CA /* Controller */,
@@ -376,7 +376,6 @@
 				0F7C4D9B248F2B2000AE06CA /* SoundTrack.swift in Sources */,
 				0F7C4DAD24940AC300AE06CA /* PageViewController.swift in Sources */,
 				0B0394CD24916CBD005F0D68 /* ApiModel.swift in Sources */,
-				0F7C4E3A249F1FA700AE06CA /* SettingsViewController.swift in Sources */,
 				0F7C4DAF2496EADF00AE06CA /* PontaDaPaginaAnimada.swift in Sources */,
 				5796E0BD24A24F3F00E0A2B7 /* SettingsViewController.swift in Sources */,
 				0F7C4E32249BD52A00AE06CA /* OptionButton.swift in Sources */,
@@ -559,7 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = Elysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -575,7 +574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Elysis/Elysis.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Elysis/ElysisRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
