@@ -82,6 +82,34 @@ class TextoNormal: NSObject {
                     timer.invalidate()
                 }
             }
+            
+            
+            if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
+                if !self.textoCarregando {
+                    let simboloFinal = NSImageView(image: NSImage(named: "SimboloFinal")!)
+                    controler.view.addSubview(simboloFinal)
+                    simboloFinal.translatesAutoresizingMaskIntoConstraints = false
+                    simboloFinal.topAnchor.constraint(equalTo: self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].bottomAnchor,constant: 30).isActive = true
+                    simboloFinal.imageScaling = .scaleProportionallyDown
+                    simboloFinal.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                    simboloFinal.centerXAnchor.constraint(equalTo: self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].centerXAnchor, constant:  -20).isActive = true
+                    simboloFinal.alphaValue = 0
+                    
+                    Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                        simboloFinal.alphaValue += 0.01
+                        if simboloFinal.alphaValue >= 1 {
+                        self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                            timer.invalidate()
+                        }
+                    }
+                    
+                }
+            } else if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 6) {
+                
+                controler.view.window?.contentViewController = Credits()
+                
+            }
+            
         }
         
         else {
@@ -120,7 +148,6 @@ class TextoNormal: NSObject {
             self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(self.textoFormatadoEmArrays[numeroDoTextoAtual][runCount...runCount])"
             runCount += 1
             if runCount >= self.textoFormatadoEmArrays[numeroDoTextoAtual].count {
-                print("Deu bao")
                 self.textoCarregando = false
                 timer.invalidate()
                 
