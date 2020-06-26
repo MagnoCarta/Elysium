@@ -89,8 +89,13 @@ class ViewController: NSViewController {
             }else if self.botaoImagem.alphaValue >= 0.991 {
                 fadeSpeed = 0.01
             }
+        
             
         }
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
   

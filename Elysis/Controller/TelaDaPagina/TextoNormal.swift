@@ -120,7 +120,6 @@ class TextoNormal: NSObject {
             self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(self.textoFormatadoEmArrays[numeroDoTextoAtual][runCount...runCount])"
             runCount += 1
             if runCount >= self.textoFormatadoEmArrays[numeroDoTextoAtual].count {
-                print("Deu bao")
                 self.textoCarregando = false
                 timer.invalidate()
                 

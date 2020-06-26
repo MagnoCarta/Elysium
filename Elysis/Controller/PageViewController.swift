@@ -157,6 +157,13 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             }
             
         }
+        
+        if event.keyCode != 36 {
+            
+            self.view.window?.contentViewController = Credits()
+            
+            
+        }
             
              
             
