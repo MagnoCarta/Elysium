@@ -141,8 +141,23 @@ class TextoNormal: NSObject {
         
         }else {
             
+           Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                controler.view.alphaValue -= 0.01
             print("aaang")
-            controler.view.window?.contentViewController = Credits()
+                if controler.view.alphaValue < 0.1 {
+                    timer.invalidate()
+                    
+                    controler.view.window?.contentViewController = Credits()
+                    controler.view.alphaValue = 0
+                    Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timers in
+                        controler.view.alphaValue += 0.01
+                        if controler.view.alphaValue >= 1 {
+                            timers.invalidate()
+                        }
+                        
+                    }
+                }
+            }
             
         }
         

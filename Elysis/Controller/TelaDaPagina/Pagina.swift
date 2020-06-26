@@ -9,6 +9,11 @@
 import Cocoa
 
 
+extension NSTextField {
+    
+        
+}
+
 class Pagina: NSObject {
     
     
@@ -138,6 +143,8 @@ func passarPaginaPraFrente(controler: PageViewController) {
         self.barraDeTexto.alphaValue = 0
         self.barraDeTexto.textColor = .black
         self.barraDeTexto.backgroundColor = .lightGray
+
+            
         
         
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
@@ -156,6 +163,6 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
     }
     
-    
+  
     
 }
