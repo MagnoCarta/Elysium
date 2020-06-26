@@ -32,8 +32,8 @@ extension NSWindow {
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
 
-    let backg = NSImageView(image: NSImage(named: "Cover")!)
-    var botaoImagem = NSImageView(image: NSImage(named: "LettersCover")!)
+    let backg = NSImageView(image: NSImage(named: "ImagemCapaMuitaQualidade")!)
+    var botaoImagem = NSImageView(image: NSImage(named: "TextoFadeInOut")!)
     var botConstraint : NSLayoutConstraint = NSLayoutConstraint()
     var heiConstraint: NSLayoutConstraint = NSLayoutConstraint()
     var leadConstraint: NSLayoutConstraint = NSLayoutConstraint()
