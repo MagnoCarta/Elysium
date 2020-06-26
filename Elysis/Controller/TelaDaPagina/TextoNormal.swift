@@ -113,7 +113,7 @@ class TextoNormal: NSObject {
         }
         
         else {
-            if !self.textoCarregando {
+            if self.textoCarregando == false {
                 if self.numeroDoTextoAtual == self.arrayDeTextoNormal.count {
                     controler.numeroDoTextoAtual = 0
                     self.receberTextoDaPagina(controler: controler)
@@ -248,7 +248,7 @@ class TextoNormal: NSObject {
         
         self.numeroDoTextoAtual += 1
         controler.numeroDoTextoAtual += 1
-        self.textoCarregando = false
+        
         
     }
     
