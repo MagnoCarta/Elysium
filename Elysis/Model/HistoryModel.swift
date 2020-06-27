@@ -162,6 +162,7 @@ class HistoryModel {
                 
             default:
                 historia = []
+                try? FileManager.default.removeItem(at: gameState.gameStateURL)
             }
         }
         

@@ -103,7 +103,7 @@ class HistoryModelTests: XCTestCase {
             }
         }
         
-        wait(for: [expec], timeout: 20)
+        wait(for: [expec], timeout: 60)
     }
     
     func test_historyModel_getHistory_positiveNeutralPositiveNeutral (){
@@ -350,6 +350,7 @@ class HistoryModelTests: XCTestCase {
         
         //Then
         XCTAssertEqual(interaction, [])
+        XCTAssertFalse(FileManager.default.fileExists(atPath: gameState.gameStateURL.absoluteString))
     }
     
     
