@@ -48,15 +48,16 @@ extension PageViewController {
         self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -447)
         self.xConstraint1.isActive = true
         dobradissaEsquerda.imageScaling = .scaleProportionallyDown
-        self.paginas[0].imagemAtual.addSubview(self.lapisAnimado)
-        self.lapisAnimado.translatesAutoresizingMaskIntoConstraints = false
-        self.lapisAnimado.bottomConstraint = self.lapisAnimado.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -580)
-        self.lapisAnimado.bottomConstraint.isActive = true
-        self.lapisAnimado.heightConstraint = self.lapisAnimado.heightAnchor.constraint(equalToConstant: 50)
-        self.lapisAnimado.heightConstraint.isActive = true
-        self.lapisAnimado.xConstraint = self.lapisAnimado.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor)
-        self.lapisAnimado.xConstraint.isActive = true
-        self.lapisAnimado.imageScaling = .scaleProportionallyDown
+        self.paginas[0].imagemAtual.addSubview(self.paginas[0].lapis)
+//        self.lapisAnimado.translatesAutoresizingMaskIntoConstraints = false
+//        self.lapisAnimado.bottomConstraint = self.lapisAnimado.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -580)
+//        self.lapisAnimado.bottomConstraint.isActive = true
+//        self.lapisAnimado.heightConstraint = self.lapisAnimado.heightAnchor.constraint(equalToConstant: 50)
+//        self.lapisAnimado.heightConstraint.isActive = true
+//        self.lapisAnimado.xConstraint = self.lapisAnimado.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor)
+//        self.lapisAnimado.xConstraint.isActive = true
+//        self.lapisAnimado.imageScaling = .scaleProportionallyDown
+         self.paginas[self.numeroDaPaginaAtual].lapis.arrumarConstraint(controler: self)
         self.view.addSubview(optionButton)
         self.optionButton.translatesAutoresizingMaskIntoConstraints = false
         self.optionButton.heightConstraint = self.optionButton.heightAnchor.constraint(equalToConstant: 60)
@@ -66,13 +67,15 @@ extension PageViewController {
         self.optionButton.topConstraint = self.optionButton.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.topAnchor,constant: 14)
         self.optionButton.topConstraint.isActive = true
         self.optionButton.imageScaling = .scaleProportionallyDown
+        
     }
     
     func reorganizarConstraints(LapisAnimado: LapisFeedback) {
         self.dobradissaEsquerda!.removeFromSuperview()
         self.dobradissa!.removeFromSuperview()
-        LapisAnimado.removeFromSuperview()
-        self.view.addSubview(LapisAnimado)
+        self.paginas[self.numeroDaPaginaAtual].lapis.arrumarConstraint(controler: self)
+       // LapisAnimado.removeFromSuperview()
+        //self.view.addSubview(LapisAnimado)
 //        self.lapisAnimado.translatesAutoresizingMaskIntoConstraints = false
 //        self.lapisAnimado.bottomConstraint = self.lapisAnimado.bottomAnchor.constraint(equalTo: self.paginas[self.numeroDaPaginaAtual].imagemAtual.bottomAnchor, constant: -580)
 //        self.lapisAnimado.bottomConstraint.isActive = true

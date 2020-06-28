@@ -101,7 +101,7 @@ class TextoNormal: NSObject {
                     Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
                         simboloFinal.alphaValue += 0.01
                         if simboloFinal.alphaValue >= 1 {
-                        self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                        self.organizarPosicoesDoTextoEAnimar(controler: controler,speed: speed)
                             self.acabouJogo = true
                             timer.invalidate()
                         }
@@ -109,7 +109,7 @@ class TextoNormal: NSObject {
                     
                 }
             } else if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 6) {
-                print("aaang")
+                
                 controler.view.window?.contentViewController = Credits()
                 
             }
@@ -118,14 +118,15 @@ class TextoNormal: NSObject {
         
         else {
             if self.textoCarregando == false {
-                if self.numeroDoTextoAtual == self.arrayDeTextoNormal.count {
+                if self.numeroDoTextoAtual == self.arrayDeTextoNormal.count  {
+                    
                     controler.numeroDoTextoAtual = 0
-                    self.receberTextoDaPagina(controler: controler)
+                    self.receberTextoDaPagina(controler: controler,speed: speed)
                 }else {
                 if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 6) {
-                print("aaang")
+               
                     controler.view.window?.contentViewController = Credits() } else {
-                    self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                    self.organizarPosicoesDoTextoEAnimar(controler: controler,speed: speed)
                     }
                 
                 
@@ -143,10 +144,12 @@ class TextoNormal: NSObject {
             
            Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
                 controler.view.alphaValue -= 0.01
-            print("aaang")
+          
                 if controler.view.alphaValue < 0.1 {
                     timer.invalidate()
-                    
+                    let gamestate  = GameState()
+                    let interacaoMockada = Interaction(playerAnswer: "Padrao", answerPolarity: .neutral)
+                    gamestate.save([interacaoMockada])
                     controler.view.window?.contentViewController = Credits()
                     controler.view.alphaValue = 0
                     Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timers in
@@ -165,12 +168,15 @@ class TextoNormal: NSObject {
     }
     
     
-    func animacaoTextoRolando(numeroDoTextoAtual: Int, speed: TimeInterval) {
+    func animacaoTextoRolando(numeroDoTextoAtual: Int, speed: TimeInterval,controler: PageViewController) {
+        controler.ultimoElementoDaView = self.arrayDeTextoNormal[numeroDoTextoAtual]
         self.textoCarregando = true
-        
-        
+        var espeed: TimeInterval = 0
+        if speed > 0 {
+         espeed = 1/speed
+            }
         var runCount = 0
-        Timer.scheduledTimer(withTimeInterval: 1/speed, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: espeed, repeats: true) { timer in
         
             self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(self.textoFormatadoEmArrays[numeroDoTextoAtual][runCount...runCount])"
             runCount += 1
@@ -184,24 +190,29 @@ class TextoNormal: NSObject {
         
     }
     
-    func receberTextoDaPagina(controler: PageViewController) {
+    func receberTextoDaPagina(controler: PageViewController,speed: TimeInterval) {
         
         if self.horaDaBarraDeTexto {
+            if controler.isLoading == false {
             self.textoCarregando = true
+            }else {
+   //             controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue = 
+            }
             controler.paginas[controler.numeroDaPaginaAtual].animarAparicaoDaBarraDeTexto(controler: controler)
             self.horaDaBarraDeTexto = false
             self.respostaVazia = false
             self.y  -= 120
         }else {
-            
-            if !controler.isLoading && (controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue.count > 0 || self.respostaVazia ) {
+            let tirarEspacoPraSaberSeEVazio = controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue.replacingOccurrences(of: " ", with: "")
+            if !controler.isLoading && (tirarEspacoPraSaberSeEVazio.count > 0 || self.respostaVazia ) {
                 self.respostaVazia = true
                 self.horaDaBarraDeTexto = true
                 controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue)
                 controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
                     DispatchQueue.main.async {
+                       
                     self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)
-                    self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                        self.organizarPosicoesDoTextoEAnimar(controler: controler,speed: speed)
                     
                     }
                     
@@ -210,16 +221,12 @@ class TextoNormal: NSObject {
                 controler.lapisAnimado.arrumarConstraint(controler: controler, xConstraint: controler.lapisAnimado.xConstraint, bottomConstraint: controler.lapisAnimado.bottomConstraint)
             }
             
-            if controler.iteracaoAtual == controler.respostasDoUsuario.count && controler.isLoading {
-                controler.isLoading = false
-                controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
-                    DispatchQueue.main.async {
-                    self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)
-                    self.organizarPosicoesDoTextoEAnimar(controler: controler)
-                    
-                    }
-                    
-                })
+             if controler.isLoading {
+                self.respostaVazia = true
+                self.horaDaBarraDeTexto = true
+                self.organizarArrayDeTextoETextoNormal(texto: controler.arrayDeCaminhosLoad[controler.iteracaoAtual], controler: controler)
+                self.organizarPosicoesDoTextoEAnimar(controler: controler,speed: speed)
+                
                 controler.iteracaoAtual += 1
             }
         
@@ -269,7 +276,7 @@ class TextoNormal: NSObject {
     }
     
     
-    func organizarPosicoesDoTextoEAnimar(controler: PageViewController) {
+    func organizarPosicoesDoTextoEAnimar(controler: PageViewController,speed: TimeInterval) {
         
         
     
@@ -287,7 +294,7 @@ class TextoNormal: NSObject {
         
         
         self.numeroDeLinhas = 1+self.textoFormatadoEmArrays[self.numeroDoTextoAtual].count/(52*18/Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual].font!.pointSize))
-        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: self.speed)
+        self.animacaoTextoRolando(numeroDoTextoAtual: self.numeroDoTextoAtual, speed: speed,controler: controler)
         
         self.numeroDoTextoAtual += 1
         controler.numeroDoTextoAtual += 1

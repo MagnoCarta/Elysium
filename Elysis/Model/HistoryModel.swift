@@ -89,7 +89,7 @@ class HistoryModel {
     }
     
     func loadHistory() -> [String] {
-        
+    
         let gameState = GameState()
         var historia: [String] = []
         let interactions = gameState.load()

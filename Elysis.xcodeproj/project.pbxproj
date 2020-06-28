@@ -25,6 +25,7 @@
 		0F7C4E32249BD52A00AE06CA /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E31249BD52A00AE06CA /* OptionButton.swift */; };
 		0F7C4E36249DDB1600AE06CA /* LapisFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */; };
 		0F7C4E3E24A566E400AE06CA /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E3D24A566E400AE06CA /* Credits.swift */; };
+		0F7C4E4224A8343F00AE06CA /* Lapis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C4E4124A8343F00AE06CA /* Lapis.swift */; };
 		5723265E24916D8B00AE4280 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5723265D24916D8B00AE4280 /* Interaction.swift */; };
 		5796E0BD24A24F3F00E0A2B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */; };
 		57E40A5E24911DAA00FDB2D4 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E40A5D24911DAA00FDB2D4 /* GameState.swift */; };
@@ -82,6 +83,7 @@
 		0F7C4E31249BD52A00AE06CA /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
 		0F7C4E35249DDB1600AE06CA /* LapisFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapisFeedback.swift; sourceTree = "<group>"; };
 		0F7C4E3D24A566E400AE06CA /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		0F7C4E4124A8343F00AE06CA /* Lapis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lapis.swift; sourceTree = "<group>"; };
 		5723265D24916D8B00AE4280 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		5763D16E24A4DA1B00E5471A /* ElysisRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElysisRelease.entitlements; sourceTree = "<group>"; };
 		5796E0BC24A24F3F00E0A2B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		0F7C4DB62497BE2900AE06CA /* TelaDaPagina */ = {
 			isa = PBXGroup;
 			children = (
+				0F7C4E4124A8343F00AE06CA /* Lapis.swift */,
 				0F7C4DAE2496EADF00AE06CA /* PontaDaPaginaAnimada.swift */,
 				0F7C4DB42497B55B00AE06CA /* TextoNormal.swift */,
 				0F7C4DBF2499AD9400AE06CA /* Pagina.swift */,
@@ -385,6 +388,7 @@
 				0B0394CB2491661F005F0D68 /* ApiController.swift in Sources */,
 				0F7C4DC02499AD9400AE06CA /* Pagina.swift in Sources */,
 				0F7C4D63248F216400AE06CA /* ViewController.swift in Sources */,
+				0F7C4E4224A8343F00AE06CA /* Lapis.swift in Sources */,
 				0F7C4E3E24A566E400AE06CA /* Credits.swift in Sources */,
 				5723265E24916D8B00AE4280 /* Interaction.swift in Sources */,
 				77847B77249A4A8A0044315B /* HistoryModel.swift in Sources */,

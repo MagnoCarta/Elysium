@@ -40,7 +40,7 @@ class ViewController: NSViewController {
     var widConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     var historia = HistoryModel()
-    
+    var void = SoundTrack(musicaOuEfeito: .void)
 
     
     
@@ -60,7 +60,13 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         self.view.addSubview(self.backg)
         self.view.addSubview(botaoImagem)
-       
+        
+        
+         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {timer in
+            
+            self.void.mudarVolume(volume: UserDefaults.standard.float(forKey: "bgmVolume"))
+            
+        }
         
         
         self.backg.translatesAutoresizingMaskIntoConstraints = false
@@ -187,3 +193,10 @@ class ViewController: NSViewController {
     
 }
 
+
+extension ViewController {
+    
+    
+    
+    
+}
