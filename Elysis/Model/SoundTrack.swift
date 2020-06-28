@@ -10,6 +10,11 @@ import Cocoa
 import AVFoundation
 
 
+
+protocol SoundTrackDelegate {
+    func mudarVolume(volume: Float,musica: AVAudioPlayer) 
+}
+
 enum MusicaOuEfeito: String {
     // Músicas
 
@@ -22,13 +27,12 @@ enum MusicaOuEfeito: String {
 
 
 class SoundTrack {
-    var musicaOuEfeito : MusicaOuEfeito
+    var musicaOuEfeito : MusicaOuEfeito = .void
     var musica : AVAudioPlayer
-    init(musicaOuEfeito: MusicaOuEfeito) {
-        self.musicaOuEfeito = musicaOuEfeito
-        
-        
-        let assets = NSDataAsset(name: musicaOuEfeito.rawValue)!
+    static let soundTrack = SoundTrack()
+    private init() {
+
+       let assets = NSDataAsset(name: musicaOuEfeito.rawValue)!
         let data = assets.data
         try! musica = AVAudioPlayer(data: data)
         switch musicaOuEfeito {
@@ -37,22 +41,31 @@ class SoundTrack {
         case .virarPagina, .abrirLivro:
              musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
         }
-       
         musica.play()
-        
-        
     }
     
     
-    func mudarVolume(volume: Float) {
+    func mudarVolume() {
+        musica.stop()
+         switch musicaOuEfeito {
+         case .void, .segundaMusica:
+              musica.volume = UserDefaults.standard.float(forKey: "bgmVolume")
+         case .virarPagina, .abrirLivro:
+              musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
+         }
         
-        self.musica.volume = volume
-        
-        
-        
+         musica.play()
+         
     }
+    
+    
+    
+    
     
 }
+
+
+
 
 
 
