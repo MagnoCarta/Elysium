@@ -63,18 +63,18 @@ class Lapis: NSImageView {
             
             
         }else {
-            
-            controler.view.addSubview(self)
-            self.translatesAutoresizingMaskIntoConstraints = false
-            self.imageScaling = .scaleProportionallyDown
-            self.heightConstraint = self.heightAnchor.constraint(equalToConstant: 35)
-            self.heightConstraint.isActive  = true
-            self.leadingConstraint = self.leadingAnchor.constraint(equalTo: controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.leadingAnchor)
-            self.leadingConstraint.isActive = true
-            self.topConstraint = self.topAnchor.constraint(equalTo: controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.topAnchor,constant: 30)
-            self.topConstraint.isActive = true
-            self.trailingConstraint = self.trailingAnchor.constraint(equalTo: controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.trailingAnchor,constant: 30)
-                self.trailingConstraint.isActive = true
+//            
+//            controler.view.addSubview(self)
+//            self.translatesAutoresizingMaskIntoConstraints = false
+//            self.imageScaling = .scaleProportionallyDown
+//            self.heightConstraint = self.heightAnchor.constraint(equalToConstant: 35)
+//            self.heightConstraint.isActive  = true
+//            self.leadingConstraint = self.leadingAnchor.constraint(equalTo: controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.leadingAnchor)
+//            self.leadingConstraint.isActive = true
+//            self.topConstraint = self.topAnchor.constraint(equalTo: controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.topAnchor,constant: 30)
+//            self.topConstraint.isActive = true
+//            self.trailingConstraint = self.trailingAnchor.constraint(equalTo: controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.trailingAnchor,constant: 30)
+//                self.trailingConstraint.isActive = true
             
         }
         

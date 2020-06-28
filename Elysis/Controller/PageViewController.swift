@@ -294,6 +294,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         }
         if self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < 300 && self.paginas[self.numeroDaPaginaAtual].texto.x  > 221 && !self.ultimoTexto {
             self.ultimoTexto = true
+            //self.paginas[numeroDaPaginaAtual].lapis.removeFromSuperview()
             self.virarPagina(self.dobradissa!)
         }else {
         self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 0, controler: self)

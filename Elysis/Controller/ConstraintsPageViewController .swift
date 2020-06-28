@@ -73,7 +73,7 @@ extension PageViewController {
     func reorganizarConstraints(LapisAnimado: LapisFeedback) {
         self.dobradissaEsquerda!.removeFromSuperview()
         self.dobradissa!.removeFromSuperview()
-        self.paginas[self.numeroDaPaginaAtual].lapis.arrumarConstraint(controler: self)
+        //self.paginas[self.numeroDaPaginaAtual].lapis.arrumarConstraint(controler: self)
        // LapisAnimado.removeFromSuperview()
         //self.view.addSubview(LapisAnimado)
 //        self.lapisAnimado.translatesAutoresizingMaskIntoConstraints = false

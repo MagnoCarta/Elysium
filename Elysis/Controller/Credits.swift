@@ -40,7 +40,7 @@ class Credits: NSViewController {
     
     override func keyDown(with event: NSEvent) {
                 
-        if self.textoAtual < arrayDeLinha.count-1 {
+        if self.textoAtual < arrayDeLinha.count {
         textoRolando()
             
         }else {

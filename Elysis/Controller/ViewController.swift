@@ -10,7 +10,20 @@
 
 import Cocoa
 
-
+//
+//extension UserDefaults {
+//
+//    static var  isFullscreen: Bool {
+//
+//        get {return true}
+//
+//
+//    }
+//
+//
+//
+//
+//}
 
 
 extension NSWindow {
@@ -29,7 +42,17 @@ extension NSWindow {
     
     
     
+//     func windowDidExitFullScreen(_ notification: Notification) {
+//        print("sai")
+//        self.toggleFullScreen(self)
+//    }
+//
+//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardDissapeared), name: UIResponder.keyboardWillHideNotification, object: nil)
+    
+    
 }
+
+
 
 class ViewController: NSViewController {
     // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
@@ -110,19 +133,38 @@ class ViewController: NSViewController {
     
     // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
     override func viewDidAppear() {
-        if self.view.window!.isZoomed {
+//        if self.view.window!.isZoomed {
+//
+//            self.view.window?.toggleFullScreen(self)
+//
+//
+//
+//
+//        }
+//        if (self.view.window!.styleMask & NSWindow.StyleMask.fullScreen) == NSWindow.StyleMask.fullScreen{
+//
+//            self.view.window?.toggleFullScreen(self)
+//
+//        }
+        if (self.view.window?.styleMask.contains(.fullScreen))!  {
             
-            self.view.window?.toggleFullScreen(self)
+            
+
+        }else{
+           
+           self.view.window?.toggleFullScreen(self)
             
         }
-        
-        
         
         
         
         view.window?.makeFirstResponder(self)
         view.window?.makeKey()
     }
+    
+    
+    
+
     
     
     override func viewWillAppear() {
@@ -195,5 +237,6 @@ class ViewController: NSViewController {
     
     
 }
+
 
 
