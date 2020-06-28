@@ -33,7 +33,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     var numeroDePaginas = 1
     var iteracaoAtual = 0
     let historia = HistoryModel()
-    var respostasDoUsuario: [String] = ["positive","positive","positive","positive","positive"]
+    var respostasDoUsuario: [String] = []
     var imagemAtualLapisAnimation: Int = 0
     var incrementadorDeImagemLapisAnimation: Int = 1
     let lapisAnimado: LapisFeedback = LapisFeedback()
@@ -153,10 +153,14 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         if event.keyCode == 36 {
             if true {
             self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 620, controler: self)
-                self.lapisAnimado.arrumarConstraint(controler: self, xConstraint: self.lapisAnimado.xConstraint, bottomConstraint: self.lapisAnimado.bottomConstraint)
+                
             }
             
         }
+        
+        
+        
+        
             
              
             
@@ -220,7 +224,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     
     func recriarTelaLoad() {
-//        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
+        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)
 //
 //        
 //        self.paginas[self.numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 100000, controler: self)

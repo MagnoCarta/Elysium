@@ -32,8 +32,8 @@ extension NSWindow {
 class ViewController: NSViewController {
 // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
 
-    let backg = NSImageView(image: NSImage(named: "Cover")!)
-    var botaoImagem = NSImageView(image: NSImage(named: "LettersCover")!)
+    let backg = NSImageView(image: NSImage(named: "ImagemCapaMuitaQualidade")!)
+    var botaoImagem = NSImageView(image: NSImage(named: "TextoFadeInOut")!)
     var botConstraint : NSLayoutConstraint = NSLayoutConstraint()
     var heiConstraint: NSLayoutConstraint = NSLayoutConstraint()
     var leadConstraint: NSLayoutConstraint = NSLayoutConstraint()
@@ -89,8 +89,13 @@ class ViewController: NSViewController {
             }else if self.botaoImagem.alphaValue >= 0.991 {
                 fadeSpeed = 0.01
             }
+        
             
         }
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
   
@@ -153,10 +158,24 @@ class ViewController: NSViewController {
         self.view.window?.makeFirstResponder(self)
         self.view.window?.makeKey()
         
-        if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
-            
-            self.view.window?.contentViewController = PageViewController()
+        Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
+            self.heiConstraint.constant += 0.73
+            self.widConstraint.constant += 1.1
+            self.leadConstraint.constant -= 1
+            self.botConstraint.constant += 0.35
+            if self.heiConstraint.constant  >= self.view.frame.height + 1050 {
+                self.view.window?.contentViewController = PageViewController()
+                timer.invalidate()
+                
+            }
+        
         }
+        
+        
+//        if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
+//
+//            self.view.window?.contentViewController = PageViewController()
+//        }
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

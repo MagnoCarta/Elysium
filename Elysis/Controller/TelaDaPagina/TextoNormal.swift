@@ -55,6 +55,8 @@ class TextoNormal: NSObject {
     var textoFormatadoEmArrays:[String] = []
     var horaDaBarraDeTexto: Bool = false
     var auxi = 0
+    var respostaVazia = true
+    var acabouJogo = false
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Não foi Possível iniciar!")
@@ -67,6 +69,7 @@ class TextoNormal: NSObject {
     
     func proximoTextoNaTelaASerMostrado(speed: TimeInterval,controler: PageViewController) {
         
+        if !self.acabouJogo {
         
         if self.numeroDoTextoAtual > 0 {
             auxi =  self.numeroDeLinhas*(Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].font!.capHeight)+11)
@@ -82,16 +85,48 @@ class TextoNormal: NSObject {
                     timer.invalidate()
                 }
             }
+            
+            
+            if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
+                if !self.textoCarregando {
+                    let simboloFinal = NSImageView(image: NSImage(named: "SimboloFinal")!)
+                    controler.view.addSubview(simboloFinal)
+                    simboloFinal.translatesAutoresizingMaskIntoConstraints = false
+                    simboloFinal.topAnchor.constraint(equalTo: self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].bottomAnchor,constant: 30).isActive = true
+                    simboloFinal.imageScaling = .scaleProportionallyDown
+                    simboloFinal.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                    simboloFinal.centerXAnchor.constraint(equalTo: self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].centerXAnchor, constant:  -20).isActive = true
+                    simboloFinal.alphaValue = 0
+                    
+                    Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                        simboloFinal.alphaValue += 0.01
+                        if simboloFinal.alphaValue >= 1 {
+                        self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                            self.acabouJogo = true
+                            timer.invalidate()
+                        }
+                    }
+                    
+                }
+            } else if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 6) {
+                print("aaang")
+                controler.view.window?.contentViewController = Credits()
+                
+            }
+            
         }
         
         else {
-            if !self.textoCarregando {
+            if self.textoCarregando == false {
                 if self.numeroDoTextoAtual == self.arrayDeTextoNormal.count {
                     controler.numeroDoTextoAtual = 0
                     self.receberTextoDaPagina(controler: controler)
                 }else {
-                
+                if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 6) {
+                print("aaang")
+                    controler.view.window?.contentViewController = Credits() } else {
                     self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                    }
                 
                 
                 }
@@ -104,7 +139,12 @@ class TextoNormal: NSObject {
             
         }
         
-        
+        }else {
+            
+            print("aaang")
+            controler.view.window?.contentViewController = Credits()
+            
+        }
         
         
     }
@@ -120,7 +160,6 @@ class TextoNormal: NSObject {
             self.arrayDeTextoNormal[numeroDoTextoAtual].string += "\(self.textoFormatadoEmArrays[numeroDoTextoAtual][runCount...runCount])"
             runCount += 1
             if runCount >= self.textoFormatadoEmArrays[numeroDoTextoAtual].count {
-                print("Deu bao")
                 self.textoCarregando = false
                 timer.invalidate()
                 
@@ -131,29 +170,45 @@ class TextoNormal: NSObject {
     }
     
     func receberTextoDaPagina(controler: PageViewController) {
-        self.textoCarregando = true
+        
         if self.horaDaBarraDeTexto {
+            self.textoCarregando = true
             controler.paginas[controler.numeroDaPaginaAtual].animarAparicaoDaBarraDeTexto(controler: controler)
             self.horaDaBarraDeTexto = false
+            self.respostaVazia = false
             self.y  -= 120
         }else {
-            self.horaDaBarraDeTexto = true
-            if !controler.isLoading {
-            //controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.string)
+            
+            if !controler.isLoading && (controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue.count > 0 || self.respostaVazia ) {
+                self.respostaVazia = true
+                self.horaDaBarraDeTexto = true
+                controler.respostasDoUsuario.append(controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue)
+                controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
+                    DispatchQueue.main.async {
+                    self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)
+                    self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                    
+                    }
+                    
+                })
+                controler.iteracaoAtual += 1
+                controler.lapisAnimado.arrumarConstraint(controler: controler, xConstraint: controler.lapisAnimado.xConstraint, bottomConstraint: controler.lapisAnimado.bottomConstraint)
             }
             
-            if controler.iteracaoAtual == controler.respostasDoUsuario.count {
+            if controler.iteracaoAtual == controler.respostasDoUsuario.count && controler.isLoading {
                 controler.isLoading = false
+                controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
+                    DispatchQueue.main.async {
+                    self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)
+                    self.organizarPosicoesDoTextoEAnimar(controler: controler)
+                    
+                    }
+                    
+                })
+                controler.iteracaoAtual += 1
             }
-        controler.historia.getHistory(controler.iteracaoAtual, controler.respostasDoUsuario[controler.iteracaoAtual], completion: {result in
-            DispatchQueue.main.async {
-            self.organizarArrayDeTextoETextoNormal(texto: result, controler: controler)
-            self.organizarPosicoesDoTextoEAnimar(controler: controler)
-            
-            }
-            
-        })
-        controler.iteracaoAtual += 1
+        
+        
         }
         
     }
@@ -221,7 +276,7 @@ class TextoNormal: NSObject {
         
         self.numeroDoTextoAtual += 1
         controler.numeroDoTextoAtual += 1
-        self.textoCarregando = false
+        
         
     }
     

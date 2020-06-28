@@ -79,9 +79,5 @@ class PontaDaPaginaAnimada: NSButton {
 
             }
         }
-        
-        
-        
     }
-    
 }
