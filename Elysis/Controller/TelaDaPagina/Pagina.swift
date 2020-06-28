@@ -9,6 +9,11 @@
 import Cocoa
 
 
+extension NSTextField {
+    
+        
+}
+
 class Pagina: NSObject {
     
     
@@ -21,7 +26,7 @@ let pontaDaPaginaDireita = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .direi
 let pontaDaPaginaEsquerda = PontaDaPaginaAnimada(pontaDaPaginaAnimadaType: .esquerda)
 let barraDeTexto = NSTextField()
 let barraDeTextoBackgroundImage = NSImageView(image: NSImage(named: "BarraDeTextoBackground")!)
-    
+let lapis: Lapis = Lapis()
     
     func getAnimationDireitaEsquerda() {
        // for a in 0...99 {
@@ -128,18 +133,25 @@ func passarPaginaPraFrente(controler: PageViewController) {
     func animarAparicaoDaBarraDeTexto(controler: PageViewController) {
         var runCount = 0
         controler.view.addSubview(self.barraDeTexto)
+        controler.ultimoElementoDaView = self.barraDeTexto
         self.barraDeTexto.translatesAutoresizingMaskIntoConstraints = false
         self.barraDeTexto.topAnchor.constraint(equalTo:self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor).isActive = true
         self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
         self.barraDeTexto.leadingAnchor.constraint(equalTo:self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].leadingAnchor).isActive = true
-        self.barraDeTexto.trailingAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].trailingAnchor).isActive = true
-        let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : NSFont(name: "Baskerville", size: 23)!, NSAttributedString.Key.foregroundColor : NSColor.gray]
+        self.barraDeTexto.trailingAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].trailingAnchor,constant:  -80).isActive = true
+        let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))!, NSAttributedString.Key.foregroundColor : NSColor.gray]
         self.barraDeTexto.placeholderAttributedString = NSAttributedString(string: "Enter your Feeling Here...", attributes: attributes)
         self.barraDeTexto.alphaValue = 0
         self.barraDeTexto.textColor = .black
-        self.barraDeTexto.backgroundColor = .lightGray
+        self.barraDeTexto.backgroundColor = NSColor(cgColor: CGColor(red: 175/255, green: 255/255, blue: 248/255, alpha: 1))
+        self.barraDeTexto.wantsLayer = true
+        self.barraDeTexto.layer?.borderWidth = 3
+        self.barraDeTexto.layer?.borderColor = CGColor(red: 40/255, green: 35/255,blue: 34/255, alpha: 1)
+        self.barraDeTexto.layer?.cornerRadius = 6
+        self.barraDeTexto.font = NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))
         
         
+        if !controler.isLoading {
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             self.barraDeTexto.alphaValue += 0.01
             runCount += 1
@@ -152,10 +164,17 @@ func passarPaginaPraFrente(controler: PageViewController) {
             
         }
         
+        }else {
+            
+            self.barraDeTexto.alphaValue = 1
+            self.texto.textoCarregando = false
+            self.barraDeTexto.stringValue = controler.respostasDoUsuario[controler.iteracaoAtual]
+            
+        }
         
         
     }
     
-    
+  
     
 }

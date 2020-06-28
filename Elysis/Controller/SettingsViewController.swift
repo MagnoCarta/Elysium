@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 enum SliderValue {
     case max
@@ -39,6 +40,7 @@ class SettingsViewController: NSViewController {
     
     var bgmVolumeSlider: NSSlider = {
         let slider = NSSlider()
+        slider.tag = 50
         slider.minValue = 0
         slider.maxValue = 1
         // Initial Value
@@ -196,6 +198,9 @@ class SettingsViewController: NSViewController {
         defaults.set(sfxVolumeSlider.doubleValue, forKey: "sfxVolume")
         defaults.set(textSizeSlider.doubleValue, forKey: "textSize")
         defaults.set(textSpeedSlider.doubleValue, forKey: "textSpeed")
+       //  SoundTrack.soundTrack.musica.stop()
+        
+       // SoundTrack.soundTrack.musica.play()
         self.dismiss(self)
        // self.view.window!.contentViewController = ViewController()
     }
@@ -208,6 +213,12 @@ class SettingsViewController: NSViewController {
     }
     
     @objc func didChangeSlider(_ slider: NSSlider) {
+        if slider.tag == 50 {
+           
+            SoundTrack.soundTrack.musica.pause()
+            SoundTrack.soundTrack.musica.volume = Float(slider.doubleValue)
+            SoundTrack.soundTrack.musica.play()
+        }
 //        print(slider.doubleValue)
     }
     
@@ -291,4 +302,13 @@ class SettingsViewController: NSViewController {
             button.widthAnchor.constraint(equalToConstant: view.frame.width * 0.1)
         ])
     }
+}
+
+
+extension SettingsViewController: SoundTrackDelegate {
+    func mudarVolume(volume: Float,musica: AVAudioPlayer) {
+        musica.volume = volume
+    }
+    
+    
 }

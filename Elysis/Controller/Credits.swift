@@ -40,9 +40,11 @@ class Credits: NSViewController {
     
     override func keyDown(with event: NSEvent) {
                 
-        if textoAtual < arrayDeLinha.count {
+        if self.textoAtual < arrayDeLinha.count {
         textoRolando()
-        
+            
+        }else {
+            self.view.window?.contentViewController = ViewController()
         }
         
         
