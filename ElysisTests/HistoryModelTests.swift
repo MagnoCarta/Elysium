@@ -343,14 +343,26 @@ class HistoryModelTests: XCTestCase {
         let interactionFive = Interaction(playerAnswer: "Neutral", answerPolarity: .neutral)
         let interactionArray = [interactionOne, interactionTwo, interactionTree, interactionFour, interactionFive]
         
-        
         //When
         gameState.save(interactionArray)
         let interaction = sut.loadHistory()
+        let historia = getHistoryPositiveNeutralNegativeNeutral()
         
         //Then
-        XCTAssertEqual(interaction, [])
-        XCTAssertFalse(FileManager.default.fileExists(atPath: gameState.gameStateURL.absoluteString))
+        XCTAssertEqual(interaction[0], historia[0])
+        XCTAssertEqual(interaction[1], interactionArray[0].playerAnswer)
+        
+        XCTAssertEqual(interaction[2], historia[1])
+        XCTAssertEqual(interaction[3], interactionArray[1].playerAnswer)
+        
+        XCTAssertEqual(interaction[4], historia[2])
+        XCTAssertEqual(interaction[5], interactionArray[2].playerAnswer)
+        
+        XCTAssertEqual(interaction[6], historia[3])
+        XCTAssertEqual(interaction[7], interactionArray[3].playerAnswer)
+        
+        XCTAssertEqual(interaction[8], historia[4])
+        XCTAssertEqual(interaction[9], interactionArray[4].playerAnswer)
     }
     
     

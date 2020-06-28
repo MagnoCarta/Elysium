@@ -160,9 +160,16 @@ class HistoryModel {
                     }
                 }
                 
+            case 4:
+                
+                respostaPolaridade = interactions[i].answerPolarity.rawValue
+                respostaUsuario = interactions[i].playerAnswer
+                guard let result = self.json![respostaPolaridade] as? String else {fatalError("ERRO")}
+                historia.append(result)
+                historia.append(respostaUsuario)
+                
             default:
                 historia = []
-                try? FileManager.default.removeItem(at: gameState.gameStateURL)
             }
         }
         
