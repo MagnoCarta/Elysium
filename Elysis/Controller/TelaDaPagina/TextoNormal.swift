@@ -88,7 +88,8 @@ class TextoNormal: NSObject {
             
             
             if (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
-                if !self.textoCarregando {
+                if !self.textoCarregando && !self.acabouJogo{
+                    self.acabouJogo = true
                     let simboloFinal = NSImageView(image: NSImage(named: "SimboloFinal")!)
                     controler.view.addSubview(simboloFinal)
                     simboloFinal.translatesAutoresizingMaskIntoConstraints = false
@@ -100,9 +101,10 @@ class TextoNormal: NSObject {
                     
                     Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
                         simboloFinal.alphaValue += 0.01
+                        
                         if simboloFinal.alphaValue >= 1 {
                         self.organizarPosicoesDoTextoEAnimar(controler: controler,speed: speed)
-                            self.acabouJogo = true
+                            
                             timer.invalidate()
                         }
                     }
@@ -141,7 +143,8 @@ class TextoNormal: NSObject {
         }
         
         }else {
-            
+            if !self.textoCarregando {
+                self.textoCarregando = true
            Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
                 controler.view.alphaValue -= 0.01
           
@@ -161,7 +164,7 @@ class TextoNormal: NSObject {
                     }
                 }
             }
-            
+        }
         }
         
         

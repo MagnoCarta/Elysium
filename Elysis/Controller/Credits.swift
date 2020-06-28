@@ -33,19 +33,21 @@ class Credits: NSViewController {
         
         
         
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(Double(self.arrayDeLinha[self.textoAtual].count)*0.08), repeats: true) { timer in
+            if self.textoAtual < self.arrayDeLinha.count {
+            self.textoRolando()
+            
+        }else {
+            timer.invalidate()
+            self.view.window?.contentViewController = ViewController()
+        }
         
-        
-    }
+        }
+        }
     
     
     override func keyDown(with event: NSEvent) {
                 
-        if self.textoAtual < arrayDeLinha.count {
-        textoRolando()
-            
-        }else {
-            self.view.window?.contentViewController = ViewController()
-        }
         
         
     }
