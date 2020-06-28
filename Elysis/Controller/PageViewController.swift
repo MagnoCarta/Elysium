@@ -299,10 +299,12 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
         }else {
         self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 0, controler: self)
             if  self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < 300 && self.paginas[self.numeroDaPaginaAtual].texto.x  > 221 {
+                 if self.paginas[self.numeroDaPaginaAtual].texto.textoFormatadoEmArrays.count > 0 {
                 self.ultimoTexto = false
+                }
             }
         }
-        Timer.scheduledTimer(withTimeInterval: 0.0001, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.00001, repeats: true) { timer in
             
             if self.paginas[self.numeroDaPaginaAtual].texto.textoFormatadoEmArrays.count > 0 {
                 

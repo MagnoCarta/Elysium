@@ -75,7 +75,6 @@ class TextoNormal: NSObject {
             auxi =  self.numeroDeLinhas*(Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].font!.capHeight)+11)
         }
         if self.y - auxi < 300 && self.x  > 221 || (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
-            print("aa")
             var auxis = controler.dobradissa!.frame.origin
             auxis.y += 1
             auxis.x += 1
@@ -178,6 +177,7 @@ class TextoNormal: NSObject {
         if speed > 0 {
          espeed = 1/speed
             }
+        if espeed !=  0 {
         var runCount = 0
         Timer.scheduledTimer(withTimeInterval: espeed, repeats: true) { timer in
         
@@ -190,7 +190,12 @@ class TextoNormal: NSObject {
             }
         }
 
-        
+        }else {
+            
+            self.arrayDeTextoNormal[numeroDoTextoAtual].string = self.textoFormatadoEmArrays[numeroDoTextoAtual]
+            self.textoCarregando = false
+            
+        }
     }
     
     func receberTextoDaPagina(controler: PageViewController,speed: TimeInterval) {
