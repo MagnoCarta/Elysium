@@ -43,13 +43,13 @@ class Lapis: NSImageView {
             self.alphaValue = 0
             self.translatesAutoresizingMaskIntoConstraints = false
             self.imageScaling = .scaleProportionallyDown
-            self.heightConstraint = self.heightAnchor.constraint(equalToConstant: 35)
+            self.heightConstraint = self.heightAnchor.constraint(equalToConstant: 35*controler.numeroMagicoH)
             self.heightConstraint.isActive  = true
             self.leadingConstraint = self.leadingAnchor.constraint(equalTo: controler.ultimoElementoDaView.leadingAnchor, constant:  0)
             self.leadingConstraint.isActive = true
             self.topConstraint = self.topAnchor.constraint(equalTo: controler.ultimoElementoDaView.bottomAnchor)
             self.topConstraint.isActive = true
-            self.trailingConstraint = self.trailingAnchor.constraint(equalTo: controler.ultimoElementoDaView.leadingAnchor, constant: 30)
+            self.trailingConstraint = self.trailingAnchor.constraint(equalTo: controler.ultimoElementoDaView.leadingAnchor, constant: 30*controler.numeroMagicoW)
             self.trailingConstraint.isActive = true
             Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
                 

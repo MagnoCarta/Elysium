@@ -25,27 +25,27 @@ extension PageViewController {
         
         self.PaginaPrincipal.addSubview(self.paginas[0].imagemAtual)
         self.paginas[0].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
-        let paginaDireitaBottomConstraint = self.paginas[0].imagemAtual.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -90)
+        let paginaDireitaBottomConstraint = self.paginas[0].imagemAtual.bottomAnchor.constraint(equalTo: self.PaginaPrincipal.bottomAnchor, constant: -90*self.view.frame.height/800)
         paginaDireitaBottomConstraint.isActive = true
-        let paginaDireitaHeightConstraint = self.paginas[0].imagemAtual.heightAnchor.constraint(equalToConstant: 628)
+        let paginaDireitaHeightConstraint = self.paginas[0].imagemAtual.heightAnchor.constraint(equalToConstant: 628*self.view.frame.height/800)
         paginaDireitaHeightConstraint.isActive = true
         let paginaDireitaxConstraint = self.paginas[0].imagemAtual.centerXAnchor.constraint(equalTo: self.PaginaPrincipal.centerXAnchor, constant: 0)
         paginaDireitaxConstraint.isActive = true
         self.view.addSubview(dobradissa)
         self.view.addSubview(dobradissaEsquerda)
         dobradissa.translatesAutoresizingMaskIntoConstraints = false
-        dobradissa.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8).isActive = true
-        self.heightConstraint = dobradissa.heightAnchor.constraint(equalToConstant: 65)
+        dobradissa.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8*self.view.frame.height/800).isActive = true
+        self.heightConstraint = dobradissa.heightAnchor.constraint(equalToConstant: 65*self.view.frame.height/800)
         self.heightConstraint.isActive = true
-        self.xConstraint = dobradissa.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: 447)
+        self.xConstraint = dobradissa.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: 447*self.view.frame.width/1280)
         self.xConstraint.isActive = true
         dobradissa.imageScaling = .scaleProportionallyDown
         dobradissaEsquerda.translatesAutoresizingMaskIntoConstraints = false
-        self.botConstraint = dobradissaEsquerda.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8)
+        self.botConstraint = dobradissaEsquerda.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.bottomAnchor, constant: -8*self.view.frame.height/800)
         self.botConstraint.isActive = true
-        self.heightConstraint1 = dobradissaEsquerda.heightAnchor.constraint(equalToConstant: 65)
+        self.heightConstraint1 = dobradissaEsquerda.heightAnchor.constraint(equalToConstant: 65*self.view.frame.height/800)
         self.heightConstraint1.isActive = true
-        self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -447)
+        self.xConstraint1 = dobradissaEsquerda.centerXAnchor.constraint(equalTo: self.paginas[0].imagemAtual.centerXAnchor, constant: -447*self.view.frame.width/1280)
         self.xConstraint1.isActive = true
         dobradissaEsquerda.imageScaling = .scaleProportionallyDown
         self.paginas[0].imagemAtual.addSubview(self.paginas[0].lapis)
@@ -60,11 +60,11 @@ extension PageViewController {
          self.paginas[self.numeroDaPaginaAtual].lapis.arrumarConstraint(controler: self)
         self.view.addSubview(optionButton)
         self.optionButton.translatesAutoresizingMaskIntoConstraints = false
-        self.optionButton.heightConstraint = self.optionButton.heightAnchor.constraint(equalToConstant: 60)
+        self.optionButton.heightConstraint = self.optionButton.heightAnchor.constraint(equalToConstant: 60*self.view.frame.height/800)
         self.optionButton.heightConstraint.isActive = true
         self.optionButton.xConstraint = self.optionButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         self.optionButton.xConstraint.isActive = true
-        self.optionButton.topConstraint = self.optionButton.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.topAnchor,constant: 14)
+        self.optionButton.topConstraint = self.optionButton.bottomAnchor.constraint(equalTo: self.paginas[0].imagemAtual.topAnchor,constant: 14*self.view.frame.height/800)
         self.optionButton.topConstraint.isActive = true
         self.optionButton.imageScaling = .scaleProportionallyDown
         
@@ -88,7 +88,7 @@ extension PageViewController {
             
           
             self.view.addSubview(self.dobradissaEsquerda!)
-            self.dobradissaEsquerda!.setFrameOrigin(NSPoint(x: 140, y: (self.dobradissa?.frame.minY)!))
+            self.dobradissaEsquerda!.setFrameOrigin(NSPoint(x: 140*self.view.frame.height/800, y: (self.dobradissa?.frame.minY)!))
         }
         self.view.addSubview(self.dobradissa!)
 //        self.dobradissa?.translatesAutoresizingMaskIntoConstraints = false
