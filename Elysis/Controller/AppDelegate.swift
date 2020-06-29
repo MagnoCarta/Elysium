@@ -24,6 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 "textSize": 20,
                 "textSpeed": 30
             ])
+        
+        NSApp.appearance = NSAppearance(named: .darkAqua)
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

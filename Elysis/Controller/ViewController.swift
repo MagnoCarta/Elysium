@@ -42,6 +42,9 @@ extension NSWindow {
     
     
     
+    
+    
+    
 //     func windowDidExitFullScreen(_ notification: Notification) {
 //        print("sai")
 //        self.toggleFullScreen(self)
@@ -57,7 +60,7 @@ extension NSWindow {
 class ViewController: NSViewController {
     // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
     
-    let backg = NSImageView(image: NSImage(named: "ImagemCapaMuitaQualidade")!)
+    let backg = NSImageView(image: NSImage(named: "ImagemCapaQualidade")!)
     var botaoImagem = NSImageView(image: NSImage(named: "TextoFadeInOut")!)
     var botConstraint : NSLayoutConstraint = NSLayoutConstraint()
     var heiConstraint: NSLayoutConstraint = NSLayoutConstraint()
@@ -110,8 +113,8 @@ class ViewController: NSViewController {
         self.botaoImagem.translatesAutoresizingMaskIntoConstraints = false
         self.botaoImagem.imageScaling = .scaleProportionallyDown
         self.botaoImagem.centerYAnchor.constraint(equalTo: self.backg.centerYAnchor).isActive = true
-        self.botaoImagem.centerXAnchor.constraint(equalTo: self.backg.centerXAnchor, constant: -300).isActive = true
-        self.botaoImagem.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        self.botaoImagem.centerXAnchor.constraint(equalTo: self.backg.centerXAnchor, constant: -300*1280/self.view.frame.width).isActive = true
+        self.botaoImagem.heightAnchor.constraint(equalToConstant: 200*800/self.view.frame.height).isActive = true
         var fadeSpeed: CGFloat = 0.01
         Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
             
@@ -146,6 +149,9 @@ class ViewController: NSViewController {
 //            self.view.window?.toggleFullScreen(self)
 //
 //        }
+        
+        //self.view.window!.backgroundColor = .white
+        
         if (self.view.window?.styleMask.contains(.fullScreen))!  {
             
             
@@ -155,6 +161,7 @@ class ViewController: NSViewController {
            self.view.window?.toggleFullScreen(self)
             
         }
+        
         
         
         
@@ -169,6 +176,7 @@ class ViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        
         //self.view.window!.acceptsMouseMovedEvents = true
     }
     //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
@@ -182,20 +190,28 @@ class ViewController: NSViewController {
             
             //self.view.window?.contentViewController = PageViewController()
             
-            Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
-                self.heiConstraint.constant += 0.73
-                self.widConstraint.constant += 1.1
-                self.leadConstraint.constant -= 1
-                self.botConstraint.constant += 0.35
-                if self.heiConstraint.constant  >= self.view.frame.height + 1050 {
-                    self.view.window?.contentViewController = PageViewController()
-                    timer.invalidate()
-                    
-                }
-                
-            }
+            zooms()
         }
         
+        
+    }
+    
+    
+    
+    func zooms() {
+        
+        Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
+            self.heiConstraint.constant += 0.73*800/self.view.frame.height
+            self.widConstraint.constant += 1.1*1280/self.view.frame.width
+            self.leadConstraint.constant -= 1*1280/self.view.frame.width
+            self.botConstraint.constant += 0.35*800/self.view.frame.height
+            if self.heiConstraint.constant  >= self.view.frame.height + 1050*800/self.view.frame.height {
+                self.view.window?.contentViewController = PageViewController()
+                timer.invalidate()
+                
+            }
+            
+        }
         
     }
     override var representedObject: Any? {
@@ -209,19 +225,7 @@ class ViewController: NSViewController {
         self.view.window?.makeFirstResponder(self)
         self.view.window?.makeKey()
         
-        Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
-            self.heiConstraint.constant += 0.73
-            self.widConstraint.constant += 1.1
-            self.leadConstraint.constant -= 1
-            self.botConstraint.constant += 0.35
-            if self.heiConstraint.constant  >= self.view.frame.height + 1050 {
-                self.view.window?.contentViewController = PageViewController()
-                timer.invalidate()
-                
-            }
-            
-        }
-        
+        zooms()
         
         //        if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
         //
