@@ -6,10 +6,70 @@
 //  Copyright © 2020 Gilberto Magno. All rights reserved.
 //
 
-import Foundation
+import Cocoa
+import AVFoundation
 
 
 
-// LEMBRANDO QUE ISSO CASO FAÇAMOS POR MEIO DO CODIGO , TAMBEM PDOEMOS FAZER POR STORYBOARD SE FOR VONTADE DE VOCES !!! AINDA USAMOS IB NESSA, APENAS COMPONETIZAMOS ELA
+protocol SoundTrackDelegate {
+    func mudarVolume(volume: Float,musica: AVAudioPlayer) 
+}
 
-// teremos enums que facilitarão a nossa organização das musicas e Efeitos Sonoros aqui :)
+enum MusicaOuEfeito: String {
+    // Músicas
+
+    case void = "void",
+    segundaMusica = "segundaMusica",
+    // Efeitos
+    virarPagina = "virarPagina",
+    abrirLivro = "abrirLivro"
+}
+
+
+class SoundTrack {
+    var musicaOuEfeito : MusicaOuEfeito = .void
+    var musica : AVAudioPlayer
+    static let soundTrack = SoundTrack()
+    private init() {
+
+       let assets = NSDataAsset(name: musicaOuEfeito.rawValue)!
+        let data = assets.data
+        try! musica = AVAudioPlayer(data: data)
+        switch musicaOuEfeito {
+        case .void, .segundaMusica:
+             musica.volume = UserDefaults.standard.float(forKey: "bgmVolume")
+        case .virarPagina, .abrirLivro:
+             musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
+        }
+        musica.play()
+    }
+    
+    
+    func mudarVolume() {
+        musica.stop()
+         switch musicaOuEfeito {
+         case .void, .segundaMusica:
+              musica.volume = UserDefaults.standard.float(forKey: "bgmVolume")
+         case .virarPagina, .abrirLivro:
+              musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
+         }
+        
+         musica.play()
+         
+    }
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+

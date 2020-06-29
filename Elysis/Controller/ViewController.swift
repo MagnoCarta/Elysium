@@ -10,225 +10,233 @@
 
 import Cocoa
 
+//
+//extension UserDefaults {
+//
+//    static var  isFullscreen: Bool {
+//
+//        get {return true}
+//
+//
+//    }
+//
+//
+//
+//
+//}
+
+
+extension NSWindow {
+    
+    
+    open override var acceptsFirstResponder: Bool {
+        
+        get {   return true }
+        
+    }
+    
+    open override func becomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    
+    
+    
+//     func windowDidExitFullScreen(_ notification: Notification) {
+//        print("sai")
+//        self.toggleFullScreen(self)
+//    }
+//
+//    NotificationCenter.default.addObserver(self, selector: #selector(keyboardDissapeared), name: UIResponder.keyboardWillHideNotification, object: nil)
+    
+    
+}
+
+
+
 class ViewController: NSViewController {
-// VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
+    // VAMO CRIAR TODOS COMPONENTES QUE PODEM APARECER NAS TELA AQUI  ---------------------------------------------------------------------------
+    
+    let backg = NSImageView(image: NSImage(named: "ImagemCapaMuitaQualidade")!)
+    var botaoImagem = NSImageView(image: NSImage(named: "TextoFadeInOut")!)
+    var botConstraint : NSLayoutConstraint = NSLayoutConstraint()
+    var heiConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    var leadConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    var widConstraint: NSLayoutConstraint = NSLayoutConstraint()
     
     var historia = HistoryModel()
     
     
     
     
-//-----------------------------------------------------------------------------
     
-    
-   /* override func loadView() {
+    //-----------------------------------------------------------------------------
+    override func loadView() {
         self.view  = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
-    }*/
+        self.view.window?.acceptsMouseMovedEvents = true
+        
+        
+        
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        organizarConstraintsEDetalhes()
+        self.view.addSubview(self.backg)
+        self.view.addSubview(botaoImagem)
+        //FUNCIONA, É OQ IMPORTA
+        _ = SoundTrack.soundTrack
+        
+        
+        //         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {timer in
+        //
+        //            self.void.mudarVolume(volume: UserDefaults.standard.float(forKey: "bgmVolume"))
+        //
+        //        }
+        
+        
+        self.backg.translatesAutoresizingMaskIntoConstraints = false
+        self.view.autoresizesSubviews = true
+        botConstraint = self.backg.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        botConstraint.isActive = true
+        heiConstraint =
+            self.backg.heightAnchor.constraint(equalToConstant: self.view.frame.height)
+        heiConstraint.isActive = true
+        leadConstraint = self.backg.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+        leadConstraint.isActive = true
+        widConstraint = self.backg.widthAnchor.constraint(equalToConstant: self.view.frame.width)
+        widConstraint.isActive = true
+        self.backg.imageScaling = .scaleAxesIndependently
+        self.botaoImagem.translatesAutoresizingMaskIntoConstraints = false
+        self.botaoImagem.imageScaling = .scaleProportionallyDown
+        self.botaoImagem.centerYAnchor.constraint(equalTo: self.backg.centerYAnchor).isActive = true
+        self.botaoImagem.centerXAnchor.constraint(equalTo: self.backg.centerXAnchor, constant: -300).isActive = true
+        self.botaoImagem.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        var fadeSpeed: CGFloat = 0.01
+        Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { timer in
+            
+            self.botaoImagem.alphaValue -= fadeSpeed
+            if self.botaoImagem.alphaValue <= 0.009 {
+                fadeSpeed = -0.01
+            }else if self.botaoImagem.alphaValue >= 0.991 {
+                fadeSpeed = 0.01
+            }
+            
+            
+        }
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
-    
-    
-    
-    
-    
-    
-// TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
+    // TORNAR POSSÍVEL O CLIQUE DO JOGADOR!!!
     override func viewDidAppear() {
+//        if self.view.window!.isZoomed {
+//
+//            self.view.window?.toggleFullScreen(self)
+//
+//
+//
+//
+//        }
+//        if (self.view.window!.styleMask & NSWindow.StyleMask.fullScreen) == NSWindow.StyleMask.fullScreen{
+//
+//            self.view.window?.toggleFullScreen(self)
+//
+//        }
+        if (self.view.window?.styleMask.contains(.fullScreen))!  {
+            
+            
+
+        }else{
+           
+           self.view.window?.toggleFullScreen(self)
+            
+        }
+        
+        
+        
         view.window?.makeFirstResponder(self)
+        view.window?.makeKey()
     }
     
-//QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
+    
+    
+
+    
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        //self.view.window!.acceptsMouseMovedEvents = true
+    }
+    //QUANDO UMA TECLA É DO KEYBOARD É CLICADA! ------------------------------------------
     override func keyDown(with event: NSEvent) {
-        
-        
-        
-        
         //Se a tecla Espaço for clicada
         if event.keyCode == 36 {
             
-            /*
-            historia.getHistory(0, "Inicio") { historia in
-                print(historia)
-            }
-            historia.getHistory(1, "Happy") { historia in
-                print(historia)
-            }
+            //  self.view.window?.performZoom(self)
             
-            historia.getHistory(2, "Normal") { historia in
-                print(historia)
-                self.historia.getHistory(3, "Happy") { historia in
-                    print(historia)
+            //  self.view.window?.zoom(self)
+            
+            //self.view.window?.contentViewController = PageViewController()
+            
+            Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
+                self.heiConstraint.constant += 0.73
+                self.widConstraint.constant += 1.1
+                self.leadConstraint.constant -= 1
+                self.botConstraint.constant += 0.35
+                if self.heiConstraint.constant  >= self.view.frame.height + 1050 {
+                    self.view.window?.contentViewController = PageViewController()
+                    timer.invalidate()
+                    
                 }
+                
             }
-            
-            historia.getHistory(4, "Sad") { historia in
-                print(historia)
-            }
-            */
-            
-            didTapButtonContinuar(NSButton())
-            
-            //}
-            
-            
-            //if Novo Jogo {
-            
-            didTapButtonNovoJogo(NSButton())
-            
-            
-            //}
-            
-            
-            
-            //if Novo Jogo {
-            
-            didTapButtonOpcoes(NSButton())
-            
-            //}
-            
-        //} Else Estiver na tela do jogo
-            
-            // if Tela de Jogo normal {
-            
-            //Passa o texto
-            
-       // } else BarradeTexto {
-            
-            didTapButtonConfirmar(NSButton())
-            
-      //  }
-            
-            
-            
         }
-        
-        
-        
-        
-        
-        //Se a tecla Down/Baixo for clicada
-        if event.keyCode == 125 {
-            
-            
-            // X%3 , cada vez que clicar aumenta X em 1, assim mudando qual botao está em cima, comecando do 0 , que é o Continuar, 1 Novo jogo, 2 Opcoes :D
-            
-            
-        }
-        
-        
-        
-        //Se a tecla Up/Cima for clicada
-        if event.keyCode == 126 {
-            
-             // X%3 , cada vez que clicar Diminui X em 1, assim mudando qual botao está em cima, comecando do 0 , que é o Continuar, 1 Novo jogo, 2 Opcoes :D
-            
-            
-        }
-        
-        
         
         
     }
-//------------------------------------------------------------------------------------
-    
-    
-    
-    
-    //Deixo esta função em aberto para criação de todas as constraints e coisas necessárias antes do jogo iniciar
-        func organizarConstraintsEDetalhes() {
-            
-            
-            
-        }
-        
-    //Após o jogo ser iniciado , que tal termos também o jogo reconstruído nesta função?
-        func reorganizarConstraintsEDetalhes(/*parametros = Dados da GameData*/) {
-        
-            
-        }
-    
-    
-    
-    
-    
-    
-    
-// Funções dos Botoes do jogo, Continuar, NovoJogo, Opcoes, Confirmar e outros que podem existir---------------------------------------------------------------------
-   @objc  func didTapButtonContinuar(_ Button: AnyObject){
-        
-    
-    // MODEL FULLSCREEN CONTINUAR OU DIRETO PRO JOGO
-    
-        reorganizarConstraintsEDetalhes()
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonNovoJogo(_ Button: AnyObject){
-        //DIRETO PRO JOGO
-        reorganizarConstraintsEDetalhes()
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonOpcoes(_ Button: AnyObject){
-        
-        //MODEL FULLSCREEN
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    @objc  func didTapButtonConfirmar(_ Button: AnyObject){
-           
-           // MAGIA DAS OPCOES E CAMINHOS AQUI
-           
-       }
-//------------------------------------------------------------------------------------
-    
-    
-    
-
-    
-    
-    
-    
-    
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
-
     
+    override func mouseDown(with event: NSEvent) {
+        
+        self.view.window?.makeFirstResponder(self)
+        self.view.window?.makeKey()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
+            self.heiConstraint.constant += 0.73
+            self.widConstraint.constant += 1.1
+            self.leadConstraint.constant -= 1
+            self.botConstraint.constant += 0.35
+            if self.heiConstraint.constant  >= self.view.frame.height + 1050 {
+                self.view.window?.contentViewController = PageViewController()
+                timer.invalidate()
+                
+            }
+            
+        }
+        
+        
+        //        if event.locationInWindow.y > self.botaoImagem.frame.minY && event.locationInWindow.y < self.botaoImagem.frame.maxY && event.locationInWindow.x > self.botaoImagem.frame.minX && event.locationInWindow.x < self.botaoImagem.frame.maxX {
+        //
+        //            self.view.window?.contentViewController = PageViewController()
+        //        }
+    }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        self.view.window?.close()
+        //Pass data to new view
+    }
     
     
     
 }
+
+
 
