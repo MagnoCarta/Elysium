@@ -67,6 +67,12 @@ class TextoNormal: NSObject {
         
     }
     
+    func tamanhoTodaTela(controler: PageViewController) {
+        self.y = Int(665*controler.numeroMagicoH)
+        self.x = Int(190*controler.numeroMagicoW)
+        self.x1Aux = Int(665*controler.numeroMagicoW)
+    }
+    
     func proximoTextoNaTelaASerMostrado(speed: TimeInterval,controler: PageViewController) {
         
         if !self.acabouJogo {
@@ -74,12 +80,12 @@ class TextoNormal: NSObject {
         if self.numeroDoTextoAtual > 0 {
             auxi =  self.numeroDeLinhas*(Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].font!.capHeight)+11)
         }
-        if self.y - auxi < 300 && self.x  > 221 || (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
+            if self.y - auxi < Int(300*controler.numeroMagicoH) && self.x  > Int(221*controler.numeroMagicoW) || (controler.iteracaoAtual == 5 && controler.numeroDoTextoAtual == 5) {
             var auxis = controler.dobradissa!.frame.origin
             auxis.y += 1
             auxis.x += 1
             Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
-                controler.dobradissa!.dobrarPontaDaPagina(mouseLocation: auxis, xConstraint: controler.xConstraint, heightConstraint: controler.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
+                controler.dobradissa!.dobrarPontaDaPagina(mouseLocation: auxis, xConstraint: controler.xConstraint, heightConstraint: controler.heightConstraint,constantHeight: 0.9*controler.numeroMagicoH,xConstant: 0.25*controler.numeroMagicoW)
                 if controler.dobradissa!.numeroDaImagemAtual >= 20 {
                     timer.invalidate()
                 }
@@ -94,8 +100,8 @@ class TextoNormal: NSObject {
                     simboloFinal.translatesAutoresizingMaskIntoConstraints = false
                     simboloFinal.topAnchor.constraint(equalTo: self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].bottomAnchor,constant: 30).isActive = true
                     simboloFinal.imageScaling = .scaleProportionallyDown
-                    simboloFinal.heightAnchor.constraint(equalToConstant: 100).isActive = true
-                    simboloFinal.centerXAnchor.constraint(equalTo: self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].centerXAnchor, constant:  -20).isActive = true
+                    simboloFinal.heightAnchor.constraint(equalToConstant: 100*controler.numeroMagicoH).isActive = true
+                    simboloFinal.centerXAnchor.constraint(equalTo: self.arrayDeTextoNormal[self.numeroDoTextoAtual-1].centerXAnchor, constant:  -20*controler.numeroMagicoW).isActive = true
                     simboloFinal.alphaValue = 0
                     
                     Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
@@ -209,7 +215,7 @@ class TextoNormal: NSObject {
             controler.paginas[controler.numeroDaPaginaAtual].animarAparicaoDaBarraDeTexto(controler: controler)
             self.horaDaBarraDeTexto = false
             self.respostaVazia = false
-            self.y  -= 120
+            self.y  -= 120*Int(controler.numeroMagicoH)
         }else {
             let tirarEspacoPraSaberSeEVazio = controler.paginas[controler.numeroDaPaginaAtual].barraDeTexto.stringValue.replacingOccurrences(of: " ", with: "")
             if !controler.isLoading && (tirarEspacoPraSaberSeEVazio.count > 0 || self.respostaVazia ) {
@@ -249,7 +255,7 @@ class TextoNormal: NSObject {
         self.numeroDeEspacos = self.Nindice.count
         
         for a in self.numeroDoTextoAtual...self.numeroDeEspacos-1+self.numeroDoTextoAtual {
-            self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
+            self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425*controler.numeroMagicoW, height: 0)))
             self.arrayDeTextoNormal[a].isEditable = false
             self.arrayDeTextoNormal[a].backgroundColor = .clear
             self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))
@@ -272,7 +278,7 @@ class TextoNormal: NSObject {
         controler.paginas[controler.numeroDaPaginaAtual].texto.numeroDoTextoAtual = controler.paginas[controler.numeroDaPaginaAtual-1].texto.numeroDoTextoAtual 
         for a in 0...controler.paginas[controler.numeroDaPaginaAtual].texto.textoFormatadoEmArrays.count-1 {
             
-            self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425, height: 0)))
+            self.arrayDeTextoNormal.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 425*controler.numeroMagicoW, height: 0)))
             self.arrayDeTextoNormal[a].isEditable = false
             self.arrayDeTextoNormal[a].backgroundColor = .clear
             self.arrayDeTextoNormal[a].font = NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))
@@ -291,9 +297,9 @@ class TextoNormal: NSObject {
         
         self.y -= self.numeroDeLinhas*(Int(self.arrayDeTextoNormal[self.numeroDoTextoAtual].font!.capHeight)+11)
         
-        if self.y < 280 {
+        if self.y < 280*Int(controler.numeroMagicoH) {
             
-            self.y = 665
+            self.y = Int(665*controler.numeroMagicoH)
             self.x = self.x1Aux
             
         }
@@ -330,3 +336,4 @@ class TextoNormal: NSObject {
  
  
  */
+

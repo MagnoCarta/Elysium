@@ -123,8 +123,8 @@ func passarPaginaPraFrente(controler: PageViewController) {
         
         controler.view.addSubview(controler.paginas[controler.numeroDaPaginaAtual].imagemAtual)
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.translatesAutoresizingMaskIntoConstraints = false
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -90).isActive = true
-        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 628).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.bottomAnchor.constraint(equalTo: controler.PaginaPrincipal.bottomAnchor, constant: -90*controler.view.frame.height/800).isActive = true
+        controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.heightAnchor.constraint(equalToConstant: 628*controler.view.frame.height/800).isActive = true
         controler.paginas[controler.numeroDaPaginaAtual].imagemAtual.centerXAnchor.constraint(equalTo: controler.PaginaPrincipal.centerXAnchor, constant: 0).isActive = true
         
         
@@ -136,9 +136,9 @@ func passarPaginaPraFrente(controler: PageViewController) {
         controler.ultimoElementoDaView = self.barraDeTexto
         self.barraDeTexto.translatesAutoresizingMaskIntoConstraints = false
         self.barraDeTexto.topAnchor.constraint(equalTo:self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].bottomAnchor).isActive = true
-        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        self.barraDeTexto.heightAnchor.constraint(equalToConstant: 50*controler.numeroMagicoH).isActive = true
         self.barraDeTexto.leadingAnchor.constraint(equalTo:self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].leadingAnchor).isActive = true
-        self.barraDeTexto.trailingAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].trailingAnchor,constant:  -80).isActive = true
+        self.barraDeTexto.trailingAnchor.constraint(equalTo: self.texto.arrayDeTextoNormal[self.texto.numeroDoTextoAtual-1].trailingAnchor,constant:  -80*controler.numeroMagicoW).isActive = true
         let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : NSFont(name: "Baskerville", size: CGFloat(UserDefaults.standard.double(forKey: "textSize")))!, NSAttributedString.Key.foregroundColor : NSColor.gray]
         self.barraDeTexto.placeholderAttributedString = NSAttributedString(string: "Enter your Feeling Here...", attributes: attributes)
         self.barraDeTexto.alphaValue = 0

@@ -75,14 +75,14 @@ class Credits: NSViewController {
         
         for a  in 0...indices.count-1 {
             
-            self.textoStyle.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 500, height: 0 )))
+            self.textoStyle.append(NSTextView(frame: NSRect(x: 0, y: 0, width: 500*self.view.frame.width/1280, height: 0 )))
             self.textoStyle[a].translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(self.textoStyle[a])
-            self.textoStyle[a].topAnchor.constraint(equalTo: self.view.topAnchor, constant: CGFloat(150 + a*70)).isActive = true
+            self.textoStyle[a].topAnchor.constraint(equalTo: self.view.topAnchor, constant: CGFloat(150 + a*70)*self.view.frame.height/800).isActive = true
             
-            self.textoStyle[a].heightAnchor.constraint(equalToConstant: 60).isActive = true
+            self.textoStyle[a].heightAnchor.constraint(equalToConstant: 60*self.view.frame.height/800).isActive = true
             self.textoStyle[a].centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            self.textoStyle[a].widthAnchor.constraint(equalToConstant: 1100).isActive = true
+            self.textoStyle[a].widthAnchor.constraint(equalToConstant: 1100*self.view.frame.width/1280).isActive = true
             self.textoStyle[a].textColor = .white
             self.textoStyle[a].font = NSFont(name: "Baskerville", size: 50)
             self.textoStyle[a].alignment = .center

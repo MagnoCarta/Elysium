@@ -48,6 +48,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     var arrayDeCaminhosLoad: [String] = []
     var ultimoTexto : Bool = true
     var ultimoElementoDaView : NSView = NSView()
+    var numeroMagicoH : CGFloat = 0
+    var numeroMagicoW : CGFloat = 0
     
     override func loadView() {
         self.view = NSView(frame: NSRect(x: NSScreen.main!.frame.minX, y: NSScreen.main!.frame.minY, width: NSScreen.main!.frame.width, height: NSScreen.main!.frame.height))
@@ -59,6 +61,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.numeroMagicoH = self.view.frame.height/800
+        self.numeroMagicoW = self.view.frame.width/1280
         self.dobradissa!.action = #selector(virarPagina(_:))
        
         self.dobradissaEsquerda!.action = #selector(virarPagina(_:))
@@ -102,8 +106,8 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
                         ai = true
                     }
                 
-                    self.dobradissa!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9,xConstant: 0.25)
-                    self.dobradissaEsquerda!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9,xConstant: -0.25)
+                    self.dobradissa!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint, heightConstraint: self.heightConstraint,constantHeight: 0.9*self.view.frame.height/800,xConstant: 0.25*self.view.frame.width/1280)
+                    self.dobradissaEsquerda!.dobrarPontaDaPagina(mouseLocation: self.mouseLocation, xConstraint: self.xConstraint1, heightConstraint: self.heightConstraint1,constantHeight: 0.9*self.view.frame.height/800,xConstant: -0.25*self.view.frame.width/1280)
                     self.optionButton.mouseSobreBotao(mouseLocation: self.mouseLocation)
                     self.paginas[self.numeroDaPaginaAtual].lapis.mouseSobreBotao(mouseLocation: self.mouseLocation)
             
@@ -145,6 +149,7 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        
         self.view.window?.makeFirstResponder(self)
         self.view.window?.makeKey()
     
@@ -217,9 +222,12 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             }
             
         }else {
+            let numeroMagicoH1 = CGFloat(self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*20)*self.numeroMagicoH
+            let numeroMagicoH2 = 326*self.numeroMagicoH
+            let numeroMagicoW1 = CGFloat(221)*self.numeroMagicoW
             print(self.paginas[self.numeroDaPaginaAtual].texto.y)
             print(self.paginas[self.numeroDaPaginaAtual].texto.x)
-            if self.paginas[self.numeroDaPaginaAtual].texto.y - (self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*20) < 326 &&  self.paginas[self.numeroDaPaginaAtual].texto.x > 221  {
+            if (self.paginas[self.numeroDaPaginaAtual].texto.y - Int((numeroMagicoH1)) < Int(numeroMagicoH2)) &&  (self.paginas[self.numeroDaPaginaAtual].texto.x > Int(numeroMagicoW1))  {
                 print("Indoooo")
                 let auxiliarBooleanoProLado = false
                 self.paginas[numeroDaPaginaAtual].getAnimationDireitaEsquerda()
@@ -289,16 +297,18 @@ class PageViewController: NSViewController , NSPageControllerDelegate {
             return
             
         }
+        let numeroMagicoH1 = 300*self.numeroMagicoH
+        let numeroMagicoW1 = 221*self.numeroMagicoW
         if self.paginas[self.numeroDaPaginaAtual].texto.numeroDoTextoAtual > 0 {
-            self.paginas[self.numeroDaPaginaAtual].texto.auxi =  self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*(Int(self.paginas[self.numeroDaPaginaAtual].texto.arrayDeTextoNormal[self.paginas[self.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].font!.capHeight)+11)
+            self.paginas[self.numeroDaPaginaAtual].texto.auxi =  self.paginas[self.numeroDaPaginaAtual].texto.numeroDeLinhas*(Int(self.paginas[self.numeroDaPaginaAtual].texto.arrayDeTextoNormal[self.paginas[self.numeroDaPaginaAtual].texto.numeroDoTextoAtual-1].font!.capHeight)+(11*Int(self.numeroMagicoH)))
         }
-        if self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < 300 && self.paginas[self.numeroDaPaginaAtual].texto.x  > 221 && !self.ultimoTexto {
+        if (self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < Int(numeroMagicoH1)) && (self.paginas[self.numeroDaPaginaAtual].texto.x  > Int(numeroMagicoW1)) && (!self.ultimoTexto) {
             self.ultimoTexto = true
             //self.paginas[numeroDaPaginaAtual].lapis.removeFromSuperview()
             self.virarPagina(self.dobradissa!)
         }else {
         self.paginas[numeroDaPaginaAtual].texto.proximoTextoNaTelaASerMostrado(speed: 0, controler: self)
-            if  self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < 300 && self.paginas[self.numeroDaPaginaAtual].texto.x  > 221 {
+            if  (self.paginas[self.numeroDaPaginaAtual].texto.y - self.paginas[self.numeroDaPaginaAtual].texto.auxi < Int(numeroMagicoH1)) && (self.paginas[self.numeroDaPaginaAtual].texto.x  > Int(numeroMagicoW1)) {
                  if self.paginas[self.numeroDaPaginaAtual].texto.textoFormatadoEmArrays.count > 0 {
                 self.ultimoTexto = false
                 }
