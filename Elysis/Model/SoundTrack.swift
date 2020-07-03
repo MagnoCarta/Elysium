@@ -17,7 +17,7 @@ protocol SoundTrackDelegate {
 
 enum MusicaOuEfeito: String {
     // Músicas
-
+    
     case void = "void",
     segundaMusica = "segundaMusica",
     // Efeitos
@@ -31,31 +31,32 @@ class SoundTrack {
     var musica : AVAudioPlayer
     static let soundTrack = SoundTrack()
     private init() {
-
-       let assets = NSDataAsset(name: musicaOuEfeito.rawValue)!
+        
+        let assets = NSDataAsset(name: musicaOuEfeito.rawValue)!
         let data = assets.data
         try! musica = AVAudioPlayer(data: data)
         switch musicaOuEfeito {
         case .void, .segundaMusica:
-             musica.volume = UserDefaults.standard.float(forKey: "bgmVolume")
+            musica.volume = UserDefaults.standard.float(forKey: "bgmVolume")
         case .virarPagina, .abrirLivro:
-             musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
+            musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
         }
         musica.play()
+        musica.numberOfLoops = -1
     }
     
     
     func mudarVolume() {
         musica.stop()
-         switch musicaOuEfeito {
-         case .void, .segundaMusica:
-              musica.volume = UserDefaults.standard.float(forKey: "bgmVolume")
-         case .virarPagina, .abrirLivro:
-              musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
-         }
+        switch musicaOuEfeito {
+        case .void, .segundaMusica:
+            musica.volume = UserDefaults.standard.float(forKey: "bgmVolume")
+        case .virarPagina, .abrirLivro:
+            musica.volume = UserDefaults.standard.float(forKey: "sfxVolume")
+        }
         
-         musica.play()
-         
+        musica.play()
+        musica.numberOfLoops = -1
     }
     
     
